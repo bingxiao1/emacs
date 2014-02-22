@@ -1,0 +1,17 @@
+# Copyright (c) 2011 Skytap Inc.,
+# All Rights Reserved.
+
+from sqlalchemy import Column, Enum
+from hosting_platform.db.migrate.ChangeSet import ChangeSet
+
+class ConsumptionEventType(ChangeSet):
+    """add consumption and deconsumption event types"""
+    
+    @classmethod
+    def get_name(clazz):
+        return "R26/consumption_event_type"
+    
+    def grown_columns(self):
+        return { 'events': [ Column('event_type', Enum('allocation', 'deallocation', 'resize', 'rescind_allocation', 
+                                                       'consumption', 'deconsumption'), 
+                                    primary_key=False, nullable=False)]}

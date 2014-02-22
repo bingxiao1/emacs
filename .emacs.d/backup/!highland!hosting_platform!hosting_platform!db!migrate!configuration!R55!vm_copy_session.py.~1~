@@ -1,0 +1,34 @@
+# Copyright (c) 2010 Skytap Inc.,
+# All Rights Reserved.
+from sqlalchemy import Column, Text, Integer
+from hosting_platform.db.migrate.ChangeSet import ChangeSet
+
+class VMCopySession(ChangeSet):
+    """
+    vm_copy_session table.
+    """
+    
+    @classmethod
+    def get_name(cls):
+        return "R55/vm_copy_session"
+    
+    def new_tables(self):
+
+        return {
+            'vm_copy_sessions' : [
+              Column('session_id', Integer, nullable=False, primary_key=True, autoincrement=True),
+              Column('operation_id', Integer, nullable=False),
+              Column('target_depot_id', Integer, nullable=False),
+              ],
+        }
+
+    def new_foreign_keys(self):
+        return  {
+                "vm_copy_sessions": { 
+                        ("operation_id",): ["operations", ("operation_id",)],
+                        ("target_depot_id",): ["image_depot_allocations", ("image_depot_id",)]},
+                }
+
+           
+
+

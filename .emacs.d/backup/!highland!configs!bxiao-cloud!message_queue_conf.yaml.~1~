@@ -1,0 +1,96 @@
+#--------------- Use integ -------------
+message_queue_broker:
+    # IMPORTANT: "host" can be a dns name or a literal IP address. However,
+    # if using clustered queue brokers behind a VIP/keepalived, you should
+    # make sure the literal IP address is in sync with the "rabbitmq: "
+    # line in vips.yaml
+    host: sea5m1mqvip1.mgt.integ.skytap.com
+    port: 5672
+    management_port: 15672
+    management_username: guest
+    management_password: guest
+
+#--------------- Use lonnieh cloud ------------------
+# message_queue_broker:
+#     # IMPORTANT: "host" can be a dns name or a literal IP address. However,
+#     # if using clustered queue brokers behind a VIP/keepalived, you should
+#     # make sure the literal IP address is in sync with the "rabbitmq: "
+#     # line in vips.yaml
+#     host: vip-rabbitmq
+#     port: 5672
+#     management_port: 15672
+
+# management_region: lonnieh-cloud
+
+# federated_brokers:
+#     lonnieh-cloud/west1:
+#         host: vip-west1rabbitmq
+#         port: 5672
+#         username: guest
+#         password: guest
+#     lonnieh-cloud/east1:
+#         host: vip-east1rabbitmq
+#         port: 5672
+#         username: guest
+#         password: guest
+
+#--------------- Use dev stack ------------------
+# message_queue_broker:
+#     # IMPORTANT: "host" can be a dns name or a literal IP address. However,
+#     # if using clustered queue brokers behind a VIP/keepalived, you should
+#     # make sure the literal IP address is in sync with the "rabbitmq: "
+#     # line in vips.yaml
+#     host: mq1
+#     port: 5672
+#     management_port: 15672
+
+services:
+    ConfigurationManager:
+        queue_name: ConfigurationManager
+
+    charon:
+        queue_name: charon
+
+    cmcmd:
+        queue_name: cmcmd
+
+    random:
+        queue_name: random
+
+    smbcmd:
+        queue_name: smbcmd
+
+    mqcmd:
+        queue_name: mqcmd
+
+    accounting:
+        queue_name: accounting
+        connection_heartbeat_interval: 300
+
+    accounting_test:
+        queue_name: accounting_test
+        connection_heartbeat_interval: 300
+
+    samba:
+        queue_name: samba
+        connection_heartbeat_interval: 300
+
+    greenbox:
+        queue_name: greenbox
+        connection_heartbeat_interval: 300
+
+    # "service" defined use use by system tests
+    system_test:
+        queue_name: system_test
+        connection_heartbeat_interval: 300
+
+    # "service" defined use use by unit tests
+    unit_test:
+        queue_name: unit_test
+        connection_heartbeat_interval: 300
+
+    keg:
+        queue_name: keg
+
+    rpc_client:
+        queue_name: rpc_client

@@ -1,0 +1,8 @@
+error_watch:
+  description: "error-watch cron job"
+  deployment_model: singleton
+  executable_actions: [ 'start', 'stop', 'restart', 'status' ]
+  executable: "/bin/true"
+  args: "%(action)s"
+  optional: yes
+  repos: [ hp, configs, service_control ]

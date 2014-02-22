@@ -1,0 +1,164 @@
+# rrdcached settings
+metric_retention: "development"
+rrdcached_address: 'nsvc1:9010'
+vmware_esxi_supported_hardware_versions: [4, 7, 8, 9, 10]
+
+# databases
+databases: { 
+   configuration_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/configuration",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30
+      }
+   },
+
+   greenbox_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/greenbox",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False
+      }
+   },
+
+   awsdriver_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/awsdriver",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False
+      }
+   },
+
+   storage_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/storage",
+      options: {
+           #see http://www.sqlalchemy.org/docs/04/dbengine.html#dbengine_options
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30
+      }
+   },
+
+   network_server_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/network_server",
+      options: {
+           #see http://www.sqlalchemy.org/docs/04/dbengine.html#dbengine_options
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False,
+           echo_pool: False,
+           get_tx_session_tracebacks: False
+      }
+   },
+
+   muxmanager_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/muxmanager",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False,
+           echo_pool: False,
+           get_tx_session_tracebacks: False
+     }
+   },
+
+   charon_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/charon",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False,
+           echo_pool: False,
+           get_tx_session_tracebacks: False
+     }
+   },
+
+   samba_service_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/samba_service",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False,
+           echo_pool: False,
+           get_tx_session_tracebacks: False
+     }
+   },
+
+   accounting_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/accounting",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False
+      }
+   },
+
+   keg_db: {
+      url: "mysql://root:eas71akeWA@nsvc1/keg",
+      options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30,
+           echo: False
+      }
+   }
+}
+
+#use VNC proxy for tight encoding of hvm guests?
+use_vnc_proxy: false
+
+
+management_server: nsvc1
+management_server_port: 9000
+
+# This is the URL that the windows network cdrom iso will install a desktop
+# link for. This should point to the WFE. 
+# This is used by both the management server (vmware) and HostingNodeHelper.
+asset_browser_url: https://nsvc1/assets
+
+# ftp node
+ftp_node: nsvc1
+
+###########################################################
+#
+# NETWORK
+#
+###########################################################
+# the range of ports which can be used to publish from each
+# network node
+published_service_pool:
+    # set to an external firewall if you're using one, and are not
+    # doing firewall provisioning
+    #fixed_firewall: ADDRESS.internal.illumita.com
+    base_port: 30000
+    num_ports: 10000
+    base_firewall_port: 30000
+    num_firewall_ports: 10000
+
+forwarders: [ 10.1.0.248, 10.1.0.247 ]
+
+###########################################################
+#
+# Logging
+#
+###########################################################
+
+default_logging_config:
+    level: DEBUG
+    handlers:
+       syslog: DEBUG
+
+syslog_config: 
+    host: nsvc1
+    port: 20514
+

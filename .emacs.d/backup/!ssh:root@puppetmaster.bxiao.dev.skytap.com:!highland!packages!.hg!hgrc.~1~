@@ -1,0 +1,7 @@
+[paths]
+default = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/next/packages
+[hooks]
+update.apt-index = ./update-archive.sh
+# PUPPET: Some settings in this file are managed by packages_setup.
+[hooks]
+commit.apt-index = ./update-archive.sh

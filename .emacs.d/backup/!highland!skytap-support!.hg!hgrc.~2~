@@ -1,0 +1,2 @@
+[paths]
+default = ssh://highland@puppetmaster//highland/hosting_platform

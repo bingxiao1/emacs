@@ -1,0 +1,13 @@
+from operations import Operation
+from base import KeyMixin
+
+class MergeOperationModel(Operation, KeyMixin, ):
+    """
+    The database model for merge operations
+    """
+    KEY_PREFIX = 'merge'
+    KEYS = ('operation_id',)
+
+    def __init__(self, target_image_depot_allocation=None, *args, **kwargs):
+        super(MergeOperationModel, self).__init__('merge', *args, **kwargs)
+        self.target_image_depot_allocation=target_image_depot_allocation

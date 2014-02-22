@@ -1,0 +1,5 @@
+heartbeat_period: 40
+configuration_manager_host: sea5m1cmvip1
+configuration_manager_port: 9000
+vmware_hosting_manager_host: sea5m1cmvip1
+vmware_hosting_manager_port: 9001

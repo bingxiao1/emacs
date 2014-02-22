@@ -1,0 +1,20 @@
+# Copyright (c) 2012 Skytap Inc.,
+# All Rights Reserved.
+
+from hosting_platform.db.migrate.ChangeSet import ChangeSet
+
+class cleanup(ChangeSet):
+    """
+    Remove stuffs that are no longer needed
+    """
+
+    @classmethod
+    def get_name(cls):
+        return "R52/cleanup"
+
+    def pre_expand(self):
+        return [
+            "DROP TABLE quotas",
+            "DROP TABLE quotas_tmp",
+            "DROP TABLE cumulative_utilization_snapshots"
+            ]

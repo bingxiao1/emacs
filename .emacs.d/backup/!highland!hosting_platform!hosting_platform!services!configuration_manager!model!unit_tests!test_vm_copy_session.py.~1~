@@ -1,0 +1,37 @@
+# Copyright (c) 2010 Skytap Inc.,
+# All Rights Reserved.
+
+import sys
+import unittest
+from hosting_platform.common import testing
+from hosting_platform.services.configuration_manager.unit_tests.ConfigurationManagerContextTestCase import \
+    ConfigurationManagerContextTestCase
+
+from hosting_platform.testing.fixtures import fixture
+from hosting_platform.db import transaction
+from fixtures import configuration_fixture, account_fixture, bare_vm_fixture
+from hosting_platform.services.configuration_manager.model.merge import MergeOperationModel
+from hosting_platform.common.logs import initialize_logger
+
+LOGGER = initialize_logger('test_merge.py')
+
+class TestMerge(ConfigurationManagerContextTestCase):
+    """test case for the functionality in merge.py"""
+
+    @fixture(account_fixture)
+    @fixture(configuration_fixture)
+    @fixture(bare_vm_fixture)
+    def test_merge_operation_model(self, vm, **kwargs):
+        with transaction() as tx:
+            op = MergeOperationModel(vm.image_depot_allocation, logger=LOGGER)
+            tx.add(op)
+            import pdb; pdb.set_trace() ## DEBUG ##
+
+
+if __name__ == "__main__":
+    loader = unittest.TestLoader()
+    if len(sys.argv) == 2:
+        loader.testMethodPrefix = sys.argv[1]
+
+    SUITE = loader.loadTestsFromTestCase(TestMerge)
+    testing.IllumitaTestRunner().run(SUITE)

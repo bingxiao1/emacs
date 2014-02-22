@@ -1,0 +1,20 @@
+# Copyright (c) 2012 Skytap Inc.,
+# All Rights Reserved.
+
+from hosting_platform.db.migrate.ChangeSet import ChangeSet
+
+class Limits(ChangeSet):
+    """
+    Remove stuffs that are no longer needed
+    """
+
+    @classmethod
+    def get_name(cls):
+        return "R52/Limits"
+
+    def pre_expand(self):
+        return [
+                "DELETE from limits WHERE region=''",
+                ]
+
+

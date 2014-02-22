@@ -1,0 +1,11 @@
+from operations import Operation
+
+class MergeOperationModel(Operation):
+    """
+    The database model for merge operations
+    """
+
+    def __init__(self, target_vm=None, target_depot_guid=None, *args, **kwargs):
+        super(MergeOperationModel, self).__init__('merge', *args, **kwargs)
+        self.target_vm=target_vm
+        self.target_depot_guid=target_depot_guid

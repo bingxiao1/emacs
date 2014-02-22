@@ -1,0 +1,15 @@
+[paths]
+default = ssh://highland@puppetmaster//highland/packages
+r_next = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/next/packages
+integ = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/integ/packages
+lonnieh = ssh://lonnieh@linjump.lonnieh.skytap.com/packages
+
+default = 
+[hooks]
+update.apt-index = ./update-archive.sh
+# PUPPET: Some settings in this file are managed by packages_setup.
+[hooks]
+commit.apt-index = ./update-archive.sh
+[hooks]
+update.update-archive = ./update-archive.sh
+commit.update-archive = ./update-archive.sh

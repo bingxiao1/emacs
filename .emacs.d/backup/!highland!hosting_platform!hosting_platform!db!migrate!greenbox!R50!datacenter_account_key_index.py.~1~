@@ -1,0 +1,17 @@
+# Copyright (c) 2013 Skytap Inc.,
+# All Rights Reserved.
+
+from hosting_platform.db.migrate.ChangeSet import ChangeSet
+
+
+class operation_timestamp_index(ChangeSet):
+    """
+    add index to operations.timestamp since it is being queried by
+    """
+
+    @classmethod
+    def get_name(cls):
+        return "R43/operation_timestamp_index"
+
+    def new_indices(self):
+        return {'operations': {'idx_timestamp': (False, ('timestamp',))}}

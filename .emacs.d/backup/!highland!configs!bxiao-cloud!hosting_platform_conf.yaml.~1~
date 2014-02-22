@@ -1,0 +1,137 @@
+# INTEG / INTEG/SEA5M1 
+###########################################################
+#
+# GLOBALS
+#
+###########################################################
+
+vmware_esxi_supported_hardware_versions: [4, 7, 8, 9, 10]
+
+warnings_as_errors: [SAWarning, SADeprecationWarning]
+
+server_backlog: 10
+
+# number of seconds between metric samples that are sent to 
+# the rrdcached daemon
+metric_interval: 5
+metric_retention: development
+
+rrdcached_address: "sea5m1plutil1:9010"
+
+#disable the public ip warning since we are perpetually low on them
+public_ips_free_warning_level: 0
+
+###########################################################
+#
+# HOSTING PLATFORM
+#
+###########################################################
+
+# Rate limiting values match prod as of 2011-3-29
+rate_limiting:
+   big_operation_cost:   60
+   big_operation_mem:  12.0
+   big_operation_disk: 16.8
+   big_operation_host: 14.4
+   big_operation_net:   9.6
+   ##max_operation_multiplier: 7.6
+   max_operation_multiplier: 3.8
+
+operation_time_warning_thresholds:
+    import_vm: 172800    # 2 days
+    export_vm: 172800    # 2 days
+    set_vm_disks: 21600  # 6 hours
+
+databases: {
+    configuration_db: {
+        url: "mysql://root:eas71akeWA@sea5m1mysql1/configuration",
+        options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30,
+            echo: False
+        }
+    },
+    greenbox_db: {
+        url: "mysql://root:eas71akeWA@sea5m1mysql1/greenbox",
+        options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30,
+            echo: False
+        },
+        skip_tables_on_partial_backup: [ messages, messages_to_resources ]
+    },
+    awsdriver_db: {
+       url: "mysql://root:eas71akeWA@sea5m1mysql1/awsdriver",
+       options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30,
+            echo: False
+       },
+       skip_tables_on_partial_backup: [ aws_operations ]
+    },
+    accounting_db: {
+       url: "mysql://root:eas71akeWA@sea5m1mysql1/accounting",
+       options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30,
+            echo: False
+       }
+    }
+
+}
+
+management_server: sea5m1cmvip1
+management_server_port: 9000
+
+# The number of worker processes per instance
+configuration_manager_workers_per_instance: 2
+
+# Disallowed characters in Charon imports (archive filename, vmdk filenames)
+disallowed_import_filename_chars: ["'", '"', "\\", "`"]
+
+###########################################################
+#
+# NETWORK
+#
+###########################################################
+forwarders: [ 208.76.152.1, 208.76.152.9 ]
+
+###########################################################
+#
+# Logging
+#
+###########################################################
+
+LOAD_BALANCER_WARNING_THRESHOLDS:
+    -
+        - 15
+        -
+            - 1024
+            - 1
+            - Type C
+    -
+        - 15
+        -
+            - 1024
+            - 1
+            - Type E
+
+
+# this entry is consumed by skycap logger
+syslog_config:
+    host: sea5m1logger1
+    port: 20514
+
+memcached_server:
+    host: sea5m1webutil1
+    port: 11211
+
+rpc_timeouts:
+    network_server: 600
+
+rabbitmq_mnesia_debug_level: verbose
+

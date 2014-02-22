@@ -1,0 +1,332 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/ssh:root@app.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/common/" . "mq_framework/")
+ ("/ssh:root@app.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/" . "common/")
+ ("/ssh:root@app.bxiao.dev.skytap.com:/highland/hosting_platform/" . "hosting_platform/")
+ ("/ssh:root@app.bxiao.dev.skytap.com:/highland/" . "hosting_platform/")
+ ("/ssh:root@util1.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/services/message_queue/" . "tools/")
+ ("/ssh:root@util1.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/services/" . "message_queue/")
+ ("/ssh:root@util1.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/" . "services/")
+ ("/ssh:root@util1.bxiao.dev.skytap.com:/highland/hosting_platform/" . "hosting_platform/")
+ ("/ssh:root@util1.bxiao.dev.skytap.com:/highland/" . "hosting_platform/")
+ ("/highland/configs/bxiao-cloud/" . "resource1/")
+ ("/highland/configs/integ/" . "sea5r1/")
+ ("/highland/hosting_platform/hosting_platform/common/monitoring/" . "unit_tests/")
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/operations/" . "unit_tests/")
+ ("/highland/hosting_platform_r49/hosting_platform/" . "services/")
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/model/" . "unit_tests/")
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/" . "model/")
+ ("/highland/hosting_platform_r49/hosting_platform/services/" . "configuration_manager/")
+ ("/highland/hosting_platform_r49/" . "hosting_platform/")
+ ("/highland/logs/syslog/2013/" . "10/")
+ ("/highland/logs/syslog/" . "2013/")
+ ("/highland/configs/lonnieh-cloud/" . "services/")
+ ("/highland/.emacs.d/el-get/" . "jira/")
+ ("/highland/config/" . "logging/")
+ ("/highland/hosting_platform/hosting_platform/services/greenbox/operations/" . "unit_tests/")
+ ("/highland/configs/test/" . "tuk6r1/")
+ ("/highland/mercurial/hg/hg/" . "mercurial/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/stubs/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/common/errors/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/service_apis/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/services/accounting/" . "model/")
+ ("/ssh:highland@sn:/highland/hosting_platform/hosting_platform/common/" . "errors/")
+ ("/ssh:highland@sn:/highland/hosting_platform/hosting_platform/" . "common/")
+ ("/ssh:highland@sn:/highland/hosting_platform/" . "hosting_platform/")
+ ("/ssh:highland@sn:/highland/" . "hosting_platform/")
+ ("/highland/hosting_platform/hosting_platform/services/awsdriver/objects/" . "driver/")
+ ("/highland/hosting_platform/hosting_platform/services/awsdriver/" . "objects/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/common/" . "errors/")
+ ("/ssh:highland@puppetmaster:/" . "highland/")
+ ("/ssh:highland@jenkins:/" . "highland/")
+ ("/ssh:highland@mq1:/" . "highland/")
+ ("/etc/" . "puppet/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/utils/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/services/muxmanager/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/common/model_elements/" . "unit_tests/")
+ ("/ssh:root@puppetmaster:/highland/" . "hosting_platform/")
+ ("/ssh:root@puppetmaster:/" . "highland/")
+ ("/root@" . "puppetmaster/")
+ ("/ssh:root@" . "10.1.128.29/")
+ ("/highland/hosting_platform/.hg/" . "highland@puppetmaster/")
+ ("/ssh:highland@" . "puppetmaster/")
+ ("/highland/hosting_platform/hosting_platform/db/migrate/configuration/" . "R49/")
+ ("/highland/hosting_platform/hosting_platform/db/migrate/" . "configuration/")
+ ("/highland/hosting_platform/hosting_platform/db/" . "migrate/")
+ ("/highland/logs/nsvc1.skytap-dev.net/" . "mysql-bin-log/")
+ ("/highland/logs/" . "syslog/")
+ ("/highland/configs/bxiao-dev/" . "jenkins/")
+ ("/highland/.emacs.d/elpa/archives/" . "gnu/")
+ ("/highland/.emacs.d/elpa/" . "archives/")
+ ("/" . "highland/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/model/unit_tests/" . "fixtures/")
+ ("/highland/configs/prod/" . "tuk1r1/")
+ ("/highland/configs/" . "bxiao-cloud/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/model/" . "unit_tests/")
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/" . "operations/")
+ ("/highland/.emacs.d/" . "el-get/")
+ ("/highland/hosting_platform/hosting_platform/services/greenbox/" . "operations/")
+ ("/highland/hosting_platform/hosting_platform/services/" . "greenbox/")
+ ("/highland/hosting_platform/hosting_platform/" . "services/")
+ ("/highland/hosting_platform/" . "hosting_platform/")
+ ("/highland/" . "hosting_platform/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/"
+ "/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/"
+ "/highland/hosting_platform/hosting_platform/services/charon/"
+ "/highland/hosting_platform/hosting_platform/services/configuration_manager/"
+ "/highland/hosting_platform/hosting_platform/common/errors/"
+ "/highland/hosting_platform/hosting_platform/services/configuration_manager/tools/"
+ "/highland/configs/bxiao-cloud/"
+ "/highland/configs/bxiao-cloud/resource1/"
+ "/ssh:root@app.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/common/mq_framework/"
+ "/ssh:root@util1.bxiao.dev.skytap.com:/highland/hosting_platform/hosting_platform/services/message_queue/tools/"
+ "/highland/configs/integ/sea5r1/"
+ "/highland/configs/integ/"
+ "/highland/hosting_platform/hosting_platform/system_tests/"
+ "/ssh:root@util2.bxiao.dev.skytap.com:/highland/config/"
+ "/highland/"
+ "/highland/config/logging/"
+ "/highland/config/"
+ "/highland/configs/bxiao-dev/"
+ "/highland/configs/"
+ "/highland/hosting_platform/hosting_platform/common/monitoring/unit_tests/"
+ "/highland/hosting_platform/hosting_platform/services/configuration_manager/model/"
+ "/highland/hosting_platform/hosting_platform/services/configuration_manager/unit_tests/"
+ "/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/operations/unit_tests/"
+ "/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/operations/"
+ "/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/model/"
+ "/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/model/unit_tests/"
+ "/highland/configs/prod/tuk1r1/"
+ "/highland/configs/prod/"
+ "/highland/hosting_platform_r49/hosting_platform/"
+ "/highland/configs/lonnieh-cloud/"
+ "/highland/logs/syslog/2013/10/"
+ "/highland/.emacs.d/"
+ "/highland/.org-jira/"
+ "/highland/hosting_platform/hosting_platform/db/"
+ "/highland/configs/test/"
+ "/highland/tools/"
+ "/highland/hosting_platform/hosting_platform/services/greenbox/operations/"
+ "/highland/hosting_platform/hosting_platform/rpc/"
+ "/highland/configs/mpietrek-mac/"
+ "/highland/hosting_platform/hosting_platform/services/"
+ "/highland/hosting_platform/hosting_platform/services/apis/"
+ "/highland/git/org-jira/"
+ "/highland/.emacs.d/el-get/jira/"
+ "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/"
+ "/highland/configs/bxiao-dev/jenkins/"
+ "/highland/configs/jenkins/"
+ "/highland/config/jenkins/"
+ "/highland/hosting_platform/hosting_platform/services/greenbox/"
+ "/highland/configs/test/tuk6r1/"
+ "/highland/configs/bxiao-dev/mysql/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "test_base.py"
+ "base.py"
+ "transport.py"
+ "Rakefile"
+ "ConfigurationManager.py"
+ "errors.py"
+ "cmcmd.py"
+ "services.yaml"
+ "hosting_platform_conf.yaml"
+ "message_queue_conf.yaml"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/highland/git/org-jira/" (21092 24348) ".git/" "org-jira.el" "./" "README.org" "jiralib.el" "jira-users.el" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/" (21235 53268) "events.py" "accounts.py" "setters.py" "transport.py.orig" "tunnels.py" "vpns.py" "network_provisioning.py" "mixin.py" "assets.py" "transport.py" "reconciliation.py" "provision.py" "networks.py" "operations.py" "disk_policies.py" "published_services.py" "configurations.py" "base.py.orig" "__init__.py" "inspection.py.orig" "unit_tests/" "is_node_up.py" "./" "vms.py" "quota_manager.py" "inspection.py" "#transport.py#" "base.py" "depots.py" "#base.py#" "StorageHelper.py" "delete.py" "rfb_ports.py" "../" "services.py" "unprovision.py")
+
+ ("/highland/hosting_platform/" (21235 53268) "capfile" "cruise_config.rb" "addCopyright.py" ".pydevproject" ".hgignore" ".project" "Rakefile" "./" "scripts/" ".hg/" "hosting_platform/" "VMwareHostingManager/" ".hgtags" "../")
+
+ ("/highland/" (21236 3135) ".nautilus/" ".profile" ".hgrc" ".newsrc-dribble" "xsel" ".bundler/" "logs/" ".notes" ".pulse-cookie" ".mozilla/" ".puppet/" "#helloworld.py#~" ".mysql_history" "Downloads/" ".ipython/" ".esd_auth" ".xsession-errors" ".selected_editor" "web/" "clients/" ".eclipse/" ".emacs_bash~" ".gvfs/" "hs_err_pid18034.log" ".ICEauthority" ".local/" "service_control/" "Pictures/" ".Xauthority" ".lesshst" ".org-jira/" ".gnupg/" "org/" ".emacs.d/" ".emacs~" "build/" "#hello.py#" "git/" "temp/" "Videos/" "test" ".emacs_bash" ".ido.last~" "ui_layer/" ".ovftool.ssldb" "Public/" "my_emacs_cheat_sheet" ".bashrc" "my_emacs_cheat_sheet~" "dead.letter" "Music/" ".gnome2_private/" ".speech-dispatcher/" ".emacs" ".bash_history" ".emacs.desktop.lock" ".emacs.bmk" ".gstreamer-0.10/" "Desktop/" "Documents/" ".bash_aliases" "Templates/" "News/" ".config/" "./" ".pulse/" "hg_exports/" ".bashrc~" ".xsel.log" "tools/" "hs_err_pid17992.log" "tmp/" ".hg/" "resources/" ".pip/" "bxiaorepo/" ".update-notifier/" ".viminfo" ".ssh/" ".screenrc" ".erlang.cookie" ".bash_logout" "workspace/" "configs/" "hosting_platform/" ".gconfd/" "mercurial/" "config/" "distribute-0.6.10.tar.gz" ".eshell/" "rrds/" "var/" ".gtk-bookmarks" ".gnome2/" ".xsession-errors.old" "hs_err_pid3132.log" ".cache/" "hs_err_pid18399.log" ".gconf/" ".ido.last" ".emacs.desktop" "skytap-support/" ".dbus/" "../" "packages/" ".bash_profile")
+
+ ("/ssh:root@app.bxiao.dev.skytap.com:/root/" (ftp . 386590.4841666667) ".bash_profile" "../" ".cache/" ".erlang.cookie" ".viminfo" ".debtags/" "./" ".bash_history" ".bashrc" "vmware-tools-distrib/" ".lesshst" "VMwareTools-8.3.2-257589.tar.gz" ".gem/" ".aptitude/" ".tramp_history" ".profile")
+
+ ("/highland/hosting_platform/hosting_platform/services/charon/" (21167 19427) "find_vmx.py" "db.py" "charon_worker_thread.py" "charon_context.py" "storage_helpers.py" "system_tests/" "import_operation.py" "charon_service.py" "__init__.py" "unit_tests/" "Rakefile" "export_operation.py" "./" "set_disks_info_operation.py" "depot_model.py" "long_running_command.py" "operation_base.py" "monitoring_metrics.py" "../")
+
+ ("/ssh:root@util1.bxiao.dev.skytap.com:/root/" (ftp . 386552.0413888889) "../" ".gem/" ".debtags/" ".lesshst" ".viminfo" ".profile" ".ssh/" ".bash_profile" "./" ".aptitude/" ".Xauthority" ".bash_history" ".bashrc" ".vim/" ".hgrc" ".cache/" ".tramp_history" ".erlang.cookie")
+
+ ("/highland/hosting_platform/hosting_platform/services/storage/" (21205 43013) "ganglia/" "depot_relocation.py" "storage_service.py" "SolarisShareOptions.py" "func_tests/" "placement/" "depot_statistics_helper.py" "derp_multiple.py" "StorageManager.py" "release_all_depots.py" "keg_adapter_service.py" "__init__.py" "unit_tests/" "./" "sns/" "StorageDepot.py" "strgcmd.py" "ops_tools/" "model/" "contrib/" "padnums.py" "../")
+
+ ("/highland/configs/" (21233 31122) "bshelepov/" "pturschmid/" "apearson-puppet/" "mpietrek-cloud/" "net-dev-bootstrap/" "mspiz-puppet/" "bxiao-cloud/" "dobrien/" "jchangenv/" "andrus-dev/" "jchangrx/" "prod/" "myehorov/" "pholland-tuk1/" "nidd-vstack/" "rgalvin-net-dev/" "smartclient/" "preprod/" "cloudnidd/" "jchangenv-ns/" "lonnieh-cloud/" "andrus-skycap/" "andrus-metrics/" "test/" "hmoroff-dev-bootstrap/" "template/" "slgdemo/" "bxiao-dev/" "andrus/" "lonnieh-stubs/" "netci-puppet/" "lmartin/" "ibone-nat/" "nastete-dev/" "net-test-automator/" "mpietrek/" "ibone-test-automator/" ".project" "./" "puppetland/" "jenkins/" "ybranch/" "andrus-osx/" "cloudstack/" "andrus-cloud/" "turschmac/" ".hg/" "ibone-puppet/" "mpietrek-mac/" "scarpenter-puppet/" "lonnieh-virtual/" "s2/" "pholland-tuk2/" "hanlon/" "andrus-cloud-2/" "markmarkdev/" "smartclient-scarpenter/" "nidd/" "nidd-tsm/" "htsai-tuk1/" ".hgtags" "lonnieh-laptop/" "sfalkho/" "integ/" "apearson-stack/" "megokeg/" "pholland-net-dev/" "net-perf-rig/" "nsluincloud1/" "bschick/" "../" "pholland-puppet/" "jlingmann/" "markmarkdev2/")
+
+ ("/highland/configs/bxiao-cloud/resource1/" (21233 33424) "StorageNodeService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "logging/" "network_server_conf.yaml" "./" "mysql/" "Pyro.conf" "StorageService.yaml" "charon_service.yaml" "hosting_platform_conf.yaml" "../")
+
+ ("/highland/configs/bxiao-cloud/" (21233 17012) "heartbeat.yaml" "StorageNodeService.yaml" "SystemTest.yaml" "metric_toggles.conf" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "network_server_system_test_conf.yaml" "keg.yaml" "resource2/" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "network_server_conf.yaml" "AccountingService.yaml" "awsdriver.yaml" "./" "jenkins/" "mysql/" "services/" "Pyro.conf" "StorageService.yaml" "hosting_platform_conf.yaml" "bashrc" "../" "resource1/")
+
+ ("/highland/hosting_platform/hosting_platform/common/mq_framework/" (21233 16027) "MQFramework.py" "MQClientPika.py" "system_tests/" "tests/" "MQFrameworkErrors.py" "MQFramework.py.orig" "MQMessage.py" "#MQFramework.py#" "MQRoutingKey.py" "__init__.py" "unit_tests/" "MQClientLibBase.py" "./" "MQClientLibUnitTest.py" "tools/" "MQClientPika.py.orig" "MQFrameworkConfig.py" "../")
+
+ ("/highland/.emacs.d/mercurial/" (21087 22284) "mercurial.el" "./" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/system_tests/" (21086 51978) "test_ipsec_vpn.py" "test_networking.py" "test_transport.py" "__main__.py" "__init__.py" "cleanup.py" "ptest_account_ephemera.py" "./" "test_tunnels.py" "test_public_ips.py" "test_published_services.py" "test_disk_editing.py" "test_provisioning.py" "base.py" "test_run_vm.py" "stress.py" "test_quota_inspector.py" "performance_test.py" "test_disk_performance.py" "../")
+
+ ("/highland/configs/lonnieh-laptop/" (21228 7165) "heartbeat.yaml" "StorageNodeService.yaml" "SystemTest.yaml" "vmware_hosting_manager.yaml" "MonitoringService.yaml" "QuotaInspectorService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "crontab" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "session_cookie_secret" "network_server_conf.yaml" "./" "Storage_unittest.yaml" "network_server_bootstrap.yaml" "mysql/" "logging.properties" "Pyro.conf" "charon_service.yaml" "hosting_platform_conf.yaml" "bashrc" "vcenter_conf.yaml" "telnetd.properties" "database.yml" "highland_conf.yaml" "DepotReplicationService.yaml" "haproxy.cfg" "../" "VMRunStateService.yaml")
+
+ ("/highland/configs/bxiao-dev/mysql/" (21228 7165) "dev.cnf" "./" "dev.cnf.orig" "../")
+
+ ("/highland/configs/test/tuk6r1/" (21225 43191) "crontab.log1" "heartbeat.yaml" "ganglia/" "StorageNodeService.yaml" "muxer.conf" "metric_toggles.conf" "rdp_rsa_key" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "crontab.metric1" "logging/" "ops_tools_conf.yaml" "haproxy/" "network_server_conf.yaml" "threepar.yaml" "vips.yaml" "./" "README" "mysql/" "logging.properties" "services/" "Pyro.conf" "StorageService.yaml" "vncproxy.conf" "charon_service.yaml" "hosting_platform_conf.yaml" "vcenter_conf.yaml" "telnetd.properties" "highland_conf.yaml" "../" "rrdcached.conf" "VMRunStateService.yaml")
+
+ ("/highland/hosting_platform/hosting_platform/common/errors/" (21218 46474) "#errors.py#" "exception_hierarchy.py" "errors.py" "errors_sqlalchemy.py" "__init__.py" "unit_tests/" "./" "exception_hierarchy.py.orig" "exception_mapper.py" "compiled_platform_exceptions.py" "compiled_platform_exceptions.py.orig" "../")
+
+ ("/highland/config/jenkins/" (21228 10799) "heartbeat.yaml" "StorageNodeService.yaml" "metric_toggles.conf" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "network_server_system_test_conf.yaml" "keg.yaml" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "network_server_conf.yaml" "awsdriver.yaml" "./" "mysql/" "services/" "Pyro.conf" "StorageService.yaml" "hosting_platform_conf.yaml" "bashrc" "../")
+
+ ("/highland/configs/jenkins/" (21222 41926) "apache/" "heartbeat.yaml" "StorageNodeService.yaml" "metric_toggles.conf" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "keg.yaml" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "network_server_conf.yaml" "awsdriver.yaml" "./" "Storage_unittest.yaml" "mysql/" "logging.properties" "Pyro.conf" "StorageService.yaml" "charon_service.yaml" "hosting_platform_conf.yaml" "telnetd.properties" "highland_conf.yaml" "../")
+
+ ("/highland/configs/bxiao-dev/jenkins/" (21228 10799) "heartbeat.yaml" "StorageNodeService.yaml" "metric_toggles.conf" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "network_server_system_test_conf.yaml" "keg.yaml" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "network_server_conf.yaml" "awsdriver.yaml" "./" "mysql/" "services/" "Pyro.conf" "StorageService.yaml" "hosting_platform_conf.yaml" "bashrc" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/" (21225 40408) "test_operation_base.py" "test_nic.py" "test_depot.py" "test_ephemera.py" "test_datacenter.py" "test_run_vms.py" "test_transport.py" "test_vpn.py" "test_asset.py" "test_ephemera.py.orig" "test_network.py" "__init__.py" "test_worker.py.orig" "test_vm.py" "test_public_ip.py" "./" "test_tunnel.py" "test_worker.py" "test_configuration.py" "test_workflow.py" "test_merge.py" "../" "test_schema_definition.py")
+
+ ("/highland/.emacs.d/el-get/jira/" (21090 64727) "jira.el~" "jira.el.orig" "./" "jira.el" "../" "jira.elc")
+
+ ("/highland/hosting_platform/hosting_platform/services/apis/" (21225 40408) "vmware_hosting_manager_api.py" "greenbox_schema.json" "accounting_api.py" "keg_errors.py" "atropos_schema.json" "keg_schema.json" "greenbox_api.py" "accounting_schema.json" "awsdriver_api.py" "awsdriver_exceptions.py" "awsdriver_schema.json" "__init__.py" "networking_api.py" "#greenbox_api.py#" "service_api.py" "api_schema_common.py" "unit_tests/" "./" "tools/" "storage_api.py" "samba_api.py" "charon_api.py" "skytap_object_specification_schema.py" "muxmanager_api.py" "keg_api.py" "configuration_manager_api.py" "networking_schema.json" "../" "atropos_api.py" "ConfigurationManager_schema.json")
+
+ ("/highland/configs/mpietrek-mac/" (21209 42592) "apache/" "network_server_conf.bootstrap.yaml" "ganglia/" "StorageNodeService.yaml" "SystemTest.yaml" "vmware_hosting_manager.yaml" "QuotaInspectorService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "capfile.foo" "logging/" "ops_tools_conf.yaml" "haproxy/" "session_cookie_secret" "scenarios.cap" "network_server_conf.yaml" "./" "mysql/" "logging.properties" "Pyro.conf" "vncproxy.conf" "charon_service.yaml" "hosting_platform_conf.yaml" "bashrc" "telnetd.properties" "database.yml" "highland_conf.yaml" "../")
+
+ ("/highland/hosting_platform/hosting_platform/rpc/" (21130 35751) "client.py" "jsonrpc_client.py" "SimpleCombinedRPCServer.py" "testing/" "class_client.py" "thrift_client.py" "annotations.py" "server.py" "mp_server.py" "__init__.py" "unit_tests/" "./" "CallNode.py" "vmware_hosting_manager/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/greenbox/operations/" (21226 53124) "provisioning.py" "transport.py" "workflow.py" "Public_ip.py" "Asset.py" "datacenter.py" "Tunnel.py" "Depot.py.orig" "__init__.py" "Vm.py" "unit_tests/" "unprovisioning.py" "Vpn.py" "./" "Infrastructure.py" "Network.py" "ephemera.py" "ephemera.py.orig" "operation_base.py" "Nic.py" "Depot.py" "#Configuration.py#" "worker.py" "Configuration.py" "../")
+
+ ("/highland/configs/test/" (21226 53186) "tuk6r2/" "apache/" "crontab.log1" "capfile" "ganglia/" "bi_pii_scrubber.yaml" "SystemTest.yaml" "metric_toggles.conf" "stubs.yaml" "metadata/" "keepalived-lvs/" "sorry_server.conf" "MonitoringService.yaml" "QuotaInspectorService.yaml" "tuk6r1/" "message_queue_conf.yaml" "services.yaml" "regions.yaml" "syslog-ng.conf" "crontab.metric1" "logging/" "ops_tools_conf.yaml" "bi_config.yaml" "haproxy/" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "helpwiki/" "AccountingService.yaml" "awsdriver.yaml" "crontab.tuk6m1trun1" "vips.yaml" "./" "mysql/" "logging.properties" "services/" "Pyro.conf" "StorageService.yaml" "charon_service.yaml" "hosting_platform_conf.yaml" "rdpproxy.yaml" "vcenter_conf.yaml" "telnetd.properties" "database.yml" "memcached.conf" "AtroposService.yaml" "highland_conf.yaml" "../")
+
+ ("/highland/hosting_platform/hosting_platform/db/" (21218 46353) "db.py" "AbstractDB.py" "migrate/" "db.py.orig" "__init__.py" "unit_tests/" "./" "sqlalchemy_patches.py" "../")
+
+ ("/highland/.emacs.d/" (21225 28796) "eshell/" "elpa/" "init.el" "tramp" "url/" "ansi-lpr.el" "backup/" "el-get/" "./" "%backup%~" "ac-comphist.dat" "org-jira/" "auto-save-list/" "mercurial/" "../")
+
+ ("/highland/configs/lonnieh-cloud/" (21190 62736) "reports.sh" "capfile" "west1/" "ganglia/" "SystemTest.yaml" "metric_toggles.conf" "rdp_rsa_key" "vmware_hosting_manager.yaml" "metadata/" "keepalived-lvs/" "MonitoringService.yaml" "QuotaInspectorService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "regions.yaml" "syslog-ng.conf" "logging/" "ops_tools_conf.yaml" "haproxy/" "GreenboxService.yaml" "session_cookie_secret" "scenarios.cap" "AccountingService.yaml" "awsdriver.yaml" "east1/" "vips.yaml" "./" "Storage_unittest.yaml" "mysql/" "logging.properties" "services/" "Pyro.conf" "charon_service.yaml" "hosting_platform_conf.yaml" "rdpproxy.yaml" "telnetd.properties" "database.yml" "crontab.util1" "highland_conf.yaml" "DepotReplicationService.yaml" "../" "VMRunStateService.yaml")
+
+ ("/highland/configs/prod/" (21228 7165) "apache/" "reports.sh" "renamings-readme.txt" "ganglia/" "bi_pii_scrubber.yaml" "SystemTest.yaml" "metric_toggles.conf" "stubs.yaml" "metadata/" "MonitoringService.yaml" "QuotaInspectorService.yaml" "message_queue_conf.yaml" "tuk1r1/" "services.yaml" "regions.yaml" "tuk1r2/" "#hosting_platform_conf.yaml#" "syslog-ng.conf" "crontab.tuk1m1mysqlwfe2" "logging/" "ops_tools_conf.yaml" "bi_config.yaml" "haproxy/" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "helpwiki/" "AccountingService.yaml" "awsdriver.yaml" "vips.yaml" "./" "mysql/" "services/" "hosting_platform_conf.yaml" "database.yml" "memcached.conf" "AtroposService.yaml" "slg1r1/" "highland_conf.yaml" "crontab.tuk1m1trun1" "../" "sgp1r1/" "rrdcached.conf")
+
+ ("/highland/configs/prod/tuk1r1/" (21228 7165) "reports.sh" "heartbeat.yaml" "ganglia/" "StorageNodeService.yaml" "crontab.tuk1r1ftp1" "muxer.conf" "metric_toggles.conf" "rdp_rsa_key" "stubs.yaml" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "network_server_system_test_conf.yaml" "logging/" "ops_tools_conf.yaml" "haproxy/" "network_server_conf.yaml" "threepar.yaml" "vips.yaml" "./" "mysql/" "logging.properties" "crontab.tuk1r1charon1" "services/" "Pyro.conf" "StorageService.yaml" "charon_service.yaml" "hosting_platform_conf.yaml" "vcenter_conf.yaml" "crontab.tuk1r1charon2" "telnetd.properties" "crontab.tuk1r1charon3" "highland_conf.yaml" "../" "rrdcached.conf" "VMRunStateService.yaml")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/model/" (21225 23847) "events.py" "limits.py" "tunnels.py" "messages.py" "vpns.py" "assets.py" "public_ips.py" "transport.py" "configurations.py.orig" "networks.py" "routing_domain.py" "operations.py" "disk_policies.py" "configurations.py" "__init__.py" "unit_tests/" "accounting.py" "operations.py.orig" "throttled_threshold_monitor.py" "Rakefile" "db_types.py" "nat_pool.py" "./" "loadbalancer.py" "vms.py" "cpu_types.py" "resource_allocation.py" "base.py" "depots.py" "services.py.orig" "rfb_ports.py" "../" "services.py")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/" (21227 62194) "test_inspection.py" "test_reconciliation.py" "test_configurations.py" "test_vms.py" "test_quota_manager.py" "test_operations.py" "test_hosting_errors.py" "test_transport.py" "test_VMwareHostingManagerContext.py" "rate_limiting_test_util.py" "test_services.py" "test_accounts.py" "test_nat_vpns.py" "test_provision.py.orig" "test_rfb_ports.py" "__main__.py" "__init__.py" "test_vpns.py" "test_setters.py" "TODO" "test_base.py" "test_storage_helper.py" "test_depots.py" "test_networks.py" "./" "test_tunnels.py" "test_unprovision.py" "test_events.py" "test_provision.py" "test_published_services.py" "test_operation_documentation.py" "test_delete.py" "test_operation_dispatching.py" "test_disk_policies.py" "test_storage_helper.py.orig" "fixtures/" "test_usage_accounting.py" "../" "test_assets.py")
+
+ ("/highland/configs/bxiao-dev/" (21228 10736) "heartbeat.yaml" "StorageNodeService.yaml" "SystemTest.yaml" "metric_toggles.conf" "hosting_platform_conf.yaml.orig" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "network_server_system_test_conf.yaml" "keg.yaml" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "network_server_conf.yaml" "AccountingService.yaml" "awsdriver.yaml" "./" "jenkins/" "mysql/" "services/" "Pyro.conf" "StorageService.yaml" "hosting_platform_conf.yaml" "bashrc" "../")
+
+ ("/highland/config/" (21228 10736) "heartbeat.yaml" "StorageNodeService.yaml" "SystemTest.yaml" "metric_toggles.conf" "hosting_platform_conf.yaml.orig" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "network_server_system_test_conf.yaml" "keg.yaml" "logging/" "ops_tools_conf.yaml" "GreenboxService.yaml" "Autotester.yaml" "session_cookie_secret" "network_server_conf.yaml" "AccountingService.yaml" "awsdriver.yaml" "./" "jenkins/" "mysql/" "services/" "Pyro.conf" "StorageService.yaml" "hosting_platform_conf.yaml" "bashrc" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/message_queue/" (21086 51979) "system_tests/" "__init__.py" "./" "tools/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/message_queue/tools/" (21218 46353) "create_service_queues.py" "rabbitmq_util.py" "rabbitmq_is_master.py" "create_rabbitmq_config_file.py" "__init__.py" "message_queue_service_rolling_upgrade.py" "rabbitmq_alive.py" "./" "rabbitmq_initialize.py" "rabbitmq_logrotate.py" "rabbitmqctl.py" "simple_read_write_federation.py" "mqbrokertool.py" "../")
+
+ ("/highland/service_control/" (21167 20636) "hs_err_pid19790.log" "service_groups/" ".hgignore" "./" "scripts/" "schemas/" ".hg/" "services/" ".hgtags" "../")
+
+ ("/highland/skytap-support/" (21158 5848) "capfile" "skytap-cmd.py" "configure-stamp" "skytap-service.py" "skytap_support.py" "debian/" "build/" "test/" "Makefile" ".hgignore" "skytap.ld.conf" "./" "README" "scripts/" ".hg/" "commands.yaml" "services/" "build-stamp" "configs/" "skytap.conf" "skycap/" ".hgtags" "../" "skytap-initscripts-common.sh")
+
+ ("/highland/configs/integ/sea5r1/" (21222 41926) "heartbeat.yaml" "ganglia/" "StorageNodeService.yaml" "muxer.conf" "metric_toggles.conf" "vmware_hosting_manager.yaml" "samba_service.yaml" "MonitoringService.yaml" "message_queue_conf.yaml" "services.yaml" "Storage.yaml" "syslog-ng.conf" "pervmmetrics.yaml" "keg.yaml" "logging/" "ops_tools_conf.yaml" "haproxy/" "network_server_conf.yaml" "vips.yaml" "./" "mysql/" "logging.properties" "services/" "Pyro.conf" "StorageService.yaml" "vncproxy.conf" "charon_service.yaml" "samba_service_system_test_conf.yaml" "hosting_platform_conf.yaml" "vcenter_conf.yaml" "telnetd.properties" "highland_conf.yaml" "../" "rrdcached.conf" "VMRunStateService.yaml")
+
+ ("/highland/hosting_platform/hosting_platform/system_tests/" (21224 18404) "test_ipsec_vpn.py" "test_networking.py" "#__main__.py#" "test_transport.py" "__main__.py" "base.py.orig" "__init__.py" "cleanup.py" "ptest_account_ephemera.py" "./" "test_tunnels.py" "test_public_ips.py" "test_published_services.py" "test_disk_editing.py" "test_provisioning.py" "base.py" "test_run_vm.py" "stress.py" "test_quota_inspector.py" "#test_disk_performance.py#" "performance_test.py" "../")
+
+ ("/opt/skytap/lib/skycap/" (21163 34057) "question.rb" "cmds.rb" "logging.rb" "branch_question.rb" "helpers.rb" "services.rb" "verified.rb" "illumita_syslogger.rb" "schemas.rb" "./" "service_groups.rb" "configuration.rb" "ignore_if_force.rb" "../" "scenarios.rb" "default_actions.rb")
+
+ ("/highland/configs/integ/" (21225 43191) "apache/" "reports.sh" "network_server_conf.bootstrap.yaml" "heartbeat.yaml" "ganglia/" "SystemTest.yaml" "metric_toggles.conf" "rdp_rsa_key" "hosting_platform_conf.yaml.orig" "tuk5r1/" "metadata/" "keepalived-lvs/" "sorry_server.conf" "sea5r1/" "MonitoringService.yaml" "QuotaInspectorService.yaml" "message_queue_conf.yaml" "services.yaml" "regions.yaml" "syslog-ng.conf" "andrus/" "logging/" "ops_tools_conf.yaml" "haproxy/" "GreenboxService.yaml" "crontab.sea5m1logger1" "Autotester.yaml" "session_cookie_secret" "helpwiki/" "scenarios.cap" "AccountingService.yaml" "awsdriver.yaml" "vips.yaml" "./" "mysql/" "services/" "Pyro.conf" "StorageService.yaml" "hosting_platform_conf.yaml" "rdpproxy.yaml" "vcenter_conf.yaml" "database.yml" "AtroposService.yaml" "highland_conf.yaml" "DepotReplicationService.yaml" "my.cnf" "../" "rrdcached.conf")
+
+ ("/highland/config/logging/" (21226 41826) "default.yaml" "./" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/" (21226 38206) "Context.py" "ConfigurationManager.py" "db.py" "system_tests/" "heartbeat.py" "stubs/" "db.py.orig" "utils/" "service_apis/" "__init__.py" "unit_tests/" "Rakefile" "./" "tools/" "operations/" "ConfigurationManagerService.py" "model/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/common/monitoring/unit_tests/" (21159 48247) "test_sampling.py" "simulator.py" "test_rrd.py" "__init__.py" "test_agent.py" "test_rrdcached_proxy.py" "./" "test_metric.py" "../")
+
+ ("/highland/hosting_platform/hosting_platform/common/monitoring/" (21189 61603) "sampling.py" "agent.py" "metric.py" "__init__.py" "unit_tests/" "Rakefile" "./" "tools/" "../" "rrd.py")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/tools/" (21218 46353) "PingRegisteredServices.py" "hosting_node_cm_diff.py" "validate_all_routing_domains.py" "__init__.py" "unit_tests/" "./" "hosting_node_cmd" "hmcmd.py" "check_for_long_running_operations.py" "cmcmd.py" "../")
+
+ ("/highland/.org-jira/" (21172 48146) "./" "PL.org" "PL.org~" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/unit_tests/" (21218 46353) "provisioning_base.py" "test_heartbeat.py" "__init__.py" "ConfigurationManagerContextTestCase.py" "./" "test_api.py" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/greenbox/" (21218 46353) "db.py" "context.py" "__init__.py" "unit_tests/" "Rakefile" "./" "tools/" "workflow/" "service.py" "operations/" "model/" "platform_constraints/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/" (21218 46353) "ConfigurationManagerStubsMixin.py" "__init__.py" "./" "GreenboxContextTestCase.py" "fixtures/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/common/mq_framework/unit_tests/fixtures/" (21225 17496) "message_fixtures.py" "__init__.py" "./" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/" (21218 46353) "awsdriver/" "apis/" "vmrunstateservice/" "message_queue/" "configuration_manager/" "network_server/" "autotester/" "keg/" "common/" "rdpproxy/" "accounting/" "ftp_server/" "__init__.py" "unit_tests/" "muxmanager/" "charon/" "./" "network_rate_limiting/" "rrdcached/" "samba/" "backupdbs/" "framework/" "error_watch/" "monitoring/" "storage/" "../" "greenbox/")
+
+ ("/highland/hosting_platform/hosting_platform/common/" (21219 55) "OrderedDict.py" "terminal.py" "testing.py" "constant.py" "context.py" "codeutils.py" "IPAddressTypes.py" "TimingContext.py" "constants.py" "remotecontrolparamiko.py" "mq_framework/" "YamlConfig.py" "validation.py" "forkutils.py" "runcmd.py" "errors/" "mail.py" "__init__.py" "meta.py" "config.py" "unit_tests/" "remotecontrol.py" "decorators.py" "threadutils.py" "./" "enum.py" "deprecated.py" "#decorators.py#" "vmware/" "config.py.orig" "remotecontrolbase.py" "services/" "qa/" "vc.py" "model_elements/" "logs.py" "TracingContext.py" "fuser.py" "NetworkTypes.py" "monitoring/" "utils.py" "attribute_dict.py" "logs.py.orig" "../" "BackoffManager.py" "singletonmixin.py" "filesystemcontentutils.py")
+
+ ("/highland/hosting_platform/hosting_platform/common/mq_framework/unit_tests/" (21218 47601) "ut_message_queue_conf.yaml" "test_MQClientPika.py" "test_MQFrameworkConfig.py" "stubs/" "test_MQMessage.py" "MQMessageProcessorContextTestCase.py" "test_MQMessageProcessor.py" "__init__.py" "test_MQRoutingKey.py" "./" "ut_bad_message_queue_conf.yaml" "fixtures/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/common/mq_framework/unit_tests/stubs/" (21218 46353) "__init__.py" "unit_tests/" "./" "mq.py" "../")
+
+ ("/highland/Downloads/" (21101 42402) "./" "gtypist-2.9/" "../" "gtypist-2.9.tar.gz")
+
+ ("/highland/Downloads/gtypist-2.9/" (21101 42737) "version.sh" "configure.ac" "INSTALL" "configur.bat.in" "QUESTIONS" "INSTALL.in" "ABOUT-NLS" "typefortune" "lessons/" "depcomp" "elisp-comp" "src/" "config.guess" "autogen.sh" "COPYING" "doc/" "configur.bat" "intl/" "AUTHORS" "po/" "ChangeLog" "m4/" "TODO" "aclocal.m4" "config.sub" "./" "README" "install-sh" "missing" "config.log" "Makefile.am" "tools/" "Makefile.in" "configure" "NEWS" "config.rpath" "mkinstalldirs" "typefortune.1" "THANKS" "config.h.in" "../")
+
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/operations/" (21105 57924) "events.py" "accounts.py" "setters.py" "tunnels.py" "vpns.py" "network_provisioning.py" "mixin.py" "assets.py" "transport.py" "reconciliation.py" "provision.py" "networks.py" "operations.py" "disk_policies.py" "published_services.py" "configurations.py" "__init__.py" "unit_tests/" "is_node_up.py" "./" "vms.py" "quota_manager.py" "inspection.py" "base.py" "depots.py" "StorageHelper.py" "delete.py" "rfb_ports.py" ".#accounts.py" "../" "services.py" "unprovision.py" "unprovision.py.orig")
+
+ ("/highland/hosting_platform/hosting_platform/" (21105 19173) "system_tests/" "testing/" ".pylintrc" "api/" "db/" "guest_support/" ".doxygen.config" "rpc/" "common/" "accounting/" "__init__.py" "config.py" "./" "services/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/model/unit_tests/fixtures/" (21103 108) "accounting_service_fixtures.py" "operation_fixtures.py" "message_fixtures.py" "vm_fixtures.py" "accounting_fixtures.py" "stub_fixtures.py" "nat_pool_fixtures.py" "error_fixtures.py" "asset_fixtures.py" "__init__.py" "disk_policy_fixtures.py" "depot_fixtures.py" "vpn_fixtures.py" "_common.py" "event_fixtures.py" "./" "rfb_port_fixtures.py" "network_fixtures.py" "tunnel_fixtures.py" "compound_fixtures.py" "configuration_fixtures.py" "resource_fixtures.py" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/service_apis/unit_tests/" (21103 108) "__init__.py" "./" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/service_apis/" (21103 108) "visdk/" "accounting_service.py" "__init__.py" "unit_tests/" "./" "../")
+
+ ("/highland/hosting_platform/hosting_platform/db/migrate/" (21097 20409) "awsdriver/" "samba_service/" "templates/" "ChangeSet.py" "SchemaVersionException.py" "ReleaseCreator.py" "network_server/" "BaselineCreator.py" "configuration/" "RunAllMigrations.py" "accounting/" "__init__.py" "unit_tests/" "muxmanager/" "charon/" "Migrators.py" "./" "CheckMigrationsNeeded.py" "monitoring/" "storage/" "BaselineChangeSet.py" "../" "greenbox/")
+
+ ("/highland/hosting_platform/hosting_platform/db/migrate/configuration/" (21097 20408) "R43/" "R40/" "R31/" "R28/" "R25/" "R30/" "R46/" "R23/" "R24/" "R22/" "R33/" "R19/" "R41/" "__init__.py" "R39/" "R20/" "R18/" "R49/" "./" "R26/" "R34/" "R42/" "R44/" "R47/" "R37/" "R27/" "R29/" "../" "R21/" "R38/")
+
+ ("/highland/hosting_platform/hosting_platform/common/errors/unit_tests/" (21097 20407) "__init__.py" "test_exception_mapping.py" "./" "test_errors.py" "saved_platform_exceptions.dmp" "../")
+
+ ("/highland/hosting_platform/hosting_platform/testing/" (21103 108) "cpuid.py" "blockwrite2.c" "fixtures.py" "utils/" "__main__.py" "__init__.py" "unittestUtils.py" "service_proxies.py" "advice.py" "unit_tests/" "./" "stubs.py" "profile.py" "logging.py" "xmlrunner.py" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/configuration_manager/stubs/" (21103 108) "network.py" "fixtures.py" "vmware.py" "__init__.py" "unit_tests/" "accounting.py" "./" "configuration_manager.py" "storage.py" "vsphere.py" "call_functions.py" "muxer_manager.py" "../")
+
+ ("/highland/hosting_platform/hosting_platform/db/migrate/configuration/R49/" (21103 108) "add_operation_charge_tag_column.py" "add_allocation_context_columns.py" "Baseline.py" "baseline.sql" "Baseline.sql" "__init__.py" "remove_image_depot_allocations_charge_tag_column.py" "./" "add_operation_context_columns.py" "add_context_to_public_ip_nic_consumers.py" "account_name.py" "add_image_depot_allocations_charge_tag_column.py" "add_import_operation_charge_tag_column.py" "add_allocation_context_columns.sql" "limit_regions.py" "../")
+
+ ("/highland/tools/" (21077 58534) "call_accounting_service.py" "call_accounting_service.py~" "./" "hp_error_utils.py~" "hp_error_utils.py" "../")
+
+ ("/highland/hosting_platform_r49/hosting_platform/" (21102 64509) "testing/" ".pylintrc" "api/" "db/" "guest_support/" ".doxygen.config" "rpc/" "common/" "accounting/" "__init__.py" "config.py" "./" "services/" "../")
+
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/model/unit_tests/" (21103 108) "test_Registrar.py" "test_configurations.py" "test_vms.py" "test_accounting.py" "test_routing_domain.py" "test_operations.py" "test_vms/" "test_rate_limits.py" "test_non_initial_autoincrement.py" "test_transport.py" "test_load_balancer.py" "test_rfb_ports.py" "__main__.py" "__init__.py" "test_vpns.py" "test_base.py" "test_depots.py" "test_networks.py" "./" "test_tunnels.py" "test_uids.py" "test_public_ips.py" "test_events.py" "test_published_services.py" "test_db_types.py" "test_cpu_types.py" "test_nat_pool.py" "test_resource_allocation.py" "test_disk_policies.py" "test_messages.py" "fixtures/" "../" "test_assets.py")
+
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/model/" (21103 108) "events.py" "limits.py" "tunnels.py" "messages.py" "vpns.py" "assets.py" "public_ips.py" "transport.py" "networks.py" "routing_domain.py" "operations.py" "disk_policies.py" "configurations.py" "__init__.py" "unit_tests/" "accounting.py" "throttled_threshold_monitor.py" "Rakefile" "db_types.py" "nat_pool.py" "./" "loadbalancer.py" "vms.py" "cpu_types.py" "resource_allocation.py" "base.py" "depots.py" "rfb_ports.py" "../" "services.py")
+
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/operations/unit_tests/" (21103 108) "test_inspection.py" "test_reconciliation.py" "test_configurations.py" "test_vms.py" "test_quota_manager.py" "test_operations.py" "test_hosting_errors.py" "test_transport.py" "test_VMwareHostingManagerContext.py" "rate_limiting_test_util.py" "test_services.py" "test_accounts.py" "test_nat_vpns.py" "test_rfb_ports.py" "__main__.py" "__init__.py" "test_vpns.py" "test_setters.py" "TODO" "test_base.py" "test_storage_helper.py" "test_depots.py" "test_networks.py" "./" "test_tunnels.py" "test_unprovision.py" "test_events.py" "test_provision.py" "test_published_services.py" "test_operation_documentation.py" "test_delete.py" "test_operation_dispatching.py" "test_disk_policies.py" "fixtures/" "test_usage_accounting.py" "../" "test_assets.py")
+
+ ("/highland/hosting_platform_r49/hosting_platform/services/configuration_manager/" (21097 20411) "Context.py" "ConfigurationManager.py" "db.py" "system_tests/" "heartbeat.py" "stubs/" "utils/" "service_apis/" "__init__.py" "unit_tests/" "Rakefile" "./" "tools/" "operations/" "ConfigurationManagerService.py" "model/" "../")
+
+ ("/highland/hosting_platform_r49/hosting_platform/services/" (21097 20411) "awsdriver/" "apis/" "vmrunstateservice/" "message_queue/" "configuration_manager/" "network_server/" "common/" "rdpproxy/" "accounting/" "ftp_server/" "__init__.py" "unit_tests/" "muxmanager/" "charon/" "./" "samba/" "backupdbs/" "framework/" "error_watch/" "monitoring/" "storage/" "../" "greenbox/")
+
+ ("/highland/hosting_platform_r49/" (21097 22861) "capfile" "cruise_config.rb" "addCopyright.py" ".pydevproject" ".hgignore" ".project" "Rakefile" "./" "scripts/" ".hg/" "hosting_platform/" "VMwareHostingManager/" ".hgtags" "../")
+
+ ("/highland/hosting_platform/.hg/" (21102 46113) "00changelog.i" "bookmarks" "store/" "undo.bookmarks" "undo.desc" "patches/" "branch" "cache/" "strip-backup/" "undo.dirstate" "./" "hgrc" "dirstate" "../" "undo.branch" "requires" "last-message.txt")
+
+ ("/bin/" (20997 29045) "fgconsole" "grep" "bzip2" "umount" "cat" "dbus-daemon" "which" "loadkeys" "dash" "zgrep" "open" "fgrep" "ypdomainname" "chvt" "kill" "true" "tailf" "nano" "bzdiff" "echo" "dbus-cleanup-sockets" "dmesg" "netstat" "dbus-uuidgen" "bzegrep" "lesspipe" "lsmod" "sed" "bzip2recover" "zfgrep" "gzexe" "cpio" "setfont" "rnano" "mount" "ulockmgr_server" "nc" "mountpoint" "run-parts" "false" "less" "bzcat" "zforce" "lesskey" "unicode_start" "more" "stty" "rmdir" "zegrep" "static-sh" "mv" "plymouth" "ntfs-3g.secaudit" "tempfile" "chown" "readlink" "bash" "chgrp" "lessecho" "vdir" "setupcon" "lessfile" "egrep" "mt-gnu" "pidof" "gzip" "sync" "zmore" "df" "bzless" "ping" "./" "ntfs-3g" "ed" "rbash" "znew" "chmod" "date" "dd" "ntfs-3g.probe" "hostname" "dnsdomainname" "bzgrep" "zless" "cp" "pwd" "uname" "kbd_mode" "bunzip2" "dir" "su" "fuser" "fusermount" "dumpkeys" "bzcmp" "ip" "bzmore" "netcat" "mt" "domainname" "bzfgrep" "sleep" "uncompress" "sh" "nc.openbsd" "bzexe" "mkdir" "mknod" "mktemp" "zcmp" "zdiff" "ping6" "ln" "sh.distrib" "ntfs-3g.usermap" "tar" "rm" "zcat" "touch" "openvt" "gunzip" "../" "nisdomainname" "ls" "ps" "login" "busybox")
+
+ ("/highland/logs/syslog/2013/" (21092 33378) "10/" "./" "../")
+
+ ("/highland/logs/syslog/2013/10//" (21097 65508) "2013-10-22-platform.log" "2013-10-09-platform.log" "2013-10-25-platform.log" "2013-10-03-platform.log" "2013-10-11-platform.log" "2013-10-14-platform.log" "2013-10-15-platform.log" "2013-10-18-platform.log" "2013-10-05-platform.log" "2013-10-08-platform.log" "2013-10-07-platform.log" "2013-10-19-platform.log" "2013-10-16-platform.log" "2013-10-23-platform.log" "2013-10-04-platform.log" "./" "2013-10-06-platform.log" "2013-10-02-platform.log" "2013-10-17-platform.log" "2013-10-21-platform.log" "2013-10-10-platform.log" "2013-10-20-platform.log" "2013-10-24-platform.log" "2013-10-12-platform.log" "2013-10-13-platform.log" "2013-10-01-platform.log" "../")
+
+ ("/highland/configs/lonnieh-cloud/services/" (21091 26745) "awsdriver_cleanup_remove_orphan_subnets/" "awsdriver_reports_list_long_running_operations/" "rabbitmq_watcher/" "awsdriver_cleanup_remove_orphan_amis/" "rabbitmq_logrotate/" "./" "awsdriver_cleanup_remove_orphan_vpcs/" "awsdriver_cleanup_remove_orphan_snapshots/" "error_watch/" "long_running_operation_watch/" "../")
+
+ ("/highland/logs/syslog/2013/10/" (21097 65508) "2013-10-22-platform.log" "2013-10-09-platform.log" "2013-10-25-platform.log" "2013-10-03-platform.log" "2013-10-11-platform.log" "2013-10-14-platform.log" "2013-10-15-platform.log" "2013-10-18-platform.log" "2013-10-05-platform.log" "2013-10-08-platform.log" "2013-10-07-platform.log" "2013-10-19-platform.log" "2013-10-16-platform.log" "2013-10-23-platform.log" "2013-10-04-platform.log" "./" "2013-10-06-platform.log" "2013-10-02-platform.log" "2013-10-17-platform.log" "2013-10-21-platform.log" "2013-10-10-platform.log" "2013-10-20-platform.log" "2013-10-24-platform.log" "2013-10-12-platform.log" "2013-10-13-platform.log" "2013-10-01-platform.log" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/accounting/operations/" (21097 42548) "deconsume_resources_operation.py" "set_account_values_operation.py" "accounting_operation_base.py" "release_resources_operation.py" "reserve_resources_operation.py" "rescind_resources_operation.py" "get_events_operation.py" "consume_resources_operation.py" "list_accounts_operation.py" "adjust_resources_operation.py" "create_charge_tag_operation.py" "__init__.py" "delete_account_operation.py" "unit_tests/" "./" "manage_resources_operation.py" "get_account_specification_operation.py" "accounting_persistent_operation.py" "reassign_resources_operation.py" "convert_account_operation.py" "create_account_operation.py" "../")
+
+ ("/highland/logs/" (21085 39269) "./" "nsvc1.skytap-dev.net/" "mysql/" "syslog/" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/accounting/model/" (21096 44015) "charge_tags.py" "events.py" "resources.py" "quota_pools.py" "quota_management.py" "__init__.py" "unit_tests/" "./" "base.py" "utilization.py" "quotas.py" "../")
+
+ ("/highland/hosting_platform/hosting_platform/services/awsdriver/objects/driver/" (21096 44015) "configuration.py" "disk.py" "port_rule.py" "network.py" "vm.py" "nic.py" "cva.py" "datacenter.py" "__init__.py" "unit_tests/" "./" "driver_object.py" "fixtures/" "../" "region.py")
+
+ ("/highland/hosting_platform/hosting_platform/common/unit_tests/" (21086 51977) "test_runcmd.py" "test_backoff.py" "test_utils.py" "test_fuser.py" "test_validation.py" "test_threadutils.py" "__init__.py" "test_get_configuration.py" "test_logging.py" "./" "test_context.py" "test_IPAddressTypes.py" "test_deprecated.py" "test_decorators.py" "test_YamlConfig.py" "test_attribute_dict.py" "test_singletonmixin.py" "test_meta.py" "ptest_backoff.py" "saved_platform_exceptions.dmp" "fixtures/" "../")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

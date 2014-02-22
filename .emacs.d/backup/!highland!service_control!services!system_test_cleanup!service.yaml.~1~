@@ -1,0 +1,8 @@
+system_test:
+  description: "system_test cron job"
+  deployment_model: singleton
+  executable_actions: [ 'start', 'stop', 'restart', 'status' ]
+  executable: "/bin/true"
+  args: "%(action)s"
+  optional: yes
+  repos: [ hp, configs ]

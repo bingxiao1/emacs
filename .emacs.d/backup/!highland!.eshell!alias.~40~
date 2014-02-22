@@ -1,0 +1,43 @@
+alias whatis_integ ls -ld /ssh:bxiao@svn.internal.illumita.com:/hg/env/integ
+alias svc_mq skycap svc_grp:message_queue_service:$1
+alias cd_integ cd /ssh:root@sea5m1logger1.mgt.integ.skytap.com:
+alias ff_key find-file-other-window ~/.ssh/id_rsa.pub
+alias cd_lonnieh cd /ssh:lonnieh@linjump.lonnieh.skytap.com:
+alias du_highland du -sh /highland/*
+alias jk_failure curl http://jenkins:8080/job/hosting_platform/lastBuild/console | awk '/rake aborted!/,/marked build as failure/'
+alias migdb2 skycap db:$1:migrate
+alias strgcmd /highland/hosting_platform/hosting_platform/services/storage/strgcmd.py $*
+alias cdsn cd /ssh:highland@sn:
+alias cdpm cd /ssh:highland@puppetmaster:
+alias d dired $1
+alias ff find-file $1
+alias genetags find $1 -name '*.py' -print  | cut -c3- | xargs etags - 
+alias cdjk cd /ssh:highland@jenkins:
+alias cdmq1 cd /ssh:highland@mq1:
+alias sn_hg /opt/csw/bin/hg $*
+alias hg_at hg resolve -t internal:other --all
+alias hg_am hg resolve -t internal:local --all
+alias migdb ~/hosting_platform/hosting_platform/db/migrate/RunAllMigrations.py $1 -v
+alias hp cd ~/hosting_platform/hosting_platform
+alias integ_in pushd . & cdpm & cd hosting_platform & hg in -M --stat -G& popd
+alias jk_progress curl http://jenkins:8080/job/hosting_platform/lastBuild/logText/progressiveHtml | tail -n 20
+alias svc_mysql skycap svc:mysqld:$1
+alias svc_accounting skycap svc:accounting_service:$1
+alias svc_cm skycap svc:configuration_manager:$1
+alias svc_sn skycap svc:storage_node_service:$1
+alias svc_storage skycap svc:storage_service:$1
+alias copy_key cat ~/.ssh/id_rsa.pub | ssh $1 "mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
+alias systest HIGHLAND_ENV=lonnieh-cloud/west1 python $*
+alias whatis_next ls -ld /ssh:bxiao@sea9repo1.corp.skytap.com:/hg/env/next
+alias ffo find-file-other-window $1
+alias ff_knownhosts ffo /ssh:highland@puppetmaster:/highland/packages/puppet/modules/ssh/files/environment/$HIGHLAND_ENV/ssh_known_hosts
+alias error_json sed -e 's/.*<Fault [0-9]: ''\(.*\)''>/\1/'
+alias pp_json python -m json.tool
+alias cd_lonnieh_log cd /ssh:10.1.208.5:/home/lonnieh/logs
+alias cd_lonnieh_mysql cd /ssh:root@mysql1-mgt.lonnieh.skytap.com:
+alias e ffo ~/.emacs
+alias reinit load-file ~/.emacs
+alias hg_export hg export -o ~/hg_exports/%b_%R $1
+alias hg_import hg import ~/hg_exports/hosting_platform_$1
+alias cd_integ_mysql cd /ssh:root@sea5m1mysql1.mgt.integ.skytap.com:
+alias svc_gb skycap svc:greenbox:$1

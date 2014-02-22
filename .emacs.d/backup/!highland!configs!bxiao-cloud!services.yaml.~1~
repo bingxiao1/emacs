@@ -1,0 +1,114 @@
+error_watch: nsvc1
+unicorn_ui_layer: nsvc1
+
+#rabbitmq: nsvc1
+#rabbitmq_alternate: nsvc1
+#_rabbitmq_node_list: &rabbitmq_node_list [ vip-rabbitmq ]
+_rabbitmq_node_list: &rabbitmq_node_list [ mq1 ]
+rabbitmq: *rabbitmq_node_list
+keepalive_rabbitmq: *rabbitmq_node_list
+
+_rabbitmq_alternate_node_list: &rabbitmq_alternate_node_list [ nsvc1 ]
+rabbitmq_alternate: *rabbitmq_alternate_node_list
+keepalive_rabbitmq_alternate: *rabbitmq_alternate_node_list
+
+#rabbitmq_watcher: mq1
+#rabbitmq_watcher: util
+rabbitmq_logrotate: *rabbitmq_node_list
+
+
+#gmond: 
+#  rladev: [ cm-cluster ]
+
+#gmetad: rladev
+charon_service: nsvc1
+
+samba_admin: nsvc1
+
+samba_service:
+  nsvc1: [ 0 ]
+
+configuration_manager:
+  - nsvc1
+vmrunstate_service:
+  - nsvc1
+
+mysqld:
+  nsvc1: [ dev ]
+
+rrdcached: nsvc1
+
+memcached: nsvc1
+
+muxmanager: nsvc1
+
+rdpproxy: nsvc1
+
+muxauthentifier: nsvc1
+
+muxer: nsvc1
+
+accounting_service: nsvc1
+
+vmware_hosting_manager:
+  nsvc1: [ 0 ]
+
+syslog_ng: nsvc1
+
+network_admin_daemon: nsvc1
+
+#storage_node_service: 
+#  - sn
+storage_node_service: 
+  - nsvc1
+
+storage_service: [ nsvc1 ]
+
+name_service: nsvc1
+
+config_service: nsvc1
+
+vncproxy: nsvc1
+
+unicorn:
+  - nsvc1
+
+web_metrics_collector:
+  - nsvc1
+
+task_cluster:
+  - nsvc1
+
+background_task_executor: nsvc1
+
+starling: nsvc1
+
+network_service_daemon:
+  nsvc1: [ 0 ]
+
+vm_munger_service: nsvc1
+
+quota_inspector: nsvc1
+
+monitoring_service: nsvc1
+
+
+ftp_server: nsvc1
+
+graphite: nsvc1
+
+greenbox: 
+  nsvc1: [0]
+
+system_test:
+  - nsvc1
+
+system_test_cleanup:
+  - nsvc1
+
+system_test_performance:
+  - nsvc1
+
+control_host:
+  - nsvc1
+

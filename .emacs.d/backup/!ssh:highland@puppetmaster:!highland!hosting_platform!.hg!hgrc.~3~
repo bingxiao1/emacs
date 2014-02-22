@@ -1,0 +1,6 @@
+[paths]
+default = ssh://highland@puppetmaster//highland/hosting_platform
+r_next = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/next/hosting_platform
+integ = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/integ/hosting_platform
+bxiao = ssh://bxiao@bxiao.dev.skytap.com//hg/env/integ/hosting_platform
+lonnieh = ssh://lonnieh@linjump.lonnieh.skytap.com/hosting_platform

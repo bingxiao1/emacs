@@ -1,0 +1,7 @@
+# Copyright (c) 2010 Skytap Inc.,
+# All Rights Reserved.
+
+from hosting_platform.db.migrate.configuration.R55.Baseline import Baseline
+
+CHANGESETS = [ Baseline,
+]

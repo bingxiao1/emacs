@@ -1,0 +1,7 @@
+192.168.0.2	nsvc1.skytap-dev.net	nsvc1
+192.168.0.3	kvm1.skytap-dev.net	kvm1
+192.168.0.4     jenkins.skytap-dev.net  jenkins
+192.168.0.5	mq1.skytap-dev.net	mq1
+192.168.0.6	sn.skytap-dev.net	sn
+
+10.1.208.105    vip-rabbitmq.lonnieh.skytap.com vip-rabbitmq

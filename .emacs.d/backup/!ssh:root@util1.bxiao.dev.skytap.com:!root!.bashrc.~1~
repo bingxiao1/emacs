@@ -1,0 +1,36 @@
+##############################################################################
+# WARNING: Any change you make to it will be lost the next time puppet is run.
+##############################################################################
+
+##############################################################################
+# Environment specific customizations can be placed in:
+#   ${HIGHLAND_ROOT}/config/bashrc
+##############################################################################
+
+# Set all HIGHLAND variables (as long as we are not root)
+if [[ $EUID -ne 0 ]] && [[ -r /opt/skytap/etc/env_vars.sh ]]; then
+  source /opt/skytap/etc/env_vars.sh
+fi
+
+#set up rbenv
+export PATH=/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
+export RBENV_ROOT=/usr/local/rbenv
+
+# If not running interactively, stop here
+[ -z "$PS1" ] && return
+
+# Alias definitions.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Support environment specific customizations
+if [[ -r ${HIGHLAND_ROOT}/config/bashrc ]]; then
+  source ${HIGHLAND_ROOT}/config/bashrc
+fi
+eval "$(rbenv init -)"

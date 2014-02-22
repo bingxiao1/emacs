@@ -1,0 +1,13 @@
+[ui]
+username = Bing Xiao <bxiao@skytap.com>
+merge = internal:merge
+
+[extensions]
+hgext.graphlog = 
+hgext.mq = 
+hgext.color =
+hgext.pager = 
+
+[pager]
+pager = LESS='FRX' less -d
+

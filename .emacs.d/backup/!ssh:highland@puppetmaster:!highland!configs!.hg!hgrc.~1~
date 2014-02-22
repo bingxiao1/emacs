@@ -1,0 +1,4 @@
+[paths]
+default = ssh://highland@puppetmaster//highland/configs
+r_next = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/next/configs
+lonnieh = ssh://lonnieh@linjump.lonnieh.skytap.com/configs

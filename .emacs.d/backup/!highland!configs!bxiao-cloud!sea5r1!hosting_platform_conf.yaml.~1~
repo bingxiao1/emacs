@@ -1,0 +1,119 @@
+# INTEG/SEA5R1 
+
+###########################################################
+#
+# GLOBALS
+#
+###########################################################
+
+server_backlog: 10
+
+# number of seconds between metric samples that are sent to 
+# the rrdcached daemon
+metric_interval: 5
+metric_retention: tiny
+
+rrdcached_address: "sea5r1logger1:9010"
+
+###########################################################
+#
+# HOSTING PLATFORM
+#
+###########################################################
+
+databases: {
+    samba_service_db: {
+        url: "mysql://root:eas71akeWA@sea5r1mysql1/samba_service",
+        options: {
+           pool_recycle: 60,
+           pool_size: 100,
+           max_overflow: 30
+        }
+    },
+    network_server_db: {
+        url: "mysql://root:eas71akeWA@sea5r1mysql1/network_server",
+        options: {
+            #see http://www.sqlalchemy.org/docs/04/dbengine.html#dbengine_options
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30
+        }
+    },
+    storage_db: {
+        url: "mysql://root:eas71akeWA@sea5r1mysql1/storage",
+        options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30
+        },
+        skip_tables_on_partial_backup: [ history ]
+    },
+    muxmanager_db: {
+        url: "mysql://root:eas71akeWA@sea5r1mysql1/muxmanager",
+        options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30
+        }
+    },
+    charon_db: {
+        url: "mysql://root:eas71akeWA@sea5r1mysql1/charon",
+        options: {
+            pool_recycle: 60,
+            pool_size: 100,
+            max_overflow: 30,
+            echo: False
+        }
+    }
+}
+
+# muxer/muxmanager options
+# muxer_max_retries default is 3 
+muxer_max_retries: 15
+# muxer_retry_interval default is 2 seconds
+muxer_retry_interval: 3
+management_server: sea5m1cmvip1
+management_server_port: 9000
+
+# Disallowed characters in Charon imports (archive filename, vmdk filenames)
+disallowed_import_filename_chars: ["'", '"', "\\", "`"]
+
+###########################################################
+#
+# NETWORK
+#
+###########################################################
+forwarders: [ 208.76.152.1, 208.76.152.9 ]
+
+###########################################################
+#
+# Logging
+#
+###########################################################
+
+LOAD_BALANCER_WARNING_THRESHOLDS:
+    -
+        - 15
+        -
+            - 1024
+            - 1
+            - Type C
+    -
+        - 15
+        -
+            - 1024
+            - 1
+            - Type E
+
+
+# this entry is consumed by skycap logger
+syslog_config:
+    host: sea5r1logger1
+    port: 20514
+
+memcached_server:
+    host: sea5r1qi1
+    port: 11211
+
+rabbitmq_mnesia_debug_level: verbose
+

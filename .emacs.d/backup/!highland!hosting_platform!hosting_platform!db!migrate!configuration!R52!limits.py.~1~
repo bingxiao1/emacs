@@ -1,0 +1,17 @@
+# Copyright (c) 2012 Skytap Inc.,
+# All Rights Reserved.
+
+from hosting_platform.db.migrate.ChangeSet import ChangeSet
+
+class Accounts(ChangeSet):
+    """
+    Remove stuffs that are no longer needed
+    """
+
+    @classmethod
+    def get_name(cls):
+        return "R52/Accounting"
+
+    def non_nulls(self):
+        return {'accounts': ['name']}
+

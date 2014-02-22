@@ -1,0 +1,6 @@
+[paths]
+default = ssh://highland@puppetmaster//highland/ui_layer
+r_next = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/next/ui_layer
+integ = ssh://bxiao@sea9repo1.corp.skytap.com//hg/env/integ/ui_layer
+bxiao = ssh://bxiao@bxiao.dev.skytap.com//highland/ui_layer
+lonnieh = ssh://lonnieh@linjump.lonnieh.skytap.com/ui_layer

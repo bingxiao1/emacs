@@ -1,0 +1,194 @@
+(defun doodlebug ()                                                           
+ "Nonce function"                                                             
+ (interactive)                                                                
+ (message "Howdie-doodie fella")) 
+
+(defun prev-window ()
+   (interactive)
+   (other-window -1))
+
+ (define-key global-map (kbd "C-x p") 'prev-window)
+
+;; ===== Enable mouse support ====
+                                       
+(require 'xt-mouse)                   
+(xterm-mouse-mode)
+
+;;; Copy-paste to/from emacs
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+(defun copy-to-x-clipboard ()
+  (interactive)
+  (if (region-active-p)
+    (progn
+     ; my clipboard manager only intercept CLIPBOARD
+      (shell-command-on-region (region-beginning) (region-end)
+        (cond
+         ((eq system-type 'cygwin) "putclip")
+         ((eq system-type 'darwin) "pbcopy")
+         (t "xsel -ib")
+         )
+        )
+      (message "Yanked region to clipboard!")
+      (deactivate-mark))
+    (message "No region active; can't yank to clipboard!")))
+
+(defun paste-from-x-clipboard()
+  (interactive)
+  (shell-command
+   (cond
+    ((eq system-type 'cygwin) "getclip")
+    ((eq system-type 'darwin) "pbpaste")
+    (t "xsel -ob")
+    )
+   1)
+  )
+
+;;;------------------------------------------------------------------------   
+;;; Provide a version of Emacs 24's 'string-prefix-p in older emacsen         
+;;;------------------------------------------------------------------------   
+;; (unless (fboundp 'string-prefix-p)                                            
+;;   (defun string-prefix-p (shorter longer)                                     
+;;     (let ((n (mismatch shorter longer))                                       
+;;          (l (length shorter)))                                                
+;;       (if (or (not n) (= n l)) l nil))))                                      
+                                                                              
+;;; Fix junk characters in shell-mode
+(add-hook 'shell-mode-hook 
+          'ansi-color-for-comint-mode-on)
+
+;;; Use iswitchb to switch buffers
+;;; (iswitchb-mode 1)
+
+;;; Use ido to switch buffers
+(setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+
+;;; Automatically save session when quit
+(desktop-save-mode 1)
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+(el-get 'sync)
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(jira-url "https://jira.corp.skytap.com/rpc/xmlrpc")
+ '(python-remove-cwd-from-path nil)
+ '(safe-local-variable-values (quote ((prompt-to-byte-compile)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;;; To allow mysql mode to accept blank password
+(setq sql-user "root")
+(setq sql-password nil)
+
+
+;;; To show full file path in in emacs window
+(setq frame-title-format
+      (list (format "%s %%S: %%j " (system-name))
+        '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+;;; Copy full file name to kill ring
+(defun copy-buffer-file-name ()
+  "Copy the full file path of the current buffer to the kill ring."
+  (interactive)
+  (let ((fn buffer-file-name))
+    (message fn)
+    (if fn
+	(progn (message fn) (kill-new (file-truename fn))
+	)
+      (message "There is no file associated with the current buffer")))
+)
+
+(defun rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+
+
+(defun revert-all-buffers ()
+          "Refreshes all open buffers from their respective files"
+          (interactive)
+          (let* ((list (buffer-list))
+                 (buffer (car list)))
+            (while buffer
+              (when (and (buffer-file-name buffer) 
+                         (not (buffer-modified-p buffer)))
+                (set-buffer buffer)
+                (revert-buffer t t t))
+              (setq list (cdr list))
+              (setq buffer (car list))))
+          (message "Refreshed open files"))
+
+(defun pdb-pm ()  
+      "add pdb post-mortem and move line down"  
+    (interactive)  
+    (move-beginning-of-line 1)  
+    (insert "import pdb; pdb.post_mortem(sys.exc_info()[2]);\n"))
+
+;; Load mercurial.el
+;; (add-to-list 'load-path "~/.emacs.d/mercurial/")
+;; (require 'mercurial "mercurial.el")
+
+;; Display column number
+(setq column-number-mode t)
+
+;; C-M-% is impossible for me
+(defalias 'qrr 'query-replace-regexp)
+
+; (require 'jira)
+
+;;; org-jira mode
+(add-to-list 'load-path "~/.emacs.d/org-jira/")
+(setq jiralib-url "https://jira.corp.skytap.com") 
+(require 'org-jira) 
+
+;;; Make S-tab for org-mode works over terminal
+(define-key function-key-map "\e[Z" [backtab])
+
+;;; Set back up file location
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+  backup-by-copying t    ; Don't delink hardlinks
+  version-control t      ; Use version numbers on backups
+  delete-old-versions t  ; Automatically delete excess backups
+  kept-new-versions 20   ; how many of the newest versions to keep
+  kept-old-versions 5    ; and how many of the old
+  )

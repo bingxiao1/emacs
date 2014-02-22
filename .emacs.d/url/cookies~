@@ -1,0 +1,14 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '(("jira.corp.skytap.com"
+  [url-cookie "seraph.rememberme.cookie" "12917%3Ad5c309cff27c49619c379580c90ec60526219f79" "05-Nov-2013 18:06:18.00 GMT" "/" "jira.corp.skytap.com" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

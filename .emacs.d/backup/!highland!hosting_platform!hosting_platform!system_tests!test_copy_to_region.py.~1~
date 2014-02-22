@@ -1,0 +1,162 @@
+#!/usr/bin/python
+# Copyright (c) 2010 Skytap Inc.,
+# All Rights Reserved.
+
+"""
+Create a VM, run it, shut it down, delete it.
+"""
+import sys
+import unittest
+from time import sleep, time
+from hosting_platform.common import testing
+from hosting_platform.common.errors import TimeoutError
+from hosting_platform.common.logs import initialize_logger
+from hosting_platform.common.remotecontrol import RemoteControl, RemoteControlBaseTimeoutError
+from hosting_platform.services.configuration_manager.model import VM, PublicIP
+from hosting_platform.services.vmrunstateservice.vmrunstateclient import VMRunStateClient
+from base import SystemTestBase, process_api_return
+
+LOGGER = initialize_logger("provisioning system test")
+
+class ProvisioningTest(SystemTestBase):
+    """
+    Tests for interesting provisioning cases.
+    """
+
+    _IN_GUEST_POWERSTATE_ACTIONS = {'standby': ("sudo rtcwake -m standby -s 100000", RemoteControlBaseTimeoutError),
+                                    'poweroff': ("sudo shutdown -h now", None)}
+
+    def __init__(self, *args, **kwargs):
+        super(ProvisioningTest, self).__init__(*args, **kwargs)
+        self.assert_(self.config.provisioning.vm_template)
+
+    def setUp(self, *args, **kwargs):
+        super(ProvisioningTest, self).setUp(*args, **kwargs)
+        self.vm_template = self.configuration_specification(self.config.provisioning.vm_template)
+
+    def _in_guest_powerstate_change(self, action, charge_tag, datacenter, vm, nic):
+        """allocate a public ip, attach it to the nic, ssh to it and perform an in-guest power state change (public ip is detached)"""
+
+        assert action in self._IN_GUEST_POWERSTATE_ACTIONS
+
+        self.poll_for_statuses("vm", [vm], [VM.STATUSES.RUNNING])
+        with self.public_ip_allocation(charge_tag, datacenter) as public_ip:
+            process_api_return(self.greenbox_api.connect_public_ip(charge_tag, datacenter, nic, public_ip))
+            try:
+                connected = True
+                # LH - poll for the vm to finish being provisioned, then check that the public IP is active. Since
+                #      public ip ephemera doesn't expose the provisioning state of the vm (no BUSY) we can't poll
+                #      on it (it becomes active during reification).
+                self.poll_for_statuses("vm", [vm], [VM.STATUSES.RUNNING])
+                result = process_api_return(self.greenbox_api.get_public_ip_ephemera([public_ip]))
+                self.assertEqual(result[public_ip]['status'],
+                                 PublicIP.STATUSES.ACTIVE, "public IP not provisioned")
+
+                with RemoteControl(public_ip, LOGGER, **self.config.provisioning.ssh_config).session() as rc:
+
+                    # we don't want to initiate provisioning once the vm is in standby, so we disconnect the public ip
+                    # after connecting to the guest ssh server, this works since existing connections to public ips are
+                    # maintained after the public IP is disconnected.
+                    process_api_return(self.greenbox_api.disconnect_public_ip(nic, public_ip))
+
+                    # wait for the public IP to become inactive
+                    self.poll_for_statuses("public_ip", [public_ip], [PublicIP.STATUSES.INACTIVE])
+                    connected = False
+
+                    command, exception = self._IN_GUEST_POWERSTATE_ACTIONS[action]
+                    if exception:
+                        # the rtcwake command suspends the guest, and getting it to reliably happen without hanging the
+                        # RemoteControl is proving to be difficult (fire_and_forget=True results in command not being
+                        # executed reliably, fire_and_forget=False results in IO timeout)
+                        self.assertRaises(RemoteControlBaseTimeoutError, rc.exec_command, command, io_timeout=3)
+                    else:
+                        rc.exec_command(command)
+
+                self.verbose("initiated in-guest %s" % action)
+            finally:
+                if connected:
+                    process_api_return(self.greenbox_api.disconnect_public_ip(nic, public_ip))
+                    # wait for the public IP to become inactive
+                    self.poll_for_statuses("public_ip", [public_ip], [PublicIP.STATUSES.INACTIVE])
+
+    def enter_standby_mode(self, charge_tag, datacenter, vm, nic):
+        return self._in_guest_powerstate_change('standby', charge_tag, datacenter, vm, nic)
+
+    def wait_for_guest_poweroff(self, vm, timeout=None):
+        """wait for the vm to be powered off on hosting node"""
+        timeout = time() + (timeout or self.config.poll_timeout) - self.config.poll_interval
+
+        while (time() < timeout):
+            sleep(self.config.poll_interval)
+
+            with self.error_investigation():
+                guest_state = (process_api_return(self.greenbox_api.get_vm_provisioning_details(vm)))[vm].get('guest_info', {}).get('guest_state', None)
+                if guest_state is None or guest_state == 'notRunning':
+                    return True
+        raise TimeoutError()
+
+    def in_guest_poweroff(self, charge_tag, datacenter, vm, nic):
+        """perform an in-guest poweroff of the vm using the specified datacenter and nic for the public ip connection"""
+        self._in_guest_powerstate_change('poweroff', charge_tag, datacenter, vm, nic)
+        self.wait_for_guest_poweroff(vm)
+
+    # Comment out the test below as we don't have a reliable way to induce in-guest suspend. 'rtcwake -m standby' sometimes
+    # causes the vm to be powered off
+    # def test_internal_and_external_shutdown_conflict(self):
+    #     """attempt to shutdown a vm that is being shutdown internally"""
+    #     with self.account() as (account, datacenter):
+    #         charge_tag = self.create_charge_tag(account)
+    #         with self.basic_configuration(charge_tag, datacenter, vm_kwargs={'ram': 256}) as (configuration, network, vm, nic):
+    #             self.run_vms(charge_tag, datacenter, [vm])
+    #             self.enter_standby_mode(charge_tag, datacenter, vm, nic)
+
+    #             # the poweroff reification will succeed since the vm is suspending, but the operation itself will
+    #             # fail since the vm is being suspended on the hosting node. Issue the poweroff, wait for the vm
+    #             # to be suspended by the monitor. Prior to fixing PL-2801 the poweroff would cancel the monitor
+    #             # and the vm would never be unprovisioned.
+    #             process_api_return(self.greenbox_api.poweroff_vms([vm]))
+    #             ephemera = self.poll_for_statuses("vm", [vm], [VM.STATUSES.RUNNING])
+    #             self.failUnless(ephemera[vm].error, "vm doesn't have error from failed poweroff on it")
+    #             self.assertEqual('HostingManagerPoweroffInternalError', ephemera[vm].error.type)
+
+    #             # PL-2801 fixed the issue where the vm would never be unprovisioned to SUSPENDED because the
+    #             #        vmmonitor was stopped during poweroff but never re-enabled. The test succeeds if
+    #             #        the vm becomes suspended without any further interactions.
+    #             self.poll_for_statuses("vm", [vm], [VM.STATUSES.SUSPENDED])
+
+    def test_vm_suspends_when_it_enters_standby_mode(self):
+        with self.account() as (account, datacenter):
+            charge_tag = self.create_charge_tag(account)
+            with self.basic_configuration(charge_tag, datacenter, vm_kwargs={'ram': 512}) as (configuration, network, vm, nic):
+                self.run_vms(charge_tag, datacenter, [vm])
+                self.enter_standby_mode(charge_tag, datacenter, vm, nic)
+                self.poll_for_statuses("vm", [vm], [VM.STATUSES.SUSPENDED])
+
+    def test_concurrent_in_guest_poweroff_and_snapshot(self):
+        """Test that the system correctly handles snapshoting guests that are powered off concurrently with snapshot"""
+        with self.account() as (account, datacenter):
+            charge_tag = self.create_charge_tag(account)
+            with self.account_depot(charge_tag, datacenter, 0, "scratch", 0) as scratch_depot:
+                with self.basic_configuration(charge_tag, datacenter, vm_kwargs={'ram': 512}) as (configuration, network, vm, nic):
+                    self.run_vms(charge_tag, datacenter, [vm])
+
+#                with VMRunStateClient().vm_monitoring_disabled(vm):
+                    self.in_guest_poweroff(charge_tag, datacenter, vm, nic)
+
+                    with self.snapshot_clone(charge_tag, datacenter, configuration, scratch_depot) as configuration2:
+                        vm_ephemeras = process_api_return(self.greenbox_api.get_vm_ephemera(configuration2.vms.keys()))
+
+                        vm_errors = dict((key, ephemera['error']) for (key, ephemera) in vm_ephemeras.iteritems())
+                        self.failIf(any(vm_errors.itervalues()), vm_errors)
+
+                        vm_statuses = dict((key, ephemera['status']) for (key, ephemera) in vm_ephemeras.iteritems())
+                        self.failUnless(all(status == VM.STATUSES.POWERED_OFF for status in vm_statuses.itervalues()),
+                                        "not all vms were powered off: %s" % vm_statuses)
+
+if __name__ == "__main__":
+    loader = unittest.TestLoader()
+    if len(sys.argv) >= 2:
+        loader.testMethodPrefix = sys.argv[1]
+
+    SUITE = loader.loadTestsFromTestCase(ProvisioningTest)
+    testing.IllumitaTestRunner().run(SUITE)

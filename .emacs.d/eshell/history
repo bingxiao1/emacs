@@ -1,0 +1,128 @@
+wget --help
+       --no-cache              disallow server-cached data.
+wget http://www.selenic.com/hg/file/tip/contrib/mercurial.el > ~/.emacs.d/mercurial.el
+less ~/.emacs.d/mercurial.el 
+grep -R --include="*.[y" apply_rate_mimit ~/hosting_platform/hosting_platform/
+grep -R --include="*.[y" apply_rate_limit ~/hosting_platform/hosting_platform/
+grep -R --include="*.py" apply_rate_limit ~/hosting_platform/hosting_platform/
+python test_rate_limits.py  
+python test_rate_limits.py  
+python
+python test_rate_limits.py  
+python test_rate_limits.py  
+cd ..
+cd ..
+ls
+rake test
+rake test
+grep -R --include="*.py" VMStatusMap ~/hosting_platform/hosting_platform
+hg heads
+ls
+ls
+cd model/
+ls
+ls /opt/skytap/
+ls /opt/skytap/lib/python2.6/
+python unit_tests/test_rate_limits.py 
+python unit_tests/test_rate_limits.py 
+python unit_tests/test_rate_limits.py 
+cd ..
+rake test
+python operations/unit_tests/test_delete.py 
+python operations/unit_tests/test_delete.py 
+python operations/unit_tests/test_delete.py 
+python operations/unit_tests/test_delete.py 
+python operations/unit_tests/test_delete.py 
+python unit_tests/test_rate_limits.py 
+python model/unit_tests/test_rate_limits.py 
+python model/unit_tests/test_rate_limits.py 
+rake test
+python operations/unit_tests/test_configurations.py
+python model/unit_tests/test_rate_limits.py 
+python operations/unit_tests/test_configurations.py
+grep -R --include "*.py" RateLimiter ~/hosting_platform/hosting_platform/
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python operations/unit_tests/test_configurations.py
+python unit_tests/test_heartbeat.py
+  File "/highland/hosting_platform/hosting_platform/services/configuration_manager/heartbeat.py", line 72, in Heartbeat
+python unit_tests/test_heartbeat.py
+rake test
+python operations/unit_tests/test_provision.py 
+python operations/unit_tests/test_provision.py 
+python operations/unit_tests/test_provision.py 
+rake test
+rake test
+python operations/unit_tests/test_provision.py ctest_
+python operations/unit_tests/test_provision.py ctest_
+python operations/unit_tests/test_provision.py ctest_
+python operations/unit_tests/test_provision.py ctest_
+python operations/unit_tests/test_provision.py ctest_
+python operations/unit_tests/test_provision.py ctest_
+python operations/unit_tests/test_provision.py ctest_run_poweroff
+python operations/unit_tests/test_provision.py ctest_run_reification
+python operations/unit_tests/test_provision.py ctest_hosting_node_allocation_deadlock
+rake test
+python operations/unit_tests/test_provision.py
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vmspython operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+cp ../../db/migrate/configuration/R47/non_null_nat_local_subnet.py ../../db/migrate/configuration//R47/limit_regions.py
+cd ..
+cd ..
+cd db/migrate/unit_tests/
+python test_migrate.py test_configuration
+python test_migrate.py test_configuration
+python test_migrate.py test_configuration
+python test_migrate.py generate_configuration
+python test_migrate.py test_configuration
+cd known_goods/configuration/R47/
+diff -uddw non_null_nat_local_subnet.sql limit_regions.populated.sql
+diff -uddw non_null_nat_local_subnet.sql limit_regions.sql
+hg add limit_regions.*
+cd -
+cd ..
+hd add configuration/R47/limit_regions.py 
+hg add configuration/R47/limit_regions.py 
+hs status
+hg status
+cd ..
+cd ..
+cd services/configuration_manager/
+rake test
+python operations/unit_tests/test_provision.py 
+        return ['UPDATE vpns SET nat_local_subnet=False where nat_local_subnet is NULL']    def non_nulls(self):        return {'vpns': ['nat_local_subnet']}y
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+hg diff operations/unit_tests/test_provision.py 
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+mysql -u root ut_configuration -e 'show create table limits';
+mysql -u root ut_configuration -p -e 'show create table limits';
+mysql -u root ut_configuration -p -e 'show create table limits';
+mysql -u root ut_configuration -p --protocol TCP -e 'show create table limits';
+mysql -u root ut_configuration -p --protocol TCP -e 'show create table limits';
+mysql -u root ut_configuration -p --protocol TCP -e 'show create table limits';
+mysql -u root ut_configuration -p --protocol TCP -e 'show create table limits';
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py test_run_multiple_vms
+python operations/unit_tests/test_provision.py
+python operations/unit_tests/test_provision.py
+python operations/unit_tests/test_provision.py ctest
+python operations/unit_tests/test_provision.py ctest
+python operations/unit_tests/test_unprovision.py
+python operations/unit_tests/test_delete.py 
+python operations/unit_tests/test_delete.py 
+python operations/unit_tests/test_configurations.py
+rake test
