@@ -5,11 +5,20 @@
 ;;; Cache password for tramp remote sessions
 (setq password-cache-expiry nil)
 
+;;; Turn on tramp debugging
+(setq tramp-verbose 10)
+
 (defun prev-window ()
    (interactive)
    (other-window -1))
 
  (define-key global-map (kbd "C-x p") 'prev-window)
+
+;;; ffap
+;;;
+(require 'ffap)                      ; load the package
+(ffap-bindings)                      ; do default key bindings
+(setq ffap-require-prefix t)         ; require prefix with ffap bindings so that ffap binding won't interfere with ido
 
 ;; ===== Enable mouse support ====
                                        
@@ -304,6 +313,15 @@ Subsequent calls expands the selection to larger semantic unit."
 
 
 ;;; ------------------------------
+;;; Enable bash completion in shell modebash
+;;; BX: Does not appear to be working
+;;; ------------------------------
+(add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/")
+(require 'bash-completion)
+(bash-completion-setup)
+
+
+;;; ------------------------------
 ;;; skycap shortcuts
 ;;; ------------------------------
 (defun skycap-upgrade-service (svc)  
@@ -317,21 +335,21 @@ Subsequent calls expands the selection to larger semantic unit."
       "Insert command to start skytap services"  
     (interactive
        (list
-	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service"))))
+	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
     (insert (format "skycap svc:%s:start" svc)))
 
 (defun skycap-service-stop (svc)  
       "Insert command to stop skytap services"  
     (interactive
        (list
-	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service"))))
+	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
     (insert (format "skycap svc:%s:stop" svc)))
 
 (defun skycap-service-status (svc)  
       "Insert command to show status of skytap services"  
     (interactive
        (list
-	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service"))))
+	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
     (insert (format "skycap svc:%s:status" svc)))
 
 (defun skycap-db-migrate (database)  
@@ -445,9 +463,41 @@ Subsequent calls expands the selection to larger semantic unit."
   (interactive "sDatabase:\nsColumn:")
   (insert (format "select distinct table_name from information_schema.columns where column_name like '%s' and table_schema='%s';" column database)))
 
+
+;;;------------------------------
+;;; Puppet
+;;;------------------------------
+(defun puppet-apply-dotfiles ()
+  (interactive)
+  (insert "puppet apply --modulepath=$HOME/.puppet/modules $HOME/.puppet/manifests/default.pp")
+)
+
 ;;; -----------------------------
 ;;; Shells
+;;;
+;;; Differences between ansi-term and shell mode:
+;;;   - shell mode uses dumb terminal. Pager won't work
+;;;   - shell mode has built-in tramp support. .bash_profile need to be be modified for remote ansi-term to support tramp.
+;;;
+;;; so it seems that it's better to use ansi-term to access hosts that I have full control, and to use shell to access hosts
+;;; that I don't have full control of.
 ;;; -----------------------------
+;; Use this for remote so I can specify command line arguments
+(defun remote-term (new-buffer-name cmd &rest switches)
+    (setq term-ansi-buffer-name (concat "*" new-buffer-name "*"))
+    (setq term-ansi-buffer-name (generate-new-buffer-name term-ansi-buffer-name))
+    (setq term-ansi-buffer-name (apply 'make-term term-ansi-buffer-name cmd nil switches))
+    (set-buffer term-ansi-buffer-name)
+    (term-mode)
+    (term-char-mode)
+    (term-set-escape-char ?\C-x)
+    (switch-to-buffer term-ansi-buffer-name))
+
+(defun term-bxiao-puppetmaster (buffer-name)
+  "Shell of bxiao cloud puppetmaster"
+    (interactive "sBuffer name: bxiao-cloud-puppetmaster-")  
+    (remote-term (format "bxiao-cloud-puppetmaster-%s" buffer-name) "ssh" "root@puppetmaster.bxiao.dev.skytap.com"))
+
 (defun shell-bxiao-puppetmaster (buffer-name)
   "Shell of bxiao cloud puppetmaster"
     (interactive "sBuffer name: bxiao-cloud-puppetmaster-")  
@@ -498,20 +548,80 @@ Subsequent calls expands the selection to larger semantic unit."
     (interactive "sBuffer name: bxiao-cloud-mysqlr2-")  
     (eshell-command (format "pushd . & cd /ssh:root@mysqlr2.bxiao.dev.skytap.com: & shell bxiao-cloud-mysqlr2-%s & popd" buffer-name)))
 
+(defun term-bxiao-jenkins (buffer-name)
+  "Term of bxiao cloud jenkins"
+    (interactive "sBuffer name: bxiao-cloud-jenkins-")  
+    (remote-term (format "bxiao-cloud-jenkins-%s" buffer-name) "ssh" "root@jenkins.bxiao.dev.skytap.com"))
+
 (defun shell-bxiao-jenkins (buffer-name)
   "Shell of bxiao cloud jenkins"
     (interactive "sBuffer name: bxiao-cloud-jenkins-")  
-    (eshell-command (format "pushd . & cd /ssh:root@jenkins.bxiao.dev.skytap.com:/highland/jenkins/jobs/hosting_platform/workspace & shell jenkins-%s & popd" buffer-name)))
+    (eshell-command (format "pushd . & cd /ssh:root@jenkins.bxiao.dev.skytap.com:/highland/jenkins/jobs/hosting_platform/workspace & shell bxiao-jenkins-%s & popd" buffer-name)))
 
 (defun shell-integ (buffer-name)
   "Shell of integ"
     (interactive "sBuffer name: integ-")  
     (eshell-command (format "pushd . & cd /ssh:root@sea5m1logger1.mgt.integ.skytap.com: & shell integ-%s & popd" buffer-name)))
 
+(defun term-integ (buffer-name)
+  "Term of integ"
+    (interactive "sBuffer name: integ-")  
+    (remote-term (format "integ-%s" buffer-name) "ssh" "root@sea5m1logger1.mgt.integ.skytap.com"))
+
 (defun shell-integ-mysql()
   "Shell of integ my sql"
     (interactive)  
-    (eshell-command "pushd . & /ssh:root@sea5m1mysql1.mgt.integ.skytap.com: & shell integ-mysql & popd"))
+    (eshell-command "pushd . & /ssh:root@sea5m1mysql5.mgt.integ.skytap.com: & shell integ-mysql & popd"))
+
+(defun shell-integ-sea5r1 (buffer-name)
+  "Shell of integ"
+    (interactive "sBuffer name: integ-sea5r1-")  
+    (eshell-command (format "pushd . & cd /ssh:root@sea5r1logger1.mgt.integ.skytap.com: & shell integ-sea5r1-%s & popd" buffer-name)))
+
+(defun term-integ-sea5r1 (buffer-name)
+  "Term of integ"
+    (interactive "sBuffer name: integ-sea5r1-")  
+    (remote-term (format "integ-sea5r1-%s" buffer-name) "ssh" "root@sea5r1logger1.mgt.integ.skytap.com"))
+
+(defun shell-integ-sea5r1-mysql (buffer-name)
+  "Shell of integ"
+    (interactive "sBuffer name: integ-sea5r1-mysql-")  
+    (eshell-command (format "pushd . & cd /ssh:root@sea5r1mysqlmm1.mgt.integ.skytap.com: & shell integ-sea5r1-mysql-%s & popd" buffer-name)))
+
+(defun shell-integ-tuk5r1 (buffer-name)
+  "Shell of integ"
+    (interactive "sBuffer name: integ-tuk5r1-")  
+    (eshell-command (format "pushd . & cd /ssh:root@tuk5r1logger1.mgt.integ.skytap.com: & shell integ-tuk5r1-%s & popd" buffer-name)))
+
+(defun term-integ-tuk5r1 (buffer-name)
+  "Term of integ"
+    (interactive "sBuffer name: integ-tuk5r1")  
+    (remote-term (format "integ-tuk5r1-%s" buffer-name) "ssh" "root@tuk5r1logger1.mgt.integ.skytap.com"))
+
+(defun shell-integ-tuk5r1-mysql (buffer-name)
+  "Shell of integ"
+    (interactive "sBuffer name: integ-tuk5r1-mysql-")  
+    (eshell-command (format "pushd . & cd /ssh:root@tuk5r1mysqlmm1.mgt.integ.skytap.com: & shell integ-tuk5r1-mysql-%s & popd" buffer-name)))
+
+(defun shell-integ-jenkins (buffer-name)
+  "Shell of integ"
+    (interactive "sBuffer name: integ-jenkins-")  
+    (eshell-command (format "pushd . & cd /ssh:root@integ.ci.skytap.com:/ & shell integ-jenkins-%s & popd" buffer-name)))
+
+(defun shell-test (buffer-name)
+  "Shell of test"
+    (interactive "sBuffer name: test-")  
+    (eshell-command (format "pushd . & cd /ssh:root@tuk6m1logger1.mgt.test.skytap.com: & shell test-%s & popd" buffer-name)))
+
+(defun shell-test-mysql()
+  "Shell of integ my sql"
+    (interactive)  
+    (eshell-command "pushd . & cd /ssh:root@tuk6m1mysqlplvip1.mgt.test.skytap.com: & shell test-mysql & popd"))
+
+(defun term-puppetmaster (buffer-name)
+  "Shell of bxiao cloud puppetmaster"
+    (interactive "sBuffer name: puppetmaster-")  
+    (remote-term (format "puppetmaster-%s" buffer-name) "ssh" "highland@puppetmaster"))
 
 (defun shell-puppetmaster (buffer-name)
   "Shell of puppermaster"
@@ -527,6 +637,21 @@ Subsequent calls expands the selection to larger semantic unit."
   "Shell of jenkins"
     (interactive "sBuffer name: jenkins-")  
     (eshell-command (format "pushd . & cd /ssh:highland@jenkins:/highland/jenkins/jobs/hosting_platform/workspace & shell jenkins-%s & popd" buffer-name)))
+
+(defun shell-jenkins2 (buffer-name)
+  "Shell of jenkins2"
+    (interactive "sBuffer name: jenkins2-")  
+    (eshell-command (format "pushd . & cd /ssh:highland@jenkins2:/highland/jenkins/jobs/hosting_platform_next/workspace & shell jenkins2-%s & popd" buffer-name)))
+
+(defun shell-dev2 (buffer-name)
+  "Shell of dev2"
+    (interactive "sBuffer name: dev2-")  
+    (eshell-command (format "pushd . & cd /ssh:highland@dev2: & shell dev2-%s & popd" buffer-name)))
+
+(defun term-dev2 (buffer-name)
+  "Shell of bxiao cloud puppetmaster"
+    (interactive "sBuffer name: dev2-")  
+    (remote-term (format "dev2-%s" buffer-name) "ssh" "highland@dev2"))
 
 (defun accounting-list-account (filter)
   "List accounts that matches given filter"
@@ -567,6 +692,18 @@ Subsequent calls expands the selection to larger semantic unit."
 
 (fset 'greenbox-merge-vm
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("GreenboxAPI.merge('bx-chargetag', 'bx-datacenter', 'configuration-', ['configuration-39700'], [], None, 'account_depot-', False, True, target_has_internet_disabled_flag=False)" 0 "%d")) arg)))
+
+(defun mq-write-request-message (service_name action payload region)
+  "Send mq request message"
+    (interactive
+       (list
+	(completing-read "Service name: " '("charon"))
+	(completing-read "Action: " '("destroy_rsync_source_endpoint"))
+	(read-string "Payload: ")
+	(completing-read "region: " '("integ/tuk5r1"))
+       )
+    )
+  (insert (format "context.mq.write_request_message(service_name='%s', action='%s',payload=%s, region='%s', pre_write_callback=None, fire_and_forget=None)" service_name action payload region)))
 
 (fset 'systemtest-cleanup
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/opt/skytap/bin/skytap-cmd system_test_cleanup" 0 "%d")) arg)))
@@ -635,10 +772,11 @@ Subsequent calls expands the selection to larger semantic unit."
   (insert "from hosting_platform.common.errors import InternalError\n")
   (insert "with transaction() as tx:\n")
   (insert (format "    tx.add(%s)\n" operation))
-  (insert (format "    %s.configuration.vms[0].operation = None\n" operation))
-  (insert (format "    %s.configuration.operation = None\n" operation))
-  (insert (format "    %s.error = InternalError('%s').error\n" operation reason))
-  (insert (format "    __configuration_key__ = %s.configuration.key\n" operation)))
+  (insert (format "    for configuration in %s.configuration_exclusions:\n" operation))
+  (insert (format "        for vm in configuration.vms:\n"))
+  (insert (format "            vm.operation = None\n"))
+  (insert (format "    configuration.operation = None\n"))
+  (insert (format "    %s.error = InternalError('%s').error\n" operation reason)))
 
 (defun cmcmd-release-vms-exclusion (operation vm_keys reason)
   (interactive "sOperation variable(__o__)\nsVM keys:\nsReason:")
@@ -693,6 +831,11 @@ Subsequent calls expands the selection to larger semantic unit."
     (interactive
        "sGUID:")
   (insert (format "skytap-cmd strgcmd mountctx %s" guid)))
+
+(defun hmcmd-list-esx ()
+  "List ESX nodes"
+  (interactive)
+  (insert (format "skytap-cmd hmcmd esx list")))
 
 
 ;;;---------------------

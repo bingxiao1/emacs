@@ -77,6 +77,7 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/highland/"
  "/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/"
  "/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/"
  "/highland/hosting_platform/hosting_platform/services/charon/"
@@ -91,7 +92,6 @@
  "/highland/configs/integ/"
  "/highland/hosting_platform/hosting_platform/system_tests/"
  "/ssh:root@util2.bxiao.dev.skytap.com:/highland/config/"
- "/highland/"
  "/highland/config/logging/"
  "/highland/config/"
  "/highland/configs/bxiao-dev/"
@@ -131,6 +131,7 @@
 
 ;; ----- ido-work-file-list -----
 (
+ ".emacs"
  "test_base.py"
  "base.py"
  "transport.py"
@@ -140,24 +141,19 @@
  "cmcmd.py"
  "services.yaml"
  "hosting_platform_conf.yaml"
- "message_queue_conf.yaml"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/highland/" (21257 9151) "hosting_platform_r53/" ".nautilus/" ".profile" ".hgrc" ".newsrc-dribble" "xsel" ".bundler/" "logs/" ".notes" ".pulse-cookie" ".mozilla/" ".puppet/" "#helloworld.py#~" ".mysql_history" "Downloads/" ".ipython/" ".esd_auth" ".xsession-errors" ".selected_editor" "web/" "clients/" ".eclipse/" ".emacs_bash~" ".gvfs/" "hs_err_pid18034.log" ".ICEauthority" ".local/" "service_control/" "Pictures/" ".Xauthority" ".lesshst" ".org-jira/" ".gnupg/" "org/" ".emacs.d/" ".emacs~" "build/" "#hello.py#" "git/" "temp/" "Videos/" "test" ".emacs_bash" ".ido.last~" "ui_layer/" ".ovftool.ssldb" "Public/" "system_test_fixtures/" "my_emacs_cheat_sheet" ".bashrc" "my_emacs_cheat_sheet~" "dead.letter" "Music/" ".gnome2_private/" ".speech-dispatcher/" ".emacs" ".bash_history" ".emacs.desktop.lock" ".emacs.bmk" ".gstreamer-0.10/" "Desktop/" "Documents/" ".bash_aliases" "Templates/" "News/" ".config/" "./" ".pulse/" "hg_exports/" ".bashrc~" ".xsel.log" "tools/" "hs_err_pid17992.log" "tmp/" ".hg/" "resources/" ".pip/" "bxiaorepo/" ".update-notifier/" ".viminfo" ".ssh/" ".screenrc" ".bash_logout" "workspace/" "configs/" "hosting_platform/" ".gconfd/" "mercurial/" "config/" "distribute-0.6.10.tar.gz" ".eshell/" "rrds/" "var/" ".gtk-bookmarks" ".gnome2/" ".xsession-errors.old" "hs_err_pid3132.log" ".cache/" "hs_err_pid18399.log" ".gconf/" ".ido.last" ".emacs.desktop" "skytap-support/" ".dbus/" "../" ".bash_profile")
+
  ("/highland/git/org-jira/" (21092 24348) ".git/" "org-jira.el" "./" "README.org" "jiralib.el" "jira-users.el" "../")
 
  ("/highland/hosting_platform/hosting_platform/services/configuration_manager/operations/" (21235 53268) "events.py" "accounts.py" "setters.py" "transport.py.orig" "tunnels.py" "vpns.py" "network_provisioning.py" "mixin.py" "assets.py" "transport.py" "reconciliation.py" "provision.py" "networks.py" "operations.py" "disk_policies.py" "published_services.py" "configurations.py" "base.py.orig" "__init__.py" "inspection.py.orig" "unit_tests/" "is_node_up.py" "./" "vms.py" "quota_manager.py" "inspection.py" "#transport.py#" "base.py" "depots.py" "#base.py#" "StorageHelper.py" "delete.py" "rfb_ports.py" "../" "services.py" "unprovision.py")
 
  ("/highland/hosting_platform/" (21235 53268) "capfile" "cruise_config.rb" "addCopyright.py" ".pydevproject" ".hgignore" ".project" "Rakefile" "./" "scripts/" ".hg/" "hosting_platform/" "VMwareHostingManager/" ".hgtags" "../")
 
- ("/highland/" (21236 3135) ".nautilus/" ".profile" ".hgrc" ".newsrc-dribble" "xsel" ".bundler/" "logs/" ".notes" ".pulse-cookie" ".mozilla/" ".puppet/" "#helloworld.py#~" ".mysql_history" "Downloads/" ".ipython/" ".esd_auth" ".xsession-errors" ".selected_editor" "web/" "clients/" ".eclipse/" ".emacs_bash~" ".gvfs/" "hs_err_pid18034.log" ".ICEauthority" ".local/" "service_control/" "Pictures/" ".Xauthority" ".lesshst" ".org-jira/" ".gnupg/" "org/" ".emacs.d/" ".emacs~" "build/" "#hello.py#" "git/" "temp/" "Videos/" "test" ".emacs_bash" ".ido.last~" "ui_layer/" ".ovftool.ssldb" "Public/" "my_emacs_cheat_sheet" ".bashrc" "my_emacs_cheat_sheet~" "dead.letter" "Music/" ".gnome2_private/" ".speech-dispatcher/" ".emacs" ".bash_history" ".emacs.desktop.lock" ".emacs.bmk" ".gstreamer-0.10/" "Desktop/" "Documents/" ".bash_aliases" "Templates/" "News/" ".config/" "./" ".pulse/" "hg_exports/" ".bashrc~" ".xsel.log" "tools/" "hs_err_pid17992.log" "tmp/" ".hg/" "resources/" ".pip/" "bxiaorepo/" ".update-notifier/" ".viminfo" ".ssh/" ".screenrc" ".erlang.cookie" ".bash_logout" "workspace/" "configs/" "hosting_platform/" ".gconfd/" "mercurial/" "config/" "distribute-0.6.10.tar.gz" ".eshell/" "rrds/" "var/" ".gtk-bookmarks" ".gnome2/" ".xsession-errors.old" "hs_err_pid3132.log" ".cache/" "hs_err_pid18399.log" ".gconf/" ".ido.last" ".emacs.desktop" "skytap-support/" ".dbus/" "../" "packages/" ".bash_profile")
-
- ("/ssh:root@app.bxiao.dev.skytap.com:/root/" (ftp . 386590.4841666667) ".bash_profile" "../" ".cache/" ".erlang.cookie" ".viminfo" ".debtags/" "./" ".bash_history" ".bashrc" "vmware-tools-distrib/" ".lesshst" "VMwareTools-8.3.2-257589.tar.gz" ".gem/" ".aptitude/" ".tramp_history" ".profile")
-
  ("/highland/hosting_platform/hosting_platform/services/charon/" (21167 19427) "find_vmx.py" "db.py" "charon_worker_thread.py" "charon_context.py" "storage_helpers.py" "system_tests/" "import_operation.py" "charon_service.py" "__init__.py" "unit_tests/" "Rakefile" "export_operation.py" "./" "set_disks_info_operation.py" "depot_model.py" "long_running_command.py" "operation_base.py" "monitoring_metrics.py" "../")
-
- ("/ssh:root@util1.bxiao.dev.skytap.com:/root/" (ftp . 386552.0413888889) "../" ".gem/" ".debtags/" ".lesshst" ".viminfo" ".profile" ".ssh/" ".bash_profile" "./" ".aptitude/" ".Xauthority" ".bash_history" ".bashrc" ".vim/" ".hgrc" ".cache/" ".tramp_history" ".erlang.cookie")
 
  ("/highland/hosting_platform/hosting_platform/services/storage/" (21205 43013) "ganglia/" "depot_relocation.py" "storage_service.py" "SolarisShareOptions.py" "func_tests/" "placement/" "depot_statistics_helper.py" "derp_multiple.py" "StorageManager.py" "release_all_depots.py" "keg_adapter_service.py" "__init__.py" "unit_tests/" "./" "sns/" "StorageDepot.py" "strgcmd.py" "ops_tools/" "model/" "contrib/" "padnums.py" "../")
 
