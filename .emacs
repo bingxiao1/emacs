@@ -329,21 +329,21 @@ Subsequent calls expands the selection to larger semantic unit."
     (interactive
        (list
 	(completing-read "Service name: " '("control_host" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service"))))
-    (insert (format "skycap svc:%s:upgrade" svc)))
+    (insert (format "ALL_REGIONS=1 skycap svc:%s:upgrade" svc)))
 
 (defun skycap-service-start (svc)  
       "Insert command to start skytap services"  
     (interactive
        (list
 	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
-    (insert (format "skycap svc:%s:start" svc)))
+    (insert (format "ALL_REGIONS=1 skycap svc:%s:start" svc)))
 
 (defun skycap-service-stop (svc)  
       "Insert command to stop skytap services"  
     (interactive
        (list
 	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
-    (insert (format "skycap svc:%s:stop" svc)))
+    (insert (format "ALL_REGIONS=1 skycap svc:%s:stop" svc)))
 
 (defun skycap-service-status (svc)  
       "Insert command to show status of skytap services"  
@@ -358,7 +358,7 @@ Subsequent calls expands the selection to larger semantic unit."
        (list
 	(completing-read "Database: " '("greenbox" "configuration" "accounting" "storage" "charon"))))
     (interactive "sDatabase: ")
-    (insert (format "skycap db:%s:migrate" database)))
+    (insert (format "ALL_REGIONS=1 skycap db:%s:migrate" database)))
 
 (defun skycap-puppetize ()  
       "Insert command to puppetize stack"  
@@ -389,22 +389,22 @@ Subsequent calls expands the selection to larger semantic unit."
 (defun skycap-mq-start ()  
       "Insert command to start message queue service"
     (interactive)
-    (insert "skycap svc_grp:message_queue_service:start"))
+    (insert "ALL_REGIONS=1 skycap svc_grp:message_queue_service:start"))
 
 (defun skycap-mq-stop ()  
       "Insert command to stop message queue service"  
     (interactive)
-    (insert "skycap svc_grp:message_queue_service:stop"))
+    (insert "ALL_REGIONS=1 skycap svc_grp:message_queue_service:stop"))
 
 (defun skycap-mq-status ()  
       "Insert command to stop message queue service"  
     (interactive)
-    (insert (format "skycap svc:rabbitmq:status")))
+    (insert (format "ALL_REGIONS=1 skycap svc:rabbitmq:status")))
 
 (defun skycap-mq-initialize ()
       "Insert command to show status of MQ"  
     (interactive)  
-    (insert "skycap svc_grp:message_queue_service:mq_initialize"))
+    (insert "ALL_REGIONS=1 skycap svc_grp:message_queue_service:mq_initialize"))
 
 (defun skycap-code-update-all ()
       "Insert command to update all code"  
@@ -414,17 +414,17 @@ Subsequent calls expands the selection to larger semantic unit."
 (defun skycap-upgrade ()
       "Insert command to upgrade all services except mysql and syslog"  
     (interactive)  
-    (insert (format "skycap upgrade")))
+    (insert (format "ALL_REGIONS=1 skycap upgrade")))
 
 (defun skycap-full-stop ()
       "Insert command to stop all services"  
     (interactive)  
-    (insert (format "skycap full-stop")))
+    (insert (format "ALL_REGIONS=1 skycap full-stop")))
 
 (defun skycap-start ()
       "Insert command to start all services"  
     (interactive)  
-    (insert (format "skycap start")))
+    (insert (format "ALL_REGIONS=1 skycap start")))
 
 ;;; -----------------------------
 ;;; MySQL queries
