@@ -99,10 +99,10 @@
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
+(ignore-errors (when
     (load
      (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+  (package-initialize)))
 
 (require 'python)
 
@@ -316,9 +316,9 @@ Subsequent calls expands the selection to larger semantic unit."
 ;;; Enable bash completion in shell modebash
 ;;; BX: Does not appear to be working
 ;;; ------------------------------
-(add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/")
-(require 'bash-completion)
-(bash-completion-setup)
+(ignore-errors (add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/"))
+(ignore-errors (require 'bash-completion))
+(ignore-errors (bash-completion-setup))
 
 
 ;;; ------------------------------
