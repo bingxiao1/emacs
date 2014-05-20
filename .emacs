@@ -20,6 +20,18 @@
 (ffap-bindings)                      ; do default key bindings
 (setq ffap-require-prefix t)         ; require prefix with ffap bindings so that ffap binding won't interfere with ido
 
+(defun kill-other-buffers ()
+      "Kill all other buffers."
+      (interactive)
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
+(defun kill-dired-buffers ()
+    (interactive)
+     (mapc (lambda (buffer) 
+           (when (eq 'dired-mode (buffer-local-value 'major-mode buffer)) 
+             (kill-buffer buffer))) 
+         (buffer-list)))
+
 ;; ===== Enable mouse support ====
                                        
 (require 'xt-mouse)                   
@@ -229,8 +241,8 @@
   (occur "^\\(\\s-*def\\s-+\\)\\|\\(\\s-*class\\s-*\\)"))
 
 ;; Load mercurial.el
-;; (add-to-list 'load-path "~/.emacs.d/mercurial/")
-;; (require 'mercurial "mercurial.el")
+(add-to-list 'load-path "~/.emacs.d/mercurial/")
+(require 'mercurial "mercurial.el")
 
 ;; Display column number
 (setq column-number-mode t)
@@ -312,6 +324,8 @@ Subsequent calls expands the selection to larger semantic unit."
 (global-set-key (kbd "M-8") 'extend-selection)
 
 
+(require 'hide-lines)
+
 ;;; ------------------------------
 ;;; Enable bash completion in shell modebash
 ;;; BX: Does not appear to be working
@@ -324,33 +338,14 @@ Subsequent calls expands the selection to larger semantic unit."
 ;;; ------------------------------
 ;;; skycap shortcuts
 ;;; ------------------------------
-(defun skycap-upgrade-service (svc)  
-      "Insert command to upgrade skytap services and configurations"  
-    (interactive
-       (list
-	(completing-read "Service name: " '("control_host" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service"))))
-    (insert (format "ALL_REGIONS=1 skycap svc:%s:upgrade" svc)))
-
-(defun skycap-service-start (svc)  
+(defun skycap-service-action (svc action)  
       "Insert command to start skytap services"  
     (interactive
        (list
-	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
-    (insert (format "ALL_REGIONS=1 skycap svc:%s:start" svc)))
-
-(defun skycap-service-stop (svc)  
-      "Insert command to stop skytap services"  
-    (interactive
-       (list
-	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
-    (insert (format "ALL_REGIONS=1 skycap svc:%s:stop" svc)))
-
-(defun skycap-service-status (svc)  
-      "Insert command to show status of skytap services"  
-    (interactive
-       (list
-	(completing-read "Service name: " '("mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))))
-    (insert (format "skycap svc:%s:status" svc)))
+   	(completing-read "Service name: " '("control_host" "mysqld" "greenbox" "configuration_manager" "accounting_service" "storage_service" "storage_node_service" "charon_service" "name_service" "syslog_ng"))
+	(completing-read "Action: " '("upgrade" "start" "stop" "status" "puppetize" "update_config" "update_config_restart"))
+       ))
+    (insert (format "ALL_REGIONS=1 skycap svc:%s:%s" svc action)))
 
 (defun skycap-db-migrate (database)  
       "Insert command to migrate database"  
@@ -360,10 +355,14 @@ Subsequent calls expands the selection to larger semantic unit."
     (interactive "sDatabase: ")
     (insert (format "ALL_REGIONS=1 skycap db:%s:migrate" database)))
 
-(defun skycap-puppetize ()  
-      "Insert command to puppetize stack"  
-    (interactive)
-    (insert "skycap svc:control_host:puppetize"))
+(defun skycap-cron-action (svc action)  
+      "Insert command to check the status of cron job"  
+    (interactive
+       (list
+	(completing-read "Service name: " '("system_test" "system_test_cleanup" "system_test_performance"))
+	(completing-read "Action: " '("cron_status" "install_cron" "remove_cron"))
+       ))
+    (insert (format "skycap svc:%s:%s" svc action)))
 
 (defun skycap-cron-status (svc)  
       "Insert command to check the status of cron job"  
@@ -484,6 +483,7 @@ Subsequent calls expands the selection to larger semantic unit."
 ;;; -----------------------------
 ;; Use this for remote so I can specify command line arguments
 (defun remote-term (new-buffer-name cmd &rest switches)
+  (print switches)
     (setq term-ansi-buffer-name (concat "*" new-buffer-name "*"))
     (setq term-ansi-buffer-name (generate-new-buffer-name term-ansi-buffer-name))
     (setq term-ansi-buffer-name (apply 'make-term term-ansi-buffer-name cmd nil switches))
@@ -567,6 +567,11 @@ Subsequent calls expands the selection to larger semantic unit."
   "Term of integ"
     (interactive "sBuffer name: integ-")  
     (remote-term (format "integ-%s" buffer-name) "ssh" "root@sea5m1logger1.mgt.integ.skytap.com"))
+
+(defun shell-integ-puppetmaster()
+  "Shell of integ puppetmaster"
+    (interactive)  
+    (eshell-command "pushd . & /ssh:root@puppetmaster.mgt.integ.skytap.com: & shell integ-puppetmaster & popd"))
 
 (defun shell-integ-mysql()
   "Shell of integ my sql"
@@ -717,21 +722,21 @@ Subsequent calls expands the selection to larger semantic unit."
 (fset 'systemtest-status
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("skycap svc:system_test:cron_status" 0 "%d")) arg)))
 
-(fset 'hg-serve
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg serve -A /highland/logs/hgserve.log -d -E /highland/logs/hgserve.log" 0 "%d")) arg)))
-
 ;;; ------------------------------
 ;;; hg shortcuts
 ;;; ------------------------------
 
+(fset 'hg-serve
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg serve -A /highland/logs/hgserve.log -d -E /highland/logs/hgserve.log" 0 "%d")) arg)))
+
 (fset 'hg-pull-all
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configshg pull -u -R /highland/hosting_platformhg pull -u -R /highland/packageshg pull -u -R /highland/service_controlhg pull -u -R /highland/skytap-support" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configshg pull -u -R /highland/hosting_platformhg pull -u -R /highland/packageshg pull -u -R /highland/service_controlhg pull -u -R /highland/skytap-supporthg pull -u -R /highland/statsd" 0 "%d")) arg)))
 
 (fset 'hg-pull-all-bxiao
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs bxiaohg pull -u -R /highland/hosting_platform bxiaohg pull -u -R /highland/packages bxiaohg pull -u -R /highland/service_control bxiaohg pull -u -R /highland/skytap-support bxiao" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs bxiaohg pull -u -R /highland/hosting_platform bxiaohg pull -u -R /highland/packages bxiaohg pull -u -R /highland/service_control bxiaohg pull -u -R /highland/skytap-support bxiaohg pull -u -R /highland/statsd bxiao" 0 "%d")) arg)))
 
 (fset 'hg-pull-all-next
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs r_nexthg pull -u -R /highland/hosting_platform r_nexthg pull -u -R /highland/packages r_nexthg pull -u -R /highland/service_control r_nexthg pull -u -R /highland/skytap-support r_next" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs r_nexthg pull -u -R /highland/hosting_platform r_nexthg pull -u -R /highland/packages r_nexthg pull -u -R /highland/service_control r_nexthg pull -u -R /highland/skytap-support r_nexthg pull -u -R /highland/statsd r_next" 0 "%d")) arg)))
 
 (defun cmcmd-list-services ()
   "List services registered in cm"
@@ -843,3 +848,28 @@ Subsequent calls expands the selection to larger semantic unit."
 ;;;--------------------
 (fset 'check-disk
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("dmesg | grep \"EXT4-fs\"" 0 "%d")) arg)))
+
+;;;----------------------
+;;; Log analyze commands
+;;;---------------------
+(defun hide-transaction-started ()
+  (interactive)
+  (hide-lines-matching "transaction [0123456789]+ started")
+)
+
+(defun hide-transaction-committed ()
+  (interactive)
+  (hide-lines-matching "transaction [0123456789]+ committed")
+)
+
+(defun hide-get-vm-ephemera ()
+  (interactive)
+  (hide-lines-matching "request.get_vm_ephemera")
+  (hide-lines-matching "\"action\": \"get_vm_ephemera\"")
+)
+
+(defun hide-get-configuration-ephemera ()
+  (interactive)
+  (hide-lines-matching "request.get_configuration_ephemera")
+  (hide-lines-matching "\"action\": \"get_configuration_ephemera\"")
+)
