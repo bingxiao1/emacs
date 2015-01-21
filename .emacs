@@ -412,20 +412,20 @@ Subsequent calls expands the selection to larger semantic unit."
 
 (require 'hide-lines)
 
-(add-to-list 'load-path "~/.emacs.d/shell-command/")
-(require 'shell-command)
-(shell-command-completion-mode)
+(ignore-errors (add-to-list 'load-path "~/.emacs.d/shell-command/"))
+(ignore-errors (require 'shell-command))
+(ignore-errors (shell-command-completion-mode))
 
 ;;; ------------------------------
 ;;; Enable bash completion in shell mode (depends on shell-command.el)
 ;;; BX: Does not appear to be working 
 ;;; ------------------------------
-;; (ignore-errors (add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/"))
-;; (ignore-errors (require 'bash-completion))
-;; (ignore-errors (bash-completion-setup))
-(add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/")
-(require 'bash-completion)
-(bash-completion-setup)
+(ignore-errors (add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/"))
+(ignore-errors (require 'bash-completion))
+(ignore-errors (bash-completion-setup))
+;; (add-to-list 'load-path "~/.emacs.d/emacs-bash-completion/")
+;; (require 'bash-completion)
+;; (bash-completion-setup)
 
 
 ;;; ------------------------------
