@@ -43,4 +43,12 @@
   ("SERVICE_NAME" .
    [1 0 0 0 0 0 0 0 0 0 0 0])
   ("api_name" .
-   [1 0 0 0 0 0 0 0])))
+   [1 0 0 0 0 0 0 0])
+  ("partial" .
+   [2 0 0 0 0 0 0])
+  ("send_charon_cancel" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("send_charon_destroy_rsync_source_endpoint" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("hosting_node_fixture" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])))

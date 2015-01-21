@@ -63,6 +63,35 @@ Display a list of packages.
 
 ;;;***
 
+;;;### (autoloads (hide-lines-show-all hide-lines-matching hide-lines-not-matching
+;;;;;;  hide-lines) "hide-lines/hide-lines" "../../../.emacs.d/el-get/hide-lines/hide-lines.el"
+;;;;;;  "b2271b0f6deb493d1d9581f250394475")
+;;; Generated autoloads from ../../../.emacs.d/el-get/hide-lines/hide-lines.el
+
+(autoload 'hide-lines "hide-lines/hide-lines" "\
+Hide lines matching the specified regexp.
+With prefix arg of 4 (C-u) hide lines that do not match the specified regexp.
+With any other prefix arg, reveal all hidden lines.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'hide-lines-not-matching "hide-lines/hide-lines" "\
+Hide lines that don't match the specified regexp.
+
+\(fn SEARCH-TEXT)" t nil)
+
+(autoload 'hide-lines-matching "hide-lines/hide-lines" "\
+Hide lines matching the specified regexp.
+
+\(fn SEARCH-TEXT)" t nil)
+
+(autoload 'hide-lines-show-all "hide-lines/hide-lines" "\
+Show all areas hidden by the filter-buffer command.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (jedi:setup anything-jedi-related-names helm-jedi-related-names
 ;;;;;;  jedi:ac-setup jedi:complete jedi:start-dedicated-server)
 ;;;;;;  "jedi/jedi" "jedi/jedi.el" (21000 28324))
@@ -128,18 +157,18 @@ what jedi can do.
 
 ;;;***
 
-;;;### (autoloads nil nil ("auto-complete/auto-complete-config.el"
-;;;;;;  "auto-complete/auto-complete-pkg.el" "ctable/ctable.el" "ctable/test-ctable.el"
-;;;;;;  "deferred/concurrent-sample.el" "deferred/concurrent.el"
-;;;;;;  "deferred/deferred-samples.el" "deferred/deferred.el" "deferred/test-concurrent.el"
-;;;;;;  "deferred/test-deferred.el" "el-get/el-get-autoloads.el"
-;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
+;;;### (autoloads nil nil ("../../../.emacs.d/el-get/hide-lines/hide-lines.el"
+;;;;;;  "auto-complete/auto-complete-config.el" "auto-complete/auto-complete-pkg.el"
+;;;;;;  "ctable/ctable.el" "ctable/test-ctable.el" "deferred/concurrent-sample.el"
+;;;;;;  "deferred/concurrent.el" "deferred/deferred-samples.el" "deferred/deferred.el"
+;;;;;;  "deferred/test-concurrent.el" "deferred/test-deferred.el"
+;;;;;;  "el-get/el-get-autoloads.el" "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
 ;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
 ;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
 ;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el" "epc/epc.el"
 ;;;;;;  "epc/epcs.el" "epc/test-epc.el" "fuzzy/fuzzy.el" "jedi/jedi-pkg.el"
-;;;;;;  "jedi/test-jedi.el" "jedi/tryout-jedi.el" "jira/jira.el"
-;;;;;;  "popup/popup.el" "xml-rpc/xml-rpc.el") (21090 63419 899305))
+;;;;;;  "jedi/test-jedi.el" "jedi/tryout-jedi.el" "popup/popup.el"
+;;;;;;  "xml-rpc/xml-rpc.el") (21371 39327 785325))
 
 ;;;***
 

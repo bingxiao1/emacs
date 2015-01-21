@@ -12,6 +12,10 @@
 	     (deferred ctable)))
  (fuzzy status "installed" recipe
 	(:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
+ (hide-lines status "installed" recipe
+	     (:name hide-lines :auto-generated t :type emacswiki :description "Commands for hiding lines based on a regexp" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/hide-lines.el"))
+ (icicles status "installed" recipe
+	  (:name icicles :auto-generated t :type emacswiki :description "Minibuffer input completion and cycling." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/icicles.el"))
  (jedi status "installed" recipe
        (:name jedi :description "An awesome Python auto-completion for Emacs" :type github :pkgname "tkf/emacs-jedi" :build
 	      (("make" "requirements"))
