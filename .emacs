@@ -1,4 +1,13 @@
+(require 'whitespace)
+
+;; (add-hook 'python-mode-hook
+;;       (lambda ()
+;;         (setq indent-tabs-mode t)
+;;         (setq tab-width 4)
+;;         (setq python-indent 4)))
+
 ;; Add MELPA to package archive list
+
 (when (> emacs-major-version 23)
     (require 'package)
     (package-initialize)
@@ -11,6 +20,10 @@
   (interactive)
   (load-file "~/.emacs"))
 
+(defun generate-buffer ()
+  (interactive)
+  (switch-to-buffer (make-temp-name "scratch")))
+
 ;;; Cache password for tramp remote sessions
 (setq password-cache-expiry nil)
 
@@ -22,6 +35,22 @@
    (other-window -1))
 
 (define-key global-map (kbd "C-x p") 'prev-window)
+(global-set-key (kbd "M-[ A") (kbd "<up>"))
+(global-set-key (kbd "M-[ B") (kbd "<down>"))
+(global-set-key (kbd "M-[ C") (kbd "<right>"))
+(global-set-key (kbd "M-[ D") (kbd "<left>"))
+(global-set-key (kbd "M-[ a") (kbd "S-<up>"))
+(global-set-key (kbd "M-[ b") (kbd "S-<down>"))
+(global-set-key (kbd "M-[ c") (kbd "S-<right>"))
+(global-set-key (kbd "M-[ d") (kbd "S-<left>"))
+(global-set-key (kbd "M-O a") (kbd "C-<up>"))
+(global-set-key (kbd "M-O b") (kbd "C-<down>"))
+(global-set-key (kbd "M-O c") (kbd "C-<right>"))
+(global-set-key (kbd "M-O d") (kbd "C-<left>"))
+(global-set-key (kbd "ESC M-[ A") (kbd "M-<up>"))
+(global-set-key (kbd "ESC M-[ B") (kbd "M-<down>"))
+(global-set-key (kbd "ESC M-[ C") (kbd "M-<right>"))
+(global-set-key (kbd "ESC M-[ D") (kbd "M-<left>"))
 
 ;; Use ALT-<arrow keys> for window navigation. Before that we need to do the following to set up
 ;; input decode map
@@ -59,7 +88,9 @@
 ;;   ;; (global-set-key (vector (list 'alt 'up))    'windmove-up)
 ;;   ;; (global-set-key (vector (list 'alt 'down))  'windmove-down))
 
-(global-set-key [f3] 'eshell)
+(global-set-key [f5] 'eshell)
+(global-set-key [f6] 'ido-switch-buffer)
+(global-set-key [f7] 'rgrep)
 
 ;;; ffap
 ;;;
@@ -104,8 +135,6 @@
       (deactivate-mark))
     (message "No region active; can't yank to clipboard!")))
 
-(defalias 'cpx 'copy-to-x-clipboard)
-(defalias 'rb 'revert-buffer)
 
 (defun paste-from-x-clipboard()
   (interactive)
@@ -142,15 +171,35 @@
 ;;; Automatically save session when quit
 (desktop-save-mode 1)
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; (defun file-name-base (&optional filename)
+;;   "Return the base name of the FILENAME: no directory, no extension.
+;; FILENAME defaults to `buffer-file-name'."
+;;   (file-name-sans-extension
+;;    (file-name-nondirectory (or filename (buffer-file-name)))))
+
+(let ((default-directory  "~/.emacs.d/el-get/"))
+  (normal-top-level-add-subdirs-to-load-path))
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
-(el-get 'sync)
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;; (el-get 'sync)
+
+;; ;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; ;; (unless (require 'el-get nil 'noerror)
+;; ;;   (with-current-buffer
+;; ;;       (url-retrieve-synchronously
+;; ;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+;; ;;     (let (el-get-master-branch)
+;; ;;       (goto-char (point-max))
+;; ;;       (eval-print-last-sexp))))
+;; ;; (el-get 'sync)
 
 
 ;;; This was installed by package-install.el.
@@ -175,10 +224,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(async-shell-command-buffer (quote confirm-kill-process))
+ '(eshell-aliases-file "/highland/.emacs.d/eshell/alias")
+ '(indent-tabs-mode nil)
  '(jira-url "https://jira.corp.skytap.com/rpc/xmlrpc")
  '(menu-bar-mode nil)
  '(python-remove-cwd-from-path nil)
- '(safe-local-variable-values (quote ((prompt-to-byte-compile))))
+ '(safe-local-variable-values (quote ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face tabs trailing lines-tail) (require-final-newline . t) (prompt-to-byte-compile))))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -191,6 +243,23 @@
 (setq sql-user "root")
 (setq sql-password nil)
 
+;; (defun prod-mysql()
+;;   (interactive)
+;;   (let ((sql-user "soup") (sql-password "I5_bo1onki") (sql-server "tuk1bmetricsdb1.mgt.prod.skytap.com"))
+;;     (sql-mysql "prod-mysql")
+;;   )
+;; )
+
+(defun prod-mysql ()
+  "Mysql replicate in prod"
+    (interactive)
+    ;; (eshell-command "pushd . & cd /ssh:bxiao@tuk8linjump3.qa.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem\" \"prod-mysql\" & popd"))
+    (eshell-command "pushd . & cd /ssh:bxiao@tuk1linjump4.prod.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd"))
+
+(defun test-mysql ()
+  "Mysql replicate in test"
+    (interactive)
+    (eshell-command "pushd . & cd /ssh:bxiao@tuk8linjump.qa.skytap.com: & async-shell-command \"mysql -h tuk6bi1.mgt.test.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"test-mysql\" & popd"))
 
 ;;; To show full file path in in emacs window
 (setq frame-title-format
@@ -284,7 +353,7 @@
   (split-line)
   (insert python--pdb-postmortem-string))
 
-(define-key python-mode-map (kbd "<f5>") 'python-insert-breakpoint)
+(define-key python-mode-map (kbd "<f9>") 'python-insert-breakpoint)
 
 (defun python-insert-pause ()  
       "add a pause in Python program"  
@@ -300,6 +369,11 @@
       "import transaction "  
     (interactive)  
     (insert "from hosting_platform.db import transaction"))
+
+(defun python-get-package-location ()  
+      "import transaction "  
+    (interactive)  
+    (insert "import site; site.getsitepackages()"))
 
 (defun python-interactive ()
     "Enter the interactive Python environment"
@@ -331,9 +405,6 @@
 
 ;; Display column number
 (setq column-number-mode t)
-
-;; C-M-% is impossible for me
-(defalias 'qrr 'query-replace-regexp)
 
 ; (require 'jira)
 
@@ -373,6 +444,8 @@
 ;;; Show unique buffer name
 (require 'uniquify)
 
+(require 'register-list)
+
 ;; by Nikolaj Schumacher, 2008-10-20. Released under GPL.
 (defun semnav-up (arg)
   (interactive "p")
@@ -410,6 +483,7 @@ Subsequent calls expands the selection to larger semantic unit."
 (global-set-key (kbd "M-8") 'extend-selection)
 
 
+(add-to-list 'load-path "~/.emacs.d/hide-lines")
 (require 'hide-lines)
 
 (ignore-errors (add-to-list 'load-path "~/.emacs.d/shell-command/"))
@@ -439,6 +513,15 @@ Subsequent calls expands the selection to larger semantic unit."
 	(completing-read "Action: " '("upgrade" "start" "stop" "status" "puppetize" "update_config" "update_config_restart" "update_code"))
        ))
     (insert (format "skycap svc:%s:%s" svc action)))
+
+(defun skycap-service-group-action (svcgrp action)  
+      "Insert command to start skytap services"  
+    (interactive
+       (list
+   	(completing-read "Service group name: " '("web_services"))
+	(completing-read "Action: " '("sequenced_upgrade"))
+       ))
+    (insert (format "skycap svc_grp:%s:%s" svcgrp action)))
 
 (defun skycap-db-migrate (database)  
       "Insert command to migrate database"  
@@ -520,6 +603,14 @@ Subsequent calls expands the selection to larger semantic unit."
 ;;; -----------------------------
 ;;; MySQL queries
 ;;; -----------------------------
+(ignore-errors (add-to-list 'load-path "~/.emacs.d/mysql/"))
+(ignore-errors (add-to-list 'load-path "~/.emacs.d/sql-completion/"))
+(require 'sql-completion)
+;; (setq sql-interactive-mode-hook
+;;       (lambda ()
+;;         (define-key sql-interactive-mode-map "\t" 'comint-dynamic-complete)
+;;         (sql-mysql-completion-init)))
+
 (defun mysql-admin-create-db (host user database)  
       "Insert command to create database"  
     (interactive
@@ -554,6 +645,14 @@ Subsequent calls expands the selection to larger semantic unit."
   (interactive "sDatabase:\nsColumn:")
   (insert (format "select distinct table_name from information_schema.columns where column_name like '%s' and table_schema='%s';" column database)))
 
+(defun mysql-show-relations ()
+  (interactive)
+  (insert "select table_schema, table_name, column_name, referenced_table_schema, referenced_table_name, referenced_column_name 
+from information_schema.key_column_usage 
+where table_schema = schema() -- Detect current scheme in use 
+and referenced_table_name is not null -- Only tables with foreign keys 
+;")
+)
 
 ;;;------------------------------
 ;;; Puppet
@@ -574,7 +673,70 @@ Subsequent calls expands the selection to larger semantic unit."
 ;;; that I don't have full control of.
 ;;; -----------------------------
 ;; Use this for remote so I can specify command line arguments
-(defun remote-term (new-buffer-name cmd &rest switches)
+(setq tramp-user-hosts 
+      '("mq.container-prototype.bxiao.dev.skytap.com root" 
+        "agent-manager.container-prototype.bxiao.dev.skytap.com root"
+        "web-backend.container-prototype.bxiao.dev.skytap.com root"
+        "container-host.container-prototype.bxiao.dev.skytap.com skytap"
+        "docker highland"
+        "puppetmaster highland"
+        "mq1 highland"
+        "jenga root"
+        "source.corp.skytap.com bxiao"
+        "tuk5m1control.mgt.integ.skytap.com bxiao"
+        "tuk5m1logger1.mgt.integ.skytap.com bxiao"
+        "puppetmaster.mgt.integ.skytap.com bxiao"
+        "tuk5m1mysqlcmvip1.mgt.integ.skytap.com bxiao"
+        "tuk5m1mysqlplvip1.mgt.integ.skytap.com bxiao"
+        "tuk5r1control.mgt.integ.skytap.com bxiao"
+        "tuk5r1logger1.mgt.integ.skytap.com bxiao"
+        "tuk5r1mysqlmm1.mgt.integ.skytap.com bxiao"
+        "integ.ci.skytap.com bxiao"
+        "tuk6m1control.mgt.test.skytap.com bxiao"
+        "tuk6m1logger1.mgt.test.skytap.com bxiao"
+        "tuk6m1mysqlcmvip1.mgt.test.skytap.com bxiao"
+        "tuk6m1mysqlhpvip1.mgt.test.skytap.com bxiao"
+        "tuk6m1mqvip1.mgt.test.skytap.com bxiao"
+        "tuk6r1control.mgt.test.skytap.com bxiao"
+        "tuk6r1logger1.mgt.test.skytap.com bxiao"
+        "tuk6r1mysqlplvip1.mgt.test.skytap.com bxiao"
+        "tuk6r1mysqlisvip1.mgt.test.skytap.com bxiao"
+        "tuk6r1mysqlnsvip1.mgt.test.skytap.com bxiao"
+        "tuk6r1mqvip1.mgt.test.skytap.com bxiao"
+        "tuk6r2logger1.mgt.test.skytap.com bxiao"
+        "tuk6r2mysqlplvip1.mgt.test.skytap.com bxiao"
+        "tuk6r2mysqlisvip1.mgt.test.skytap.com bxiao"
+        "tuk6r2mysqlnsvip1.mgt.test.skytap.com bxiao"
+        "tuk6r2mqvip1.mgt.test.skytap.com bxiao"
+        "tuk6bi1.mgt.test.skytap.com bxiao"
+        "lon6r1logger1.mgt.test.skytap.com bxiao"
+        "lon6r1mysqlplvip1.mgt.test.skytap.com bxiao"
+        "lon6r1mysqlisvip1.mgt.test.skytap.com bxiao"
+        "lon6r1mqvip1.mgt.test.skytap.com bxiao"
+        "puppet.mgt.test.skytap.com bxiao"
+        "tuk1linjump4.prod.skytap.com bxiao"
+        "tuk1grits1.prod.skytap.com bxiao"
+        ;; "linjump.prod.skytap.com bxiao"
+        ;; "grits.prod.skytap.com bxiao"
+        ))
+
+(setq my-commands 
+      '("jenga_skip_provisioning\tjenga --base-configuration 6613976 --skip-individual-node-provisioning" 
+        "puppet_hosts\tsudo puppetd -ov --no-daemonize --show_diff --tags hosts"
+        "docker_remove_all_containers\tdocker rm $(docker ps -a -q)"
+        "docker_stop_all_containers\tdocker stop $(docker ps -a -q)"
+        "docker_remove_all_images\tdocker rmi $(docker images -q)"
+        ))
+
+(setq my-skytap-commands 
+      '("mq brokertool\tskytap-cmd mqbrokertool" 
+        "mq trace\tskytap-cmd mqtrace"
+        "esx list\tskytap-cmd hmcmd esx list"
+        "vgr status\tskytap-cmd netcmd vgr status all"
+        "cmcmd\tdocker_wrapper.py cmcmd --vcs-tag=tip"
+        ))
+
+(defun remote-term-internal (new-buffer-name cmd &rest switches)
   (print switches)
     (setq term-ansi-buffer-name (concat "*" new-buffer-name "*"))
     (setq term-ansi-buffer-name (generate-new-buffer-name term-ansi-buffer-name))
@@ -588,12 +750,87 @@ Subsequent calls expands the selection to larger semantic unit."
 (defun term-bxiao-puppetmaster (buffer-name)
   "Shell of bxiao cloud puppetmaster"
     (interactive "sBuffer name: bxiao-cloud-puppetmaster-")  
-    (remote-term (format "bxiao-cloud-puppetmaster-%s" buffer-name) "ssh" "root@puppetmaster.bxiao.dev.skytap.com"))
+    (remote-term-internal (format "bxiao-cloud-puppetmaster-%s" buffer-name) "ssh" "root@puppetmaster.bxiao.dev.skytap.com"))
+
+(defun remote-shell (user-host)
+    (interactive
+       (list
+   	(completing-read "host user: " tramp-user-hosts)
+       ))
+    (let ((host (car (split-string user-host " "))) (user (car (cdr (split-string user-host " ")))))
+      (eshell-command (format "pushd . & cd /ssh:%s@%s: & shell %s & popd" user host host))))
+
+(setq tramp-jenga-user-hosts 
+      '("puppetmaster root"
+        "m1logger1 root"
+        "m1control1 root"
+        "m1cm1 root"
+        "m1wfe1 root"
+        "m1mysqlpl1 root"
+        "m1mysqlcm1 root"
+        "r1logger1 root"
+        "r1nsvc1 root"
+        "r1esx1 root"
+        "r1mysqlpl1 root"
+        "kube-jenkins root"
+        "r1nsxmgr1 admin"
+        "r1nsxsvc1 admin"
+        "r1nsxcontrol1 admin"
+        "r1nsxcontrol2 admin"
+        "r1nsxcontrol3 admin"
+        "m1mq1 root"
+        "r1mq1 root"
+        "m1influxdb1 root"
+        "dev root"
+        "m1influxdb1 root"
+        ))
+
+(defun remote-shell-jenga (user-host)
+    (interactive
+       (list
+   	(completing-read "host: " tramp-jenga-user-hosts)
+       ))
+  (let ((host (car (split-string user-host " "))) (user (car (cdr (split-string user-host " ")))))
+    (let ((ssh-info (split-string (substring (shell-command-to-string (format "python /highland/projects/skytap/get_jenga_connect_info.py -u %s %s" user host)) 0 -1) ", ")))
+      (let ((ip-address (nth 1 ssh-info)))
+        (eshell-command (format "pushd . & cd /ssh:%s@%s: & shell jenga-%s & popd" "root" ip-address host))))))
+
+(defun my-shell-command (alias-command)
+  "Command shell commands"
+    (interactive
+       (list
+   	(completing-read "alias command: " my-commands)
+       ))
+    (let ((alias (car (split-string alias-command "\t"))) (command (car (cdr (split-string alias-command "\t")))))
+      (insert command)))
+
+(defun my-skytap-command (alias-command)
+  "Skytap commands"
+    (interactive
+       (list
+   	(completing-read "alias command: " my-skytap-commands)
+       ))
+    (let ((alias (car (split-string alias-command "\t"))) (command (car (cdr (split-string alias-command "\t")))))
+      (insert command)))
+
+
+;; (defun shell-docker (buffer-name)
+;;   "Shell of docker"
+;;     (interactive "sBuffer name: docker-")  
+;;     (eshell-command (format "pushd . & cd /ssh:highland@docker: & shell docker-%s & popd" buffer-name)))
+
+(defun remote-term (host)
+    (interactive
+       (list
+   	(completing-read "host: " '("mq.container-prototype.bxiao.dev.skytap.com" "agent-manager.container-prototype.bxiao.dev.skytap.com"))
+       ))
+    (let ((user (car (split-string user-host "@"))) (host (car (cdr (split-string user-host "@")))))
+      (remote-term-internal host  "ssh" (format "%s@%s" user host))))
 
 (defun term-bxiao-mysql (buffer-name)
   "Shell of bxiao cloud mysql"
     (interactive "sBuffer name: bxiao-cloud-mysql-")  
-    (remote-term (format "bxiao-cloud-mysql-%s" buffer-name) "ssh" "root@mysql.bxiao.dev.skytap.com"))
+    (remote-term-internal (format "bxiao-cloud-mysql-%s" buffer-name) "ssh" "root@mysql.bxiao.dev.skytap.com"))
 
 (defun shell-bxiao-puppetmaster (buffer-name)
   "Shell of bxiao cloud puppetmaster"
@@ -648,92 +885,27 @@ Subsequent calls expands the selection to larger semantic unit."
 (defun term-bxiao-jenkins (buffer-name)
   "Term of bxiao cloud jenkins"
     (interactive "sBuffer name: bxiao-cloud-jenkins-")  
-    (remote-term (format "bxiao-cloud-jenkins-%s" buffer-name) "ssh" "root@jenkins.bxiao.dev.skytap.com"))
+    (remote-term-internal (format "bxiao-cloud-jenkins-%s" buffer-name) "ssh" "root@jenkins.bxiao.dev.skytap.com"))
 
 (defun shell-bxiao-jenkins (buffer-name)
   "Shell of bxiao cloud jenkins"
     (interactive "sBuffer name: bxiao-cloud-jenkins-")  
     (eshell-command (format "pushd . & cd /ssh:root@jenkins.bxiao.dev.skytap.com:/highland/jenkins/jobs/hosting_platform/workspace & shell bxiao-jenkins-%s & popd" buffer-name)))
 
-(defun shell-integ (buffer-name)
-  "Shell of integ"
-    (interactive "sBuffer name: integ-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@sea5m1logger1.mgt.integ.skytap.com: & shell integ-%s & popd" buffer-name)))
-
-(defun term-integ (buffer-name)
-  "Term of integ"
-    (interactive "sBuffer name: integ-")  
-    (remote-term (format "integ-%s" buffer-name) "ssh" "bxiao@sea5m1logger1.mgt.integ.skytap.com"))
-
-(defun shell-integ-puppetmaster()
-  "Shell of integ puppetmaster"
-    (interactive)  
-    (eshell-command "pushd . & /ssh:bxiao@puppetmaster.mgt.integ.skytap.com: & shell integ-puppetmaster & popd"))
-
-(defun shell-integ-mysql()
-  "Shell of integ my sql"
-    (interactive)  
-    (eshell-command "pushd . & /ssh:bxiao@sea5m1mysql5.mgt.integ.skytap.com: & shell integ-mysql & popd"))
-
-(defun shell-integ-sea5r1 (buffer-name)
-  "Shell of integ"
-    (interactive "sBuffer name: integ-sea5r1-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@sea5r1logger1.mgt.integ.skytap.com: & shell integ-sea5r1-%s & popd" buffer-name)))
-
 (defun term-integ-sea5r1 (buffer-name)
   "Term of integ"
     (interactive "sBuffer name: integ-sea5r1-")  
-    (remote-term (format "integ-sea5r1-%s" buffer-name) "ssh" "bxiao@sea5r1logger1.mgt.integ.skytap.com"))
-
-(defun shell-integ-sea5r1-mysql (buffer-name)
-  "Shell of integ"
-    (interactive "sBuffer name: integ-sea5r1-mysql-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@sea5r1mysqlmm1.mgt.integ.skytap.com: & shell integ-sea5r1-mysql-%s & popd" buffer-name)))
-
-(defun shell-integ-tuk5r1 (buffer-name)
-  "Shell of integ"
-    (interactive "sBuffer name: integ-tuk5r1-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@tuk5r1logger1.mgt.integ.skytap.com: & shell integ-tuk5r1-%s & popd" buffer-name)))
+    (remote-term-internal (format "integ-sea5r1-%s" buffer-name) "ssh" "bxiao@sea5r1logger1.mgt.integ.skytap.com"))
 
 (defun term-integ-tuk5r1 (buffer-name)
   "Term of integ"
     (interactive "sBuffer name: integ-tuk5r1")  
-    (remote-term (format "integ-tuk5r1-%s" buffer-name) "ssh" "bxiao@tuk5r1logger1.mgt.integ.skytap.com"))
-
-(defun shell-integ-tuk5r1-mysql (buffer-name)
-  "Shell of integ"
-    (interactive "sBuffer name: integ-tuk5r1-mysql-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@tuk5r1mysqlmm1.mgt.integ.skytap.com: & shell integ-tuk5r1-mysql-%s & popd" buffer-name)))
-
-(defun shell-integ-jenkins (buffer-name)
-  "Shell of integ"
-    (interactive "sBuffer name: integ-jenkins-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@integ.ci.skytap.com:/ & shell integ-jenkins-%s & popd" buffer-name)))
-
-(defun shell-test (buffer-name)
-  "Shell of test"
-    (interactive "sBuffer name: test-")  
-    (eshell-command (format "pushd . & cd /ssh:root@tuk6m1logger1.mgt.test.skytap.com: & shell test-%s & popd" buffer-name)))
-
-(defun shell-test-mysql()
-  "Shell of integ my sql"
-    (interactive)  
-    (eshell-command "pushd . & cd /ssh:root@tuk6m1mysqlplvip1.mgt.test.skytap.com: & shell test-mysql & popd"))
+    (remote-term-internal (format "integ-tuk5r1-%s" buffer-name) "ssh" "bxiao@tuk5r1logger1.mgt.integ.skytap.com"))
 
 (defun term-puppetmaster (buffer-name)
   "Shell of bxiao cloud puppetmaster"
     (interactive "sBuffer name: puppetmaster-")  
-    (remote-term (format "puppetmaster-%s" buffer-name) "ssh" "highland@puppetmaster"))
-
-(defun shell-puppetmaster (buffer-name)
-  "Shell of puppermaster"
-    (interactive "sBuffer name: puppetmaster-")  
-    (eshell-command (format "pushd . & cd /ssh:highland@puppetmaster: & shell puppetmaster-%s & popd" buffer-name)))
-
-(defun shell-mq (buffer-name)
-  "Shell of mq"
-    (interactive "sBuffer name: mq-")  
-    (eshell-command (format "pushd . & cd /ssh:highland@mq1: & shell mq-%s & popd" buffer-name)))
+    (remote-term-internal (format "puppetmaster-%s" buffer-name) "ssh" "highland@puppetmaster"))
 
 (defun shell-jenkins (buffer-name)
   "Shell of jenkins"
@@ -743,7 +915,7 @@ Subsequent calls expands the selection to larger semantic unit."
 (defun term-bxiao-jenkins (buffer-name)
   "Term of bxiao cloud jenkins"
     (interactive "sBuffer name: bxiao-jenkins-")  
-    (remote-term (format "bxiao-jenkins-%s" buffer-name) "ssh" "root@jenkins"))
+    (remote-term-internal (format "bxiao-jenkins-%s" buffer-name) "ssh" "root@jenkins"))
 
 (defun shell-jenkins2 (buffer-name)
   "Shell of jenkins2"
@@ -758,13 +930,12 @@ Subsequent calls expands the selection to larger semantic unit."
 (defun term-dev2 (buffer-name)
   "Shell of bxiao cloud puppetmaster"
     (interactive "sBuffer name: dev2-")  
-    (remote-term (format "dev2-%s" buffer-name) "ssh" "highland@dev2"))
+    (remote-term-internal (format "dev2-%s" buffer-name) "ssh" "highland@dev2"))
 
-(defun shell-svn (buffer-name)
-  "Shell of svn"
-    (interactive "sBuffer name: svn-")  
-    (eshell-command (format "pushd . & cd /ssh:bxiao@svn.internal.illumita.com: & shell svn-%s & popd" buffer-name)))
-
+(defun shell-openstack (buffer-name)
+  "Shell of openstack"
+    (interactive "sBuffer name: openstack-")  
+    (eshell-command (format "pushd . & cd /ssh:highland@openstack: & shell openstack-%s & popd" buffer-name)))
 
 (defun accounting-list-account (filter)
   "List accounts that matches given filter"
@@ -818,7 +989,7 @@ Subsequent calls expands the selection to larger semantic unit."
   "Send mq request message"
     (interactive
        (list
-	(completing-read "Service name: " '("charon"))
+	(completing-read "Service name: " '("greenbox" "configurationManager" "accounting_service" "charon"))
 	(completing-read "Action: " '("destroy_rsync_source_endpoint"))
 	(read-string "Payload: ")
 	(completing-read "region: " '("integ/tuk5r1"))
@@ -830,21 +1001,13 @@ Subsequent calls expands the selection to larger semantic unit."
   "Send mq request message and wait for reply"
     (interactive
        (list
-	(completing-read "Service name: " '("charon"))
+	(completing-read "Service name: " '("greenbox" "ConfigurationManager" "accounting_service" "charon"))
 	(completing-read "Action: " '("destroy_rsync_source_endpoint"))
 	(read-string "Payload: ")
 	(completing-read "region: " '("integ/tuk5r1"))
        )
     )
   (insert (format "context.mq.wait_for_reply_message(service_name='%s', action='%s',payload=%s, region='%s', pre_write_callback=None, timeout=None)" service_name action payload region)))
-
-(defun mq-brokertool ()
-  (interactive)
-  (insert "/opt/skytap/bin/skytap-cmd mqbrokertool"))
-
-(defun mq-trace ()
-  (interactive)
-  (insert "/opt/skytap/bin/skytap-cmd mqtrace"))
 
 (fset 'systemtest-cleanup
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/opt/skytap/bin/skytap-cmd system_test_cleanup" 0 "%d")) arg)))
@@ -865,47 +1028,142 @@ Subsequent calls expands the selection to larger semantic unit."
 (fset 'hg-serve
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg serve -A /highland/logs/hgserve.log -d -E /highland/logs/hgserve.log" 0 "%d")) arg)))
 
-(fset 'hg-pull-all
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configshg pull -u -R /highland/hosting_platformhg pull -u -R /highland/packageshg pull -u -R /highland/service_controlhg pull -u -R /highland/skytap-supporthg pull -u -R /highland/statsdhg pull -u -R /highland/docs" 0 "%d")) arg)))
-
 (fset 'hg-pull-all-bxiao
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs bxiaohg pull -u -R /highland/hosting_platform bxiaohg pull -u -R /highland/packages bxiaohg pull -u -R /highland/service_control bxiaohg pull -u -R /highland/skytap-support bxiaohg pull -u -R /highland/statsd bxiaohg pull -u -R /highland/docs bxiao" 0 "%d")) arg)))
 
 (fset 'hg-pull-all-next
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs r_nexthg pull -u -R /highland/hosting_platform r_nexthg pull -u -R /highland/packages r_nexthg pull -u -R /highland/service_control r_nexthg pull -u -R /highland/skytap-support r_nexthg pull -u -R /highland/statsd r_nexthg pull -u -R /highland/docs r_next" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs r_nexthg pull -u -R /highland/hosting_platform r_nexthg pull -u -R /highland/agent_services r_nexthg pull -u -R /highland/nexus r_nexthg pull -u -R /highland/packages r_nexthg pull -u -R /highland/service_control r_nexthg pull -u -R /highland/skytap-support r_nexthg pull -u -R /highland/statsd r_nexthg pull -u -R /highland/docs r_next" 0 "%d")) arg)))
 
 (fset 'hg-pull-all-integ
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs integhg pull -u -R /highland/hosting_platform integhg pull -u -R /highland/packages integhg pull -u -R /highland/service_control integhg pull -u -R /highland/skytap-support integhg pull -u -R /highland/statsd integhg pull -u -R /highland/docs integ" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs integhg pull -u -R /highland/hosting_platform integhg pull -u -R /highland/agent_services integhg pull -u -R /highland/nexus integhg pull -u -R /highland/packages integhg pull -u -R /highland/service_control integhg pull -u -R /highland/skytap-support integhg pull -u -R /highland/statsd integhg pull -u -R /highland/docs integ" 0 "%d")) arg)))
+
+;; (defun hg-pull-all ()
+;;   (interactive)
+;;   (insert "for d in *\/; do ")
+;;   (insert "hg pull -R \"$d\"; ")
+;;   (insert "done")
+;;   )
+
+(defun hg-pull-all ()
+  (interactive)
+  (insert "for d in *\/; do ")
+  (insert "if [ $d != \"config/\" ] && [ $d != \"configs/\" ]; then hg pull -R \"$d\"; fi; ")
+  (insert "done")
+  )
+(defun hg-pull-all-r (release)
+  (interactive
+     (list
+      (read-number "Release: r")))
+  (insert "for dir in *\/; do ")
+  (insert (format "hg pull -u -R \"$dir\" ssh://bxiao@source.corp.skytap.com//hg/r%d/\"$dir\"; " release))
+  (insert "done")
+  )
+   ;; (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configshg pull -u -R /highland/hosting_platformhg pull -u -R /highland/packageshg pull -u -R /highland/service_controlhg pull -u -R /highland/skytap-supporthg pull -u -R /highland/statsdhg pull -u -R /highland/docs" 0 "%d")) arg)))
 
 (defun hg-clone-all (release)
   (interactive "nRelease: r")
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/configs\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/hosting_platform\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/service_control\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/skytap-support\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/statsd\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/ui_layer\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/ui_nodejs\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/web\n" release))
-  (insert (format "hg clone ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/docs\n" release)))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/configs; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/hosting_platform; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/agent_services; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/nexus; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/service_control; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/skytap-support; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/statsd; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_layer; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_nodejs; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/web; \\\n" release))
+  (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/docs; \\\n" release)))
 
-(defun hg-pull-all-r (release)
-  (interactive "nRelease: r")
-  (insert (format "hg pull -u -R /highland/configs ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/configs\n" release))
-  (insert (format "hg pull -u -R /highland/hosting_platform ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/hosting_platform\n" release))
-  (insert (format "hg pull -u -R /highland/packages ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/packages\n" release))
-  (insert (format "hg pull -u -R /highland/service_control ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/service_control\n" release))
-  (insert (format "hg pull -u -R /highland/skytap-support ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/skytap-support\n" release))
-  (insert (format "hg pull -u -R /highland/statsd ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/statsd\n" release))
-  (insert (format "hg pull -u -R /highland/statsd ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/docs\n" release)))
+(defun hg-clone-all-puppet ()
+  (interactive)
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/configs; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/hosting_platform; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/agent_services; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/nexus; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/service_control; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/skytap-support; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/statsd; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/ui_layer; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/ui_nodejs; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/web; \\\n"))
+  (insert (format "hg clone ssh://highland@puppetmaster//highland/docs; \\\n")))
+
+(defun hg-clone-r (release repo)
+    (interactive
+       (list
+        (read-number "Release: r")
+	(completing-read "Repo: " '("configs" "hosting_platform" "packages" "service_control" "skytap_support"))))
+    (insert (format "hg clone ssh://bxiao@source.corp.skytap.com//hg/r%d/%s\n" release repo)))
+
+;; (defun hg-pull-all-r (release root)
+;;   (interactive
+;;      (list
+;;       (read-number "Release: r")
+;;       (completing-read "Root: " '("/hg" "/highland"))))
+;;   (insert (format "hg pull -u -R %s/configs ssh://bxiao@source.corp.skytap.com//hg/r%d/configs; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/hosting_platform ssh://bxiao@source.corp.skytap.com//hg/r%d/hosting_platform; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/packages ssh://bxiao@source.corp.skytap.com//hg/r%d/packages; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/service_control ssh://bxiao@source.corp.skytap.com//hg/r%d/service_control; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/skytap-support ssh://bxiao@source.corp.skytap.com//hg/r%d/skytap-support; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/r%d/statsd; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/ui_layer ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_layer; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/ui_nodejs ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_nodejs; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/web ssh://bxiao@source.corp.skytap.com//hg/r%d/web; \\\n" root release))
+;;   (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/r%d/docs; \\\n" root release)))
+
+(defun hg-pull-all-containers-project (root)
+  (interactive
+     (list
+      (completing-read "Root: " '("/hg" "/highland"))))
+  (insert (format "hg pull -u -R %s/configs ssh://bxiao@source.corp.skytap.com//hg/containers_project/configs; \\\n" root))
+  (insert (format "hg pull -u -R %s/hosting_platform ssh://bxiao@source.corp.skytap.com//hg/containers_project/hosting_platform; \\\n" root))
+  (insert (format "hg pull -u -R %s/packages ssh://bxiao@source.corp.skytap.com//hg/containers_project/packages; \\\n" root))
+  (insert (format "hg pull -u -R %s/service_control ssh://bxiao@source.corp.skytap.com//hg/containers_project/service_control; \\\n" root))
+  (insert (format "hg pull -u -R %s/skytap-support ssh://bxiao@source.corp.skytap.com//hg/containers_project/skytap-support; \\\n" root))
+  (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/containers_project/statsd; \\\n" root))
+  (insert (format "hg pull -u -R %s/ui_layer ssh://bxiao@source.corp.skytap.com//hg/containers_project/ui_layer; \\\n" root))
+  (insert (format "hg pull -u -R %s/ui_nodejs ssh://bxiao@source.corp.skytap.com//hg/containers_project/ui_nodejs; \\\n" root))
+  (insert (format "hg pull -u -R %s/web ssh://bxiao@source.corp.skytap.com//hg/containers_project/web; \\\n" root))
+  (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/containers_project/docs; \\\n" root)))
 
 (defun hg-push-r (release repo)
     (interactive
        (list
         (read-number "Release: r")
 	(completing-read "Repo: " '("configs" "hosting_platform" "packages" "service_control" "skytap_support"))))
-    (insert (format "hg push ssh://bxiao@sea9repo1.corp.skytap.com//hg/r%d/%s\n" release repo)))
+    (insert (format "hg push ssh://bxiao@source.corp.skytap.com//hg/r%d/%s\n" release repo)))
 
+(defun hg-out-r (release repo)
+    (interactive
+       (list
+        (read-number "Release: r")
+	(completing-read "Repo: " '("configs" "hosting_platform" "packages" "service_control" "skytap_support"))))
+    (insert (format "hg out ssh://bxiao@source.corp.skytap.com//hg/r%d/%s\n" release repo)))
+
+(defun hg-in-r (release repo)
+    (interactive
+       (list
+        (read-number "Release: r")
+	(completing-read "Repo: " '("configs" "hosting_platform" "packages" "service_control" "skytap_support"))))
+    (insert (format "hg in ssh://bxiao@source.corp.skytap.com//hg/r%d/%s\n" release repo)))
+
+(defun hg-qtip-to-pending ()
+  (interactive)
+  (insert "hg qfinish qtip\n")
+  (insert "hg strip -k tip\n"))
+
+(defun hg-diff (revision)
+  (interactive "nRevision: ")
+    (eshell-command (format "async-shell-command \"hg diff --change %s | tee /dev/null \" \"hg diff -change %s\"" revision revision)))
+
+(defun hg-log (args)
+  (interactive "sArgs: ")
+    (eshell-command (format "async-shell-command \"hg log %s | tee /dev/null \" \"hg log %s\"" args args)))
+
+(defun skygrep (buffer-name arguments)
+  (interactive "sBuffer Name:\nsArguments: ")
+    (eshell-command (format "async-shell-command \"skygrep %s \" \"%s\"" arguments buffer-name)))
+(global-set-key [f8] 'skygrep)
 
 (defun cmcmd-list-services ()
   "List services registered in cm"
@@ -922,11 +1180,20 @@ Subsequent calls expands the selection to larger semantic unit."
   (interactive "sHost:")
   (insert (format "get_api('%s', 9020)" host)))
 
-(defun cmcmd-cm (host)
+(defun cmcmd-cm (env)
   "Get configuration manager service in cmcmd"
-  (interactive "sHost:")
-  (insert (format "api=get_api('%s', 30000)\n" host))
-  (insert "api.isNodeUp()"))
+    (interactive
+       (list
+        (completing-read "env:" '("integ" "localhost"))
+        ))
+    (cond ((equal env "integ") 
+           (setq host "tuk5m1cmvip1") 
+           (setq port 9000))
+          (t
+           (setq host "localhost") 
+           (setq port 30000)))
+    (insert (format "api=get_api('%s', %d)\n" host port))
+    (insert "api.isNodeUp()"))
 
 (defun cmcmd-api-logger (host)
   "Get api logger"
@@ -980,43 +1247,6 @@ Subsequent calls expands the selection to larger semantic unit."
   (insert (format "            network.operation = None\n" operation))
   (insert (format "    %s.error = InternalError('%s').error\n" operation reason)))
 
-(defun strgcmd-remove-all-node-affinity (host)
-  "Remove all node affinities"
-  (interactive "sHost:")
-  (insert (format "skytap-cmd strgcmd remnodeaffinity %s" host)))
-
-(defun strgcmd-add-affinity (affinity)
-  "Add affinity"
-    (interactive
-       (list
-	(completing-read "affinity: " '("root_depots" "scratch" "asset" "userupload"))))
-  (insert (format "skytap-cmd strgcmd addaffinity %s '%s depots'" affinity affinity)))
-
-(defun strgcmd-set-node-affinity (affinity host)
-  "Set node affinity"
-    (interactive
-       (list
-	(completing-read "affinity: " '("root_depots" "scratch" "asset" "userupload"))
-        (read-string "host: ")))
-  (insert (format "skytap-cmd strgcmd setnodeaffinity %s %s" affinity host)))
-
-(defun strgcmd-create (name affinity)
-  "Create depot"
-    (interactive
-       "sName:\nsAddinity:\nnAllocation:")
-  (insert (format "skytap-cmd strgcmd create test %s %s 0 0" name affinity)))
-
-(defun strgcmd-mountctx (guid)
-  "Mount a depot"
-    (interactive
-       "sGUID:")
-  (insert (format "skytap-cmd strgcmd mountctx %s" guid)))
-
-(defun hmcmd-list-esx ()
-  "List ESX nodes"
-  (interactive)
-  (insert (format "skytap-cmd hmcmd esx list")))
-
 
 ;;;---------------------
 ;;; Linux commands
@@ -1058,6 +1288,12 @@ Subsequent calls expands the selection to larger semantic unit."
   (hide-lines-matching "\"action\": \"get_configuration_ephemera\"")
 )
 
+(defun log-hide-get-configuration-specification ()
+  (interactive)
+  (hide-lines-matching "request.get_configuration_specification")
+  (hide-lines-matching "\"action\": \"get_configuration_specification\"")
+)
+
 (defun log-get-api-times (file-pattern api-name count)
     (interactive
        (list
@@ -1066,3 +1302,19 @@ Subsequent calls expands the selection to larger semantic unit."
         (read-number "Count: ")))
     (insert (format "for f in %s ; do zcat $f | awk '/%s RETURN/{print $11, $0}' | sort -k 1 -nr | awk 'NR<=%d{print}'; done | sort -k 1 -nr | awk 'NR<=%d{print}'" file-pattern api-name count count)))
 (put 'scroll-left 'disabled nil)
+
+(defun find-file-skycap-release (release)
+  (interactive "nRelease: r")
+  (find-file (format "//highland/service_control/service_groups/r%d_release/skycap_file.rb" release)))
+
+;;;Turn tabs into spaces
+(setq-default indent-tabs-mode nil)
+
+;;;Alias
+(defalias 'cpx 'copy-to-x-clipboard)
+(defalias 'rb 'revert-buffer)
+(defalias 'rs 'remote-shell)
+(defalias 'ffr 'find-file-skycap-release)
+
+;; C-M-% is impossible for me
+(defalias 'qrr 'query-replace-regexp)
