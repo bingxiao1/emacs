@@ -1,0 +1,13 @@
+alias nil quit $*
+alias init_jenga python /highland/projects/skytap/init_jenga.py
+alias jenga_host python /highland/projects/skytap/get_jenga_connect_info.py $*
+alias cd_dev /ssh:highland@dev2:/highland
+alias rwhatis pushd . & cd /ssh:bxiao@source.corp.skytap.com:/ & ls -ld hg/env/$1 & popd
+alias ev echo $*
+alias ff find-file $1
+alias ffo find-file-other-window $1
+alias ll ls -l $*
+alias asc async-shell-command ""$*""
+alias sc shell-command ""$*""
+alias sffo find-file-other-window /sudo::nil
+alias self._image_depot_allocation_old yes $*

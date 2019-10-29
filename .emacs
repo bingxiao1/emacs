@@ -14,12 +14,30 @@
 
 ;; Add MELPA to package archive list
 
-(when (> emacs-major-version 23)
-    (require 'package)
-    (package-initialize)
-    (add-to-list 'package-archives 
-                 '("melpa" . "http://melpa.milkbox.net/packages/")
-                 'APPEND))
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+(package-initialize)
+
+;; (when (> emacs-major-version 23)
+;;     (require 'package)
+;;     (package-initialize)
+;;     (add-to-list 'package-archives 
+;;                  '("melpa" . "http://melpa.milkbox.net/packages/")
+;;                  'APPEND))
 
 
 (defun reload ()
@@ -235,6 +253,7 @@
  '(indent-tabs-mode nil)
  '(jira-url "https://jira.corp.skytap.com/rpc/xmlrpc")
  '(menu-bar-mode nil)
+ '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "https://melpa.org/packages/"))))
  '(python-remove-cwd-from-path nil)
  '(safe-local-variable-values (quote ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face tabs trailing lines-tail) (require-final-newline . t) (prompt-to-byte-compile))))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
@@ -245,7 +264,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;; To allow mysql mode to accept blank password
+;; To allow mysql mode to accept blank password
 (setq sql-user "root")
 (setq sql-password nil)
 
@@ -256,16 +275,47 @@
 ;;   )
 ;; )
 
-(defun prod-mysql ()
+(defun prod-mysql (local-user-name)
   "Mysql replicate in prod"
-    (interactive)
-    ;; (eshell-command "pushd . & cd /ssh:bxiao@tuk8linjump3.qa.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem\" \"prod-mysql\" & popd"))
-    (eshell-command "pushd . & cd /ssh:bxiao@tuk1linjump4.prod.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd"))
+    (interactive
+     (list
+      (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
+    ;; (eshell-command "pushd . & cd /ssh:bxiao@tuk1linjump4.prod.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd"))
+    (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
+          (my-macbook-user-name (car (split-string local-user-name " "))))
+      (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"prod-mysql\" & popd"))
+    (switch-to-buffer "prod-mysql")
+    (insert "mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin")
+    ;; (comint-send-input nil t)
+)
+
+(defun tuk1m1control (local-user-name)
+  "Mysql replicate in prod"
+    (interactive
+     (list
+      (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
+    (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
+          (my-macbook-user-name (car (split-string local-user-name " "))))
+      (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"tuk1m1control\" & popd"))
+    (switch-to-buffer "tuk1m1control")
+    (insert "ssh tuk1m1control")
+
+    ;; (comint-send-input nil t)
+)
+
+(defun linjump (local-user-name)
+    (interactive
+     (list
+      (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
+    (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
+          (my-macbook-user-name (car (split-string local-user-name " "))))
+    (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"linjump\" & popd"))
+)
 
 (defun test-mysql ()
   "Mysql replicate in test"
     (interactive)
-    (eshell-command "pushd . & cd /ssh:bxiao@tuk8linjump.qa.skytap.com: & async-shell-command \"mysql -h tuk6bi1.mgt.test.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"test-mysql\" & popd"))
+    (eshell-command "pushd . & cd /ssh:bxiao@tuk6bi1.mgt.test.skytap.com: & async-shell-command \"mysql -u root -p --protocol TCP\" \"test-mysql\" & popd"))
 
 ;;; To show full file path in in emacs window
 (setq frame-title-format
@@ -390,6 +440,11 @@
       (comint-send-input)))
   
   (global-set-key (kbd "C-c i") 'python-interactive)
+
+(defun python-disable-pager ()
+  "Disable IPython pager'"
+    (interactive)  
+    (insert "from __future__ import print_function;from IPython.core import page;page.page = print"))
 
 (defun dbg-get-configuration-specification (configuration_key)  
       "get configuration specification during debugging "  
@@ -680,58 +735,66 @@ and referenced_table_name is not null -- Only tables with foreign keys
 ;;; -----------------------------
 ;; Use this for remote so I can specify command line arguments
 (setq tramp-user-hosts 
-      '("mq.container-prototype.bxiao.dev.skytap.com root" 
-        "agent-manager.container-prototype.bxiao.dev.skytap.com root"
-        "web-backend.container-prototype.bxiao.dev.skytap.com root"
-        "container-host.container-prototype.bxiao.dev.skytap.com skytap"
-        "docker highland"
-        "puppetmaster highland"
-        "mq1 highland"
-        "jenga root"
-        "source.corp.skytap.com bxiao"
-        "tuk5m1control.mgt.integ.skytap.com bxiao"
-        "tuk5m1logger1.mgt.integ.skytap.com bxiao"
-        "puppetmaster.mgt.integ.skytap.com bxiao"
-        "tuk5m1mysqlcmvip1.mgt.integ.skytap.com bxiao"
-        "tuk5m1mysqlplvip1.mgt.integ.skytap.com bxiao"
-        "tuk5r1control.mgt.integ.skytap.com bxiao"
-        "tuk5r1logger1.mgt.integ.skytap.com bxiao"
-        "tuk5r1mysqlmm1.mgt.integ.skytap.com bxiao"
-        "integ.ci.skytap.com bxiao"
-        "tuk6m1control.mgt.test.skytap.com bxiao"
-        "tuk6m1logger1.mgt.test.skytap.com bxiao"
-        "tuk6m1mysqlcmvip1.mgt.test.skytap.com bxiao"
-        "tuk6m1mysqlhpvip1.mgt.test.skytap.com bxiao"
-        "tuk6m1mqvip1.mgt.test.skytap.com bxiao"
-        "tuk6r1control.mgt.test.skytap.com bxiao"
-        "tuk6r1logger1.mgt.test.skytap.com bxiao"
-        "tuk6r1mysqlplvip1.mgt.test.skytap.com bxiao"
-        "tuk6r1mysqlisvip1.mgt.test.skytap.com bxiao"
-        "tuk6r1mysqlnsvip1.mgt.test.skytap.com bxiao"
-        "tuk6r1mqvip1.mgt.test.skytap.com bxiao"
-        "tuk6r2logger1.mgt.test.skytap.com bxiao"
-        "tuk6r2mysqlplvip1.mgt.test.skytap.com bxiao"
-        "tuk6r2mysqlisvip1.mgt.test.skytap.com bxiao"
-        "tuk6r2mysqlnsvip1.mgt.test.skytap.com bxiao"
-        "tuk6r2mqvip1.mgt.test.skytap.com bxiao"
-        "tuk6bi1.mgt.test.skytap.com bxiao"
-        "lon6r1logger1.mgt.test.skytap.com bxiao"
-        "lon6r1mysqlplvip1.mgt.test.skytap.com bxiao"
-        "lon6r1mysqlisvip1.mgt.test.skytap.com bxiao"
-        "lon6r1mqvip1.mgt.test.skytap.com bxiao"
-        "puppet.mgt.test.skytap.com bxiao"
-        "tuk1linjump4.prod.skytap.com bxiao"
-        "tuk1grits1.prod.skytap.com bxiao"
-        ;; "linjump.prod.skytap.com bxiao"
-        ;; "grits.prod.skytap.com bxiao"
+      '("mq.container-prototype.bxiao.dev.skytap.com:root:" 
+        "agent-manager.container-prototype.bxiao.dev.skytap.com:root:"
+        "web-backend.container-prototype.bxiao.dev.skytap.com:root:"
+        "container-host.container-prototype.bxiao.dev.skytap.com:skytap:"
+        "docker:highland:"
+        "puppetmaster:highland:"
+        "mq1:highland:"
+        "jenga:root:"
+        "source.corp.skytap.com:bxiao:"
+        "tuk5m1control.mgt.integ.skytap.com:bxiao:"
+        "tuk5m1logger2.mgt.integ.skytap.com:bxiao:"
+        "puppetmaster.mgt.integ.skytap.com:bxiao:"
+        "tuk5m1mysqlcmvip1.mgt.integ.skytap.com:bxiao:"
+        "tuk5m1mysqlplvip1.mgt.integ.skytap.com:bxiao:"
+        "tuk5r1control.mgt.integ.skytap.com:bxiao:"
+        "tuk5r1logger2.mgt.integ.skytap.com:bxiao:"
+        "tuk5r1mysqlmm1.mgt.integ.skytap.com:bxiao:"
+        "integ.ci.skytap.com:bxiao:"
+        "tuk6m1control.mgt.test.skytap.com:bxiao:"
+        "tuk6m1logger1.mgt.test.skytap.com:bxiao:"
+        "tuk6m1mysqlcmvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6m1mysqlhpvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6m1mqvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6m1logger1.mgt.test.skytap.com:bxiao:"
+        "tuk6r1control.mgt.test.skytap.com:bxiao:"
+        "tuk6r1logger1.mgt.test.skytap.com:bxiao:"
+        "tuk6r1mysqlplvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r1mysqlisvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r1mysqlnsvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r1mqvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r2logger1.mgt.test.skytap.com:bxiao:"
+        "tuk6r2mysqlplvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r2mysqlisvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r2mysqlnsvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r2mqvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6bi1.mgt.test.skytap.com:bxiao:"
+        "lon6r1logger1.mgt.test.skytap.com:bxiao:"
+        "lon6r1mysqlplvip1.mgt.test.skytap.com:bxiao:"
+        "lon6r1mysqlisvip1.mgt.test.skytap.com:bxiao:"
+        "lon6r1mqvip1.mgt.test.skytap.com:bxiao:"
+        "puppet.mgt.test.skytap.com:bxiao:"
+        "tuk1linjump4.prod.skytap.com:bxiao:"
+        "tuk1linjump3.prod.skytap.com:bxiao:"
+        "tuk1grits1.prod.skytap.com:bxiao:"
+        "tuk1loga1.prod.skytap.com:bxiao:/mnt/logger1archive:"
+        ;; "linjump.prod.skytap.com:bxiao:"
+        ;; "grits.prod.skytap.com:bxiao:"
         ))
 
 (setq my-commands 
-      '("jenga_skip_provisioning\tjenga --base-configuration 6613976 --skip-individual-node-provisioning" 
-        "puppet_hosts\tsudo puppetd -ov --no-daemonize --show_diff --tags hosts"
-        "docker_remove_all_containers\tdocker rm $(docker ps -a -q)"
-        "docker_stop_all_containers\tdocker stop $(docker ps -a -q)"
-        "docker_remove_all_images\tdocker rmi $(docker images -q)"
+      '("jenga-skip-provisioning\tjenga --base-configuration 6613976 --skip-individual-node-provisioning" 
+        "puppet-hosts\tsudo puppetd -ov --no-daemonize --show_diff --tags hosts"
+        "docker-remove-all-containers\tdocker rm $(docker ps -a -q)"
+        "docker-stop-all-containers\tdocker stop $(docker ps -a -q)"
+        "docker-remove-all-images\tdocker rmi $(docker images -q)"
+        "docker-build-cm\tdocker build -t cm -f /highland/hosting_platform/dockers/configuration_manager/Dockerfile /highland/hosting_platform/"
+        "docker-test-cm\tdocker run -v /highland/configs:/highland/configs -e HIGHLAND_ENV='jenkins-central/unit-tests' -it cm test"
+        "docker-debug-cm\tdocker run -v /highland/configs:/highland/configs -v /highland/hosting_platform:/highland/hosting_platform -e HIGHLAND_ENV='jenkins-central/unit-tests' -it cm debug"
+        "docker-build-grafana\tdocker build -t grafana -f /highland/grafana/dockers/grafana/Dockerfile /highland/grafana/"
+        "docker-test-grafana\tdocker run -v /highland/configs:/highland/configs -e HIGHLAND_ENV='jenkins-central/unit-tests' -it grafana test"
         ))
 
 (setq my-skytap-commands 
@@ -750,7 +813,7 @@ and referenced_table_name is not null -- Only tables with foreign keys
     (set-buffer term-ansi-buffer-name)
     (term-mode)
     (term-char-mode)
-    (term-set-escape-char ?\C-x)
+    (term-set-escape-char ?\C-c)
     (switch-to-buffer term-ansi-buffer-name))
 
 (defun term-bxiao-puppetmaster (buffer-name)
@@ -763,8 +826,8 @@ and referenced_table_name is not null -- Only tables with foreign keys
        (list
    	(completing-read "host user: " tramp-user-hosts)
        ))
-    (let ((host (car (split-string user-host " "))) (user (car (cdr (split-string user-host " ")))))
-      (eshell-command (format "pushd . & cd /ssh:%s@%s: & shell %s & popd" user host host))))
+    (let ((host (car (split-string user-host ":"))) (user (car (cdr (split-string user-host ":")))) (directory (car (cdr (cdr (split-string user-host ":"))))))
+      (eshell-command (format "pushd . & cd /ssh:%s@%s:%s & shell %s & popd" user host directory host))))
 
 (setq tramp-jenga-user-hosts 
       '("puppetmaster root"
@@ -774,6 +837,7 @@ and referenced_table_name is not null -- Only tables with foreign keys
         "m1wfe1 root"
         "m1mysqlpl1 root"
         "m1mysqlcm1 root"
+        "r1control1 root"
         "r1logger1 root"
         "r1nsvc1 root"
         "r1esx1 root"
@@ -825,13 +889,21 @@ and referenced_table_name is not null -- Only tables with foreign keys
 ;;     (interactive "sBuffer name: docker-")  
 ;;     (eshell-command (format "pushd . & cd /ssh:highland@docker: & shell docker-%s & popd" buffer-name)))
 
-(defun remote-term (host)
+(defun remote-term (user-host)
     (interactive
        (list
-   	(completing-read "host: " '("mq.container-prototype.bxiao.dev.skytap.com" "agent-manager.container-prototype.bxiao.dev.skytap.com"))
+   	(completing-read "host user: " tramp-user-hosts)
        ))
-    (let ((user (car (split-string user-host "@"))) (host (car (cdr (split-string user-host "@")))))
+    (let ((host (car (split-string user-host ":"))) (user (car (cdr (split-string user-host ":")))))
       (remote-term-internal host  "ssh" (format "%s@%s" user host))))
+
+;; (defun remote-term (host)
+;;     (interactive
+;;        (list
+;;    	(completing-read "host: " '("mq.container-prototype.bxiao.dev.skytap.com" "agent-manager.container-prototype.bxiao.dev.skytap.com"))
+;;        ))
+;;     (let ((user (car (split-string user-host "@"))) (host (car (cdr (split-string user-host "@")))))
+;;       (remote-term-internal host  "ssh" (format "%s@%s" user host))))
 
 (defun term-bxiao-mysql (buffer-name)
   "Shell of bxiao cloud mysql"
@@ -1035,13 +1107,17 @@ and referenced_table_name is not null -- Only tables with foreign keys
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg serve -A /highland/logs/hgserve.log -d -E /highland/logs/hgserve.log" 0 "%d")) arg)))
 
 (fset 'hg-pull-all-bxiao
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs bxiaohg pull -u -R /highland/hosting_platform bxiaohg pull -u -R /highland/packages bxiaohg pull -u -R /highland/service_control bxiaohg pull -u -R /highland/skytap-support bxiaohg pull -u -R /highland/statsd bxiaohg pull -u -R /highland/docs bxiao" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -R /highland/configs bxiaohg pull -R /highland/hosting_platform bxiaohg pull -R /highland/packages bxiaohg pull -R /highland/service_control bxiaohg pull -R /highland/skytap-support bxiaohg pull -R /highland/statsd bxiaohg pull -R /highland/docs bxiao" 0 "%d")) arg)))
+
+(fset 'prod-skygrep
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("skygrep -U http://10.8.16.135:9210/")) arg)))
+
 
 (fset 'hg-pull-all-next
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs r_nexthg pull -u -R /highland/hosting_platform r_nexthg pull -u -R /highland/agent_services r_nexthg pull -u -R /highland/nexus r_nexthg pull -u -R /highland/packages r_nexthg pull -u -R /highland/service_control r_nexthg pull -u -R /highland/skytap-support r_nexthg pull -u -R /highland/statsd r_nexthg pull -u -R /highland/docs r_next" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -R /highland/configs r_nexthg pull -R /highland/hosting_platform r_nexthg pull -R /highland/agent_services r_nexthg pull -R /highland/nexus r_nexthg pull -R /highland/packages r_nexthg pull -R /highland/service_control r_nexthg pull -R /highland/skytap-support r_nexthg pull -R /highland/statsd r_nexthg pull -R /highland/docs r_next" 0 "%d")) arg)))
 
 (fset 'hg-pull-all-integ
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configs integhg pull -u -R /highland/hosting_platform integhg pull -u -R /highland/agent_services integhg pull -u -R /highland/nexus integhg pull -u -R /highland/packages integhg pull -u -R /highland/service_control integhg pull -u -R /highland/skytap-support integhg pull -u -R /highland/statsd integhg pull -u -R /highland/docs integ" 0 "%d")) arg)))
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -R /highland/configs integhg pull -R /highland/hosting_platform integhg pull -R /highland/agent_services integhg pull -R /highland/nexus integhg pull -R /highland/packages integhg pull -R /highland/service_control integhg pull -R /highland/skytap-support integhg pull -R /highland/statsd integhg pull -R /highland/docs integ" 0 "%d")) arg)))
 
 ;; (defun hg-pull-all ()
 ;;   (interactive)
@@ -1061,10 +1137,10 @@ and referenced_table_name is not null -- Only tables with foreign keys
      (list
       (read-number "Release: r")))
   (insert "for dir in *\/; do ")
-  (insert (format "hg pull -u -R \"$dir\" ssh://bxiao@source.corp.skytap.com//hg/r%d/\"$dir\"; " release))
+  (insert (format "hg pull -R \"$dir\" ssh://bxiao@source.corp.skytap.com//hg/r%d/\"$dir\"; " release))
   (insert "done")
   )
-   ;; (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -u -R /highland/configshg pull -u -R /highland/hosting_platformhg pull -u -R /highland/packageshg pull -u -R /highland/service_controlhg pull -u -R /highland/skytap-supporthg pull -u -R /highland/statsdhg pull -u -R /highland/docs" 0 "%d")) arg)))
+   ;; (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("hg pull -R /highland/configshg pull -R /highland/hosting_platformhg pull -R /highland/packageshg pull -R /highland/service_controlhg pull -R /highland/skytap-supporthg pull -R /highland/statsdhg pull -R /highland/docs" 0 "%d")) arg)))
 
 (defun hg-clone-all (release)
   (interactive "nRelease: r")
@@ -1106,31 +1182,31 @@ and referenced_table_name is not null -- Only tables with foreign keys
 ;;      (list
 ;;       (read-number "Release: r")
 ;;       (completing-read "Root: " '("/hg" "/highland"))))
-;;   (insert (format "hg pull -u -R %s/configs ssh://bxiao@source.corp.skytap.com//hg/r%d/configs; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/hosting_platform ssh://bxiao@source.corp.skytap.com//hg/r%d/hosting_platform; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/packages ssh://bxiao@source.corp.skytap.com//hg/r%d/packages; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/service_control ssh://bxiao@source.corp.skytap.com//hg/r%d/service_control; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/skytap-support ssh://bxiao@source.corp.skytap.com//hg/r%d/skytap-support; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/r%d/statsd; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/ui_layer ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_layer; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/ui_nodejs ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_nodejs; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/web ssh://bxiao@source.corp.skytap.com//hg/r%d/web; \\\n" root release))
-;;   (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/r%d/docs; \\\n" root release)))
+;;   (insert (format "hg pull -R %s/configs ssh://bxiao@source.corp.skytap.com//hg/r%d/configs; \\\n" root release))
+;;   (insert (format "hg pull -R %s/hosting_platform ssh://bxiao@source.corp.skytap.com//hg/r%d/hosting_platform; \\\n" root release))
+;;   (insert (format "hg pull -R %s/packages ssh://bxiao@source.corp.skytap.com//hg/r%d/packages; \\\n" root release))
+;;   (insert (format "hg pull -R %s/service_control ssh://bxiao@source.corp.skytap.com//hg/r%d/service_control; \\\n" root release))
+;;   (insert (format "hg pull -R %s/skytap-support ssh://bxiao@source.corp.skytap.com//hg/r%d/skytap-support; \\\n" root release))
+;;   (insert (format "hg pull -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/r%d/statsd; \\\n" root release))
+;;   (insert (format "hg pull -R %s/ui_layer ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_layer; \\\n" root release))
+;;   (insert (format "hg pull -R %s/ui_nodejs ssh://bxiao@source.corp.skytap.com//hg/r%d/ui_nodejs; \\\n" root release))
+;;   (insert (format "hg pull -R %s/web ssh://bxiao@source.corp.skytap.com//hg/r%d/web; \\\n" root release))
+;;   (insert (format "hg pull -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/r%d/docs; \\\n" root release)))
 
 (defun hg-pull-all-containers-project (root)
   (interactive
      (list
       (completing-read "Root: " '("/hg" "/highland"))))
-  (insert (format "hg pull -u -R %s/configs ssh://bxiao@source.corp.skytap.com//hg/containers_project/configs; \\\n" root))
-  (insert (format "hg pull -u -R %s/hosting_platform ssh://bxiao@source.corp.skytap.com//hg/containers_project/hosting_platform; \\\n" root))
-  (insert (format "hg pull -u -R %s/packages ssh://bxiao@source.corp.skytap.com//hg/containers_project/packages; \\\n" root))
-  (insert (format "hg pull -u -R %s/service_control ssh://bxiao@source.corp.skytap.com//hg/containers_project/service_control; \\\n" root))
-  (insert (format "hg pull -u -R %s/skytap-support ssh://bxiao@source.corp.skytap.com//hg/containers_project/skytap-support; \\\n" root))
-  (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/containers_project/statsd; \\\n" root))
-  (insert (format "hg pull -u -R %s/ui_layer ssh://bxiao@source.corp.skytap.com//hg/containers_project/ui_layer; \\\n" root))
-  (insert (format "hg pull -u -R %s/ui_nodejs ssh://bxiao@source.corp.skytap.com//hg/containers_project/ui_nodejs; \\\n" root))
-  (insert (format "hg pull -u -R %s/web ssh://bxiao@source.corp.skytap.com//hg/containers_project/web; \\\n" root))
-  (insert (format "hg pull -u -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/containers_project/docs; \\\n" root)))
+  (insert (format "hg pull -R %s/configs ssh://bxiao@source.corp.skytap.com//hg/containers_project/configs; \\\n" root))
+  (insert (format "hg pull -R %s/hosting_platform ssh://bxiao@source.corp.skytap.com//hg/containers_project/hosting_platform; \\\n" root))
+  (insert (format "hg pull -R %s/packages ssh://bxiao@source.corp.skytap.com//hg/containers_project/packages; \\\n" root))
+  (insert (format "hg pull -R %s/service_control ssh://bxiao@source.corp.skytap.com//hg/containers_project/service_control; \\\n" root))
+  (insert (format "hg pull -R %s/skytap-support ssh://bxiao@source.corp.skytap.com//hg/containers_project/skytap-support; \\\n" root))
+  (insert (format "hg pull -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/containers_project/statsd; \\\n" root))
+  (insert (format "hg pull -R %s/ui_layer ssh://bxiao@source.corp.skytap.com//hg/containers_project/ui_layer; \\\n" root))
+  (insert (format "hg pull -R %s/ui_nodejs ssh://bxiao@source.corp.skytap.com//hg/containers_project/ui_nodejs; \\\n" root))
+  (insert (format "hg pull -R %s/web ssh://bxiao@source.corp.skytap.com//hg/containers_project/web; \\\n" root))
+  (insert (format "hg pull -R %s/statsd ssh://bxiao@source.corp.skytap.com//hg/containers_project/docs; \\\n" root)))
 
 (defun hg-push-r (release repo)
     (interactive
@@ -1165,6 +1241,16 @@ and referenced_table_name is not null -- Only tables with foreign keys
 (defun hg-log (args)
   (interactive "sArgs: ")
     (eshell-command (format "async-shell-command \"hg log %s | tee /dev/null \" \"hg log %s\"" args args)))
+
+(defun use-hpl ()
+  (interactive)
+  (insert (format "cp /highland/bxiao-dev/hosting_platform/hosting_platform/common/monitoring/__hpl_init__.py ~/hosting_platform/hosting_platform/common/monitoring/__init__.py\n"))
+  (insert (format "cp /highland/bxiao-dev/hosting_platform/hosting_platform/common/monitoring/unit_tests/__hpl_init__.py ~/hosting_platform/hosting_platform/common/monitoring/unit_tests/__init__.py\n")))
+
+(defun unuse-hpl ()
+  (interactive)
+  (insert (format "hg revert ~/hosting_platform/hosting_platform/common/monitoring/__init__.py\n"))
+  (insert (format "hg revert ~/hosting_platform/hosting_platform/common/monitoring/unit_tests/__init__.py\n")))
 
 (defun skygrep (buffer-name arguments)
   (interactive "sBuffer Name:\nsArguments: ")
@@ -1265,6 +1351,26 @@ and referenced_table_name is not null -- Only tables with foreign keys
   (interactive "sFile pattern: ")
   (insert (format "du -s %s 2>/dev/null| sort -nr | cut -f2- | xargs du -hs 2>/dev/null" pattern)))
 
+(defun find-and-delete-old-files (directory pattern days)
+  "Find and delete old files"
+  (interactive "sDirectory: \nsFile pattern: \nnOlder than (days): ")
+  (insert (format "find %s -mtime +%d -name '%s' -exec rm {} \\;" directory days pattern)))
+
+(defun kube-cm-bash (pod)
+  "Get bash shell of a kube_cm pod"
+  (interactive "sPod: ")
+  (insert (format "kubectl.sh --namespace=configuration-manager exec -it %s /bin/bash" pod)))
+
+(defun kube-cm-list-terminating ()
+  "List kube_cm pods that are terminating"
+  (interactive)
+  (insert "kubectl.sh -n configuration-manager get pod -o wide | grep Terminating"))
+
+(defun kube-cm-cpu-usage (pod)
+  "Get CPU usage of cm process on a given pod"
+  (interactive "sPod: ")
+  (insert (format "kubectl.sh --namespace=configuration-manager exec -it %s ps waux | awk '$8 !~ /Ss/ && /[h]osting_platform/ {print $3}' | uniq" pod)))
+
 ;;;----------------------
 ;;; Log analyze commands
 ;;;---------------------
@@ -1324,3 +1430,11 @@ and referenced_table_name is not null -- Only tables with foreign keys
 
 ;; C-M-% is impossible for me
 (defalias 'qrr 'query-replace-regexp)
+
+(setq org-capture-templates
+      (quote (
+              ("l" "link" plain (file (lambda () (expand-file-name "~/notes/exclusion.org")))
+               "%a")
+              )))
+
+(require 'docker-tramp)
