@@ -1,10 +1,3 @@
-wget --help
-       --no-cache              disallow server-cached data.
-wget http://www.selenic.com/hg/file/tip/contrib/mercurial.el > ~/.emacs.d/mercurial.el
-less ~/.emacs.d/mercurial.el 
-grep -R --include="*.[y" apply_rate_mimit ~/hosting_platform/hosting_platform/
-grep -R --include="*.[y" apply_rate_limit ~/hosting_platform/hosting_platform/
-grep -R --include="*.py" apply_rate_limit ~/hosting_platform/hosting_platform/
 python test_rate_limits.py  
 python test_rate_limits.py  
 python
@@ -51,7 +44,7 @@ python operations/unit_tests/test_configurations.py
 python operations/unit_tests/test_configurations.py
 python operations/unit_tests/test_configurations.py
 python unit_tests/test_heartbeat.py
-  File "/highland/hosting_platform/hosting_platform/services/configuration_manager/heartbeat.py", line 72, in Heartbeat
+File "/highland/hosting_platform/hosting_platform/services/configuration_manager/heartbeat.py", line 72, in Heartbeat
 python unit_tests/test_heartbeat.py
 rake test
 python operations/unit_tests/test_provision.py 
@@ -98,7 +91,7 @@ cd ..
 cd services/configuration_manager/
 rake test
 python operations/unit_tests/test_provision.py 
-        return ['UPDATE vpns SET nat_local_subnet=False where nat_local_subnet is NULL']    def non_nulls(self):        return {'vpns': ['nat_local_subnet']}y
+return ['UPDATE vpns SET nat_local_subnet=False where nat_local_subnet is NULL']    def non_nulls(self):        return {'vpns': ['nat_local_subnet']}y
 python operations/unit_tests/test_provision.py test_run_multiple_vms
 hg diff operations/unit_tests/test_provision.py 
 python operations/unit_tests/test_provision.py test_run_multiple_vms
@@ -126,3 +119,10 @@ python operations/unit_tests/test_delete.py
 python operations/unit_tests/test_delete.py 
 python operations/unit_tests/test_configurations.py
 rake test
+ls
+version
+cd ..
+cd ..
+ls
+ls el-get
+ls
