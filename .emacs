@@ -1,3 +1,9 @@
+;; fix https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341 (fixed in 26.3)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; fix https://debbugs.gnu.org/cgi/bugreport.cgi?bug=33825 (fixed in 26.3)
+(setq package-check-signature nil)
+
 (require 'whitespace)
 
 ;; (add-hook 'python-mode-hook
