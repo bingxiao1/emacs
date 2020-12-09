@@ -26,7 +26,7 @@ There are two things you can do about this warning:
 2. Remove this warning from your init file so you won't see it again."))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
@@ -76,23 +76,32 @@ There are two things you can do about this warning:
 (global-set-key (kbd "ESC M-[ C") (kbd "M-<right>"))
 (global-set-key (kbd "ESC M-[ D") (kbd "M-<left>"))
 
-;; Use ALT-<arrow keys> for window navigation. Before that we need to do the following to set up
-;; input decode map
 ;;
 ;; On my emacs (running in console mode with "-nw"), M-<UP> generates "<ESC> <ESC> O A" event sequence
 ;; (verified with "C-h l"), and M-<DOWN> generates "<ESC> <ESC> O B". In additional, MacOS Terminal app maps
 ;; M-<left> to M-B(word backward), and M-<right> to M-F(word forward). As an emacs user I've accustomed to
 ;; use M-B and M-F, no longer need the M-<left> and M-<right> mapper. So I just removed the mapping
-;; from the Terminal app. 
+;; from the Terminal app.
+
+;; Tell Emacs to interprete escape sequence correctly.
+;; the escape sequence can be obtained as follows
+;; In the *scratch* buffer, press Ctrl+Q followed by the key sequence to be tested.
 (define-key input-decode-map "\e\eOA" [(meta up)])
 (define-key input-decode-map "\e\eOB" [(meta down)])
 (define-key input-decode-map "\e\eOC" [(meta right)])
 (define-key input-decode-map "\e\eOD" [(meta left)])
+(define-key input-decode-map "OA" [(shift up)])
+(define-key input-decode-map "OB" [(shift down)])
+
 
 ;; Wind Move: use Shift and arrow keys to move point from window to window
 ;; The ‘fbound’ test is for those XEmacs installations that don’t have the windmove package available.
 (when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings 'meta))
+  ;; (windmove-default-keybindings 'meta))
+  (windmove-default-keybindings))
+  
+;; Work around key conflict between org mode and windmove
+(setq org-replace-disputed-keys t)
 
 ;; Since M-<LEFT> and M-<RIGHT> are already bound to backward-word and forward-word, so we will not use 
 ;; (windmove-default-keybindings 'meta) to do all-directional window navigation. Instead, just rebind
@@ -249,13 +258,49 @@ There are two things you can do about this warning:
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(async-shell-command-buffer (quote confirm-kill-process))
- '(eshell-aliases-file "/highland/.emacs.d/eshell/alias")
+ '(docker-image-run-arguments
+   (quote
+    ("-i" "-t" "--rm" "-v /skytap/test_results:/results" "-e HIGHLAND_ENV='jenkins-central/unit-tests'")))
+ '(eshell-aliases-file "/home/bxiao/emacs/.emacs.d/eshell/alias")
  '(indent-tabs-mode nil)
  '(jira-url "https://jira.corp.skytap.com/rpc/xmlrpc")
  '(menu-bar-mode nil)
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "https://melpa.org/packages/"))))
+ '(org-capture-templates
+   (quote
+    (("l" "link" plain
+      (file
+       (lambda nil
+         (expand-file-name "~/notes/ENG-59983.org")))
+      "%a"))) t)
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")
+     ("melpa-stable" . "https://stable.melpa.org/packages"))))
+ '(package-selected-packages
+   (quote
+    (dictionary projectile kubernetes-tramp kubernetes elpy virtualenvwrapper jedi docker register-list)))
  '(python-remove-cwd-from-path nil)
- '(safe-local-variable-values (quote ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face tabs trailing lines-tail) (require-final-newline . t) (prompt-to-byte-compile))))
+ '(safe-local-variable-values
+   (quote
+    ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
+           (add-hook
+            (quote write-contents-functions)
+            (lambda nil
+              (delete-trailing-whitespace)
+              nil))
+           (require
+            (quote whitespace))
+           "Sometimes the mode needs to be toggled off and on."
+           (whitespace-mode 0)
+           (whitespace-mode 1))
+     (whitespace-line-column . 80)
+     (whitespace-style face tabs trailing lines-tail)
+     (require-final-newline . t)
+     (prompt-to-byte-compile))))
+ '(skygrep-arguments
+   (quote
+    ("--environment prod" "--service configuration_manager" "--start-time \"1 hour ago\"" "--severity err")))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -275,41 +320,68 @@ There are two things you can do about this warning:
 ;;   )
 ;; )
 
-(defun prod-mysql (local-user-name)
+(defun ssh-source (from)
+  ;; Prod access need us to connect from outside of Skytap Cloud, so we need to establish
+  ;; ssh connection to a host outside of Skytap Cloud. Naturally this can be the Macbook
+  ;; host that I connect from.
+  ;; Since this Emacs session can be shared by multiple ssh sessions, we don't use $SSH_CLIENT
+  ;; to identify the source of our ssh session. Instead we use reverse ssh tunnel.
+  ;;
+  ;; Here is how the client eastablish connection to this emacs session running in screen
+  ;; session named 'dev':
+  ;;
+  ;; ssh -R 22022:localhost:22 bxiao@10.1.141.164 -a -Y -t screen -xRR -A -e^Zz -U -O -S new_dev
+  ;; 
+  (interactive
+   (list
+    (completing-read "from: " '("home" "office"))))
+   (cond ((equal from "home") "/ssh:bingxiao@localhost#24022")
+         ((equal from "office") "/ssh:bxiao@localhost#23022")
+         (t "unknown ssh source")))
+
+  
+;; (defun prod-mysql (local-user-name)
+;;   "Mysql replicate in prod"
+;;     (interactive
+;;      (list
+;;       (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
+;;     ;; (eshell-command "pushd . & cd /ssh:bxiao@tuk1linjump4.prod.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd"))
+;;     ;; (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
+;;     ;;       (my-macbook-user-name (car (split-string local-user-name " "))))
+;;     (let ((my-macbook-ip (car (split-string (shell-command-to-string "echo $SSH_CLIENT | cut -d\" \" -f1"))))
+;;           (my-macbook-user-name (car (split-string local-user-name " "))))
+;;       (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"prod-mysql\" & popd"))
+;;     (switch-to-buffer "prod-mysql")
+;;     (insert "mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin")
+;;     ;; (comint-send-input nil t)
+;; )
+
+
+(defun ssh-source-shell ()
   "Mysql replicate in prod"
-    (interactive
-     (list
-      (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
-    ;; (eshell-command "pushd . & cd /ssh:bxiao@tuk1linjump4.prod.skytap.com: & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd"))
-    (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
-          (my-macbook-user-name (car (split-string local-user-name " "))))
-      (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"prod-mysql\" & popd"))
+    (interactive)
+    (eshell-command "pushd . & cd (format \"%s:\" (call-interactively 'ssh-source)) & shell \"*ssh-source*\" & popd")
+    ;; (eshell-command "pushd . & cd (format \"%s|ssh:bxiao@tuk1linjump4.prod.skytap.com:\" (call-interactively 'ssh-source)) & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd")
+    (switch-to-buffer "*ssh-source*")
+)
+
+(defun prod-mysql ()
+  "Mysql replicate in prod"
+    (interactive)
+    (eshell-command "pushd . & cd (format \"%s|ssh:bxiao@tuk1linjump4.prod.skytap.com:\" (call-interactively 'ssh-source)) & async-shell-command \"mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin\" \"prod-mysql\" & popd")
     (switch-to-buffer "prod-mysql")
-    (insert "mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin")
-    ;; (comint-send-input nil t)
 )
 
-(defun tuk1m1control (local-user-name)
+(defun tuk1m1control ()
   "Mysql replicate in prod"
-    (interactive
-     (list
-      (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
-    (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
-          (my-macbook-user-name (car (split-string local-user-name " "))))
-      (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"tuk1m1control\" & popd"))
+    (interactive)
+    (eshell-command "pushd . & cd (format \"%s|ssh:bxiao@tuk1linjump4.prod.skytap.com|ssh:bxiao@tuk1m1control:\" (call-interactively 'ssh-source)) & async-shell-command \"/bin/bash\" \"tuk1m1control\" & popd")
     (switch-to-buffer "tuk1m1control")
-    (insert "ssh tuk1m1control")
-
-    ;; (comint-send-input nil t)
 )
 
-(defun linjump (local-user-name)
-    (interactive
-     (list
-      (completing-read "Macbook user name: " '("bxiao (office)" "bingxiao (home)"))))
-    (let ((my-macbook-ip (car (split-string (shell-command-to-string "who | cut -d\"(\" -f2 |cut -d\":\" -f1"))))
-          (my-macbook-user-name (car (split-string local-user-name " "))))
-    (eshell-command "pushd . & cd (format \"/ssh:%s@%s:\" my-macbook-user-name my-macbook-ip) & async-shell-command \"ssh bxiao@tuk1linjump4.prod.skytap.com\" \"linjump\" & popd"))
+(defun linjump ()
+    (interactive)
+    (eshell-command "pushd . & cd (format \"%s|ssh:bxiao@tuk1linjump4.prod.skytap.com:\" (call-interactively 'ssh-source)) & async-shell-command \"/bin/bash\" \"linjump\" & popd")
 )
 
 (defun test-mysql ()
@@ -391,6 +463,9 @@ There are two things you can do about this warning:
 (defvar python--pdb-postmortem-string "import pdb; pdb.post_mortem(sys.exc_info()[2]) ## DEBUG ##"
   "Python breakpoint string used by `python-insert-postmortem'")
 
+(defvar python--exc-stack-string "import traceback; traceback.print_exc() ## DEBUG ##"
+  "Python breakpoint string used by `python-insert-exception-stack'")
+
 (defun python-insert-breakpoint ()
   "Inserts a python breakpoint using `pdb'"
   (interactive)
@@ -408,6 +483,15 @@ There are two things you can do about this warning:
   ;; point is a nested block
   (split-line)
   (insert python--pdb-postmortem-string))
+
+(defun python-insert-exception-stack ()
+  "Print python exception stacktrace"
+  (interactive)
+  (back-to-indentation)
+  ;; this preserves the correct indentation in case the line above
+  ;; point is a nested block
+  (split-line)
+  (insert python--exc-stack-string))
 
 (define-key python-mode-map (kbd "<f9>") 'python-insert-breakpoint)
 
@@ -751,7 +835,8 @@ and referenced_table_name is not null -- Only tables with foreign keys
         "tuk5m1mysqlplvip1.mgt.integ.skytap.com:bxiao:"
         "tuk5r1control.mgt.integ.skytap.com:bxiao:"
         "tuk5r1logger2.mgt.integ.skytap.com:bxiao:"
-        "tuk5r1mysqlmm1.mgt.integ.skytap.com:bxiao:"
+        "tuk5r1mysqlisvip1.mgt.integ.skytap.com:bxiao:"
+        "tuk5r1mysqlnsvip1.mgt.integ.skytap.com:bxiao:"
         "integ.ci.skytap.com:bxiao:"
         "tuk6m1control.mgt.test.skytap.com:bxiao:"
         "tuk6m1logger1.mgt.test.skytap.com:bxiao:"
@@ -765,12 +850,14 @@ and referenced_table_name is not null -- Only tables with foreign keys
         "tuk6r1mysqlisvip1.mgt.test.skytap.com:bxiao:"
         "tuk6r1mysqlnsvip1.mgt.test.skytap.com:bxiao:"
         "tuk6r1mqvip1.mgt.test.skytap.com:bxiao:"
+        "tuk6r2control.mgt.test.skytap.com:bxiao:"
         "tuk6r2logger1.mgt.test.skytap.com:bxiao:"
         "tuk6r2mysqlplvip1.mgt.test.skytap.com:bxiao:"
         "tuk6r2mysqlisvip1.mgt.test.skytap.com:bxiao:"
         "tuk6r2mysqlnsvip1.mgt.test.skytap.com:bxiao:"
         "tuk6r2mqvip1.mgt.test.skytap.com:bxiao:"
         "tuk6bi1.mgt.test.skytap.com:bxiao:"
+        "lon6r1control.mgt.test.skytap.com:bxiao:"
         "lon6r1logger1.mgt.test.skytap.com:bxiao:"
         "lon6r1mysqlplvip1.mgt.test.skytap.com:bxiao:"
         "lon6r1mysqlisvip1.mgt.test.skytap.com:bxiao:"
@@ -824,7 +911,7 @@ and referenced_table_name is not null -- Only tables with foreign keys
 (defun remote-shell (user-host)
     (interactive
        (list
-   	(completing-read "host user: " tramp-user-hosts)
+       (completing-read "host user: " tramp-user-hosts)
        ))
     (let ((host (car (split-string user-host ":"))) (user (car (cdr (split-string user-host ":")))) (directory (car (cdr (cdr (split-string user-host ":"))))))
       (eshell-command (format "pushd . & cd /ssh:%s@%s:%s & shell %s & popd" user host directory host))))
@@ -832,27 +919,18 @@ and referenced_table_name is not null -- Only tables with foreign keys
 (setq tramp-jenga-user-hosts 
       '("puppetmaster root"
         "m1logger1 root"
-        "m1control1 root"
-        "m1cm1 root"
-        "m1wfe1 root"
-        "m1mysqlpl1 root"
-        "m1mysqlcm1 root"
-        "r1control1 root"
-        "r1logger1 root"
-        "r1nsvc1 root"
-        "r1esx1 root"
-        "r1mysqlpl1 root"
-        "kube-jenkins root"
-        "r1nsxmgr1 admin"
-        "r1nsxsvc1 admin"
-        "r1nsxcontrol1 admin"
-        "r1nsxcontrol2 admin"
-        "r1nsxcontrol3 admin"
-        "m1mq1 root"
-        "r1mq1 root"
-        "m1influxdb1 root"
-        "dev root"
-        "m1influxdb1 root"
+        "jng4m1control1 root"
+        "jng4m1mysqlpl1 root"
+        "jng4m1logger1 root"
+        "jng4r1control1 root"
+        "jng4r1logger1 root"
+        "jng4r1nsvc1 root"
+        "jng4r1esx1 root"
+        "jng4r1mysqlpl1 root"
+        "jng4jenkins1 root"
+        "jng4m1mq1 root"
+        "jng4r1mq1 root"
+        "jng4m1influxdb1 root"
         ))
 
 (defun remote-shell-jenga (user-host)
@@ -904,116 +982,6 @@ and referenced_table_name is not null -- Only tables with foreign keys
 ;;        ))
 ;;     (let ((user (car (split-string user-host "@"))) (host (car (cdr (split-string user-host "@")))))
 ;;       (remote-term-internal host  "ssh" (format "%s@%s" user host))))
-
-(defun term-bxiao-mysql (buffer-name)
-  "Shell of bxiao cloud mysql"
-    (interactive "sBuffer name: bxiao-cloud-mysql-")  
-    (remote-term-internal (format "bxiao-cloud-mysql-%s" buffer-name) "ssh" "root@mysql.bxiao.dev.skytap.com"))
-
-(defun shell-bxiao-puppetmaster (buffer-name)
-  "Shell of bxiao cloud puppetmaster"
-    (interactive "sBuffer name: bxiao-cloud-puppetmaster-")  
-    (eshell-command (format "pushd . & cd /ssh:root@puppetmaster.bxiao.dev.skytap.com: & shell bxiao-cloud-puppetmaster-%s & popd" buffer-name)))
-
-(defun shell-bxiao-app (buffer-name)
-  "Shell of bxiao cloud app"
-    (interactive "sBuffer name: bxiao-cloud-app-")  
-    (eshell-command (format "pushd . & cd /ssh:root@app.bxiao.dev.skytap.com: & shell bxiao-cloud-app-%s & popd" buffer-name)))
-
-(defun shell-bxiao-mq (buffer-name)
-  "Shell of bxiao cloud mq"
-    (interactive "sBuffer name: bxiao-cloud-mq-")  
-    (eshell-command (format "pushd . & cd /ssh:root@mq.bxiao.dev.skytap.com: & shell bxiao-cloud-mq-%s & popd" buffer-name)))
-
-(defun shell-bxiao-util1 (buffer-name)
-  "Shell of bxiao cloud util1"
-    (interactive "sBuffer name: bxiao-cloud-util1-")  
-    (eshell-command (format "pushd . & cd /ssh:root@util1.bxiao.dev.skytap.com: & shell bxiao-cloud-util1-%s & popd" buffer-name)))
-
-(defun shell-bxiao-util2 (buffer-name)
-  "Shell of bxiao cloud util2"
-    (interactive "sBuffer name: bxiao-cloud-util2-")  
-    (eshell-command (format "pushd . & cd /ssh:root@util2.bxiao.dev.skytap.com: & shell bxiao-cloud-util2-%s & popd" buffer-name)))
-
-(defun shell-bxiao-sn1 (buffer-name)
-  "Shell of bxiao cloud sn"
-    (interactive "sBuffer name: bxiao-cloud-sn1-")  
-    (eshell-command (format "pushd . & cd /ssh:root@sn.bxiao.dev.skytap.com: & shell bxiao-cloud-sn1-%s & popd" buffer-name)))
-
-(defun shell-bxiao-sn2 (buffer-name)
-  "Shell of bxiao cloud sn2"
-    (interactive "sBuffer name: bxiao-cloud-sn2-")  
-    (eshell-command (format "pushd . & cd /ssh:root@sn2.bxiao.dev.skytap.com: & shell bxiao-cloud-sn2-%s & popd" buffer-name)))
-
-(defun shell-bxiao-mysql (buffer-name)
-  "Shell of bxiao cloud mysql"
-    (interactive "sBuffer name: bxiao-cloud-mysql-")  
-    (eshell-command (format "pushd . & cd /ssh:root@mysql.bxiao.dev.skytap.com: & shell bxiao-cloud-mysql-%s & popd" buffer-name)))
-
-(defun shell-bxiao-mysqlr1 (buffer-name)
-  "Shell of bxiao cloud mysqlr1"
-    (interactive "sBuffer name: bxiao-cloud-mysqlr1-")  
-    (eshell-command (format "pushd . & cd /ssh:root@mysqlr1.bxiao.dev.skytap.com: & shell bxiao-cloud-mysqlr1-%s & popd" buffer-name)))
-
-(defun shell-bxiao-mysqlr2 (buffer-name)
-  "Shell of bxiao cloud mysqlr2"
-    (interactive "sBuffer name: bxiao-cloud-mysqlr2-")  
-    (eshell-command (format "pushd . & cd /ssh:root@mysqlr2.bxiao.dev.skytap.com: & shell bxiao-cloud-mysqlr2-%s & popd" buffer-name)))
-
-(defun term-bxiao-jenkins (buffer-name)
-  "Term of bxiao cloud jenkins"
-    (interactive "sBuffer name: bxiao-cloud-jenkins-")  
-    (remote-term-internal (format "bxiao-cloud-jenkins-%s" buffer-name) "ssh" "root@jenkins.bxiao.dev.skytap.com"))
-
-(defun shell-bxiao-jenkins (buffer-name)
-  "Shell of bxiao cloud jenkins"
-    (interactive "sBuffer name: bxiao-cloud-jenkins-")  
-    (eshell-command (format "pushd . & cd /ssh:root@jenkins.bxiao.dev.skytap.com:/highland/jenkins/jobs/hosting_platform/workspace & shell bxiao-jenkins-%s & popd" buffer-name)))
-
-(defun term-integ-sea5r1 (buffer-name)
-  "Term of integ"
-    (interactive "sBuffer name: integ-sea5r1-")  
-    (remote-term-internal (format "integ-sea5r1-%s" buffer-name) "ssh" "bxiao@sea5r1logger1.mgt.integ.skytap.com"))
-
-(defun term-integ-tuk5r1 (buffer-name)
-  "Term of integ"
-    (interactive "sBuffer name: integ-tuk5r1")  
-    (remote-term-internal (format "integ-tuk5r1-%s" buffer-name) "ssh" "bxiao@tuk5r1logger1.mgt.integ.skytap.com"))
-
-(defun term-puppetmaster (buffer-name)
-  "Shell of bxiao cloud puppetmaster"
-    (interactive "sBuffer name: puppetmaster-")  
-    (remote-term-internal (format "puppetmaster-%s" buffer-name) "ssh" "highland@puppetmaster"))
-
-(defun shell-jenkins (buffer-name)
-  "Shell of jenkins"
-    (interactive "sBuffer name: jenkins-")  
-    (eshell-command (format "pushd . & cd /ssh:highland@jenkins:/highland/jenkins/jobs/hosting_platform/workspace & shell jenkins-%s & popd" buffer-name)))
-
-(defun term-bxiao-jenkins (buffer-name)
-  "Term of bxiao cloud jenkins"
-    (interactive "sBuffer name: bxiao-jenkins-")  
-    (remote-term-internal (format "bxiao-jenkins-%s" buffer-name) "ssh" "root@jenkins"))
-
-(defun shell-jenkins2 (buffer-name)
-  "Shell of jenkins2"
-    (interactive "sBuffer name: jenkins2-")  
-    (eshell-command (format "pushd . & cd /ssh:highland@jenkins2:/highland/jenkins/jobs/hosting_platform_next/workspace & shell jenkins2-%s & popd" buffer-name)))
-
-(defun shell-dev2 (buffer-name)
-  "Shell of dev2"
-    (interactive "sBuffer name: dev2-")  
-    (eshell-command (format "pushd . & cd /ssh:highland@dev2: & shell dev2-%s & popd" buffer-name)))
-
-(defun term-dev2 (buffer-name)
-  "Shell of bxiao cloud puppetmaster"
-    (interactive "sBuffer name: dev2-")  
-    (remote-term-internal (format "dev2-%s" buffer-name) "ssh" "highland@dev2"))
-
-(defun shell-openstack (buffer-name)
-  "Shell of openstack"
-    (interactive "sBuffer name: openstack-")  
-    (eshell-command (format "pushd . & cd /ssh:highland@openstack: & shell openstack-%s & popd" buffer-name)))
 
 (defun accounting-list-account (filter)
   "List accounts that matches given filter"
@@ -1247,16 +1215,6 @@ and referenced_table_name is not null -- Only tables with foreign keys
   (insert (format "cp /highland/bxiao-dev/hosting_platform/hosting_platform/common/monitoring/__hpl_init__.py ~/hosting_platform/hosting_platform/common/monitoring/__init__.py\n"))
   (insert (format "cp /highland/bxiao-dev/hosting_platform/hosting_platform/common/monitoring/unit_tests/__hpl_init__.py ~/hosting_platform/hosting_platform/common/monitoring/unit_tests/__init__.py\n")))
 
-(defun unuse-hpl ()
-  (interactive)
-  (insert (format "hg revert ~/hosting_platform/hosting_platform/common/monitoring/__init__.py\n"))
-  (insert (format "hg revert ~/hosting_platform/hosting_platform/common/monitoring/unit_tests/__init__.py\n")))
-
-(defun skygrep (buffer-name arguments)
-  (interactive "sBuffer Name:\nsArguments: ")
-    (eshell-command (format "async-shell-command \"skygrep %s \" \"%s\"" arguments buffer-name)))
-(global-set-key [f8] 'skygrep)
-
 (defun cmcmd-list-services ()
   "List services registered in cm"
   (interactive)
@@ -1438,3 +1396,121 @@ and referenced_table_name is not null -- Only tables with foreign keys
               )))
 
 (require 'docker-tramp)
+
+(xclip-mode 1)
+
+(require 'magit-popup)
+
+;; Some cusotomizations to docker popups
+(eval-after-load 'docker-image
+  '(define-key docker-image-mode-map [(r)] 'docker-image-run-selection))
+
+(magit-define-popup-switch 'docker-image-run-popup ?C "volume" "-v /highland/configs:/highland/configs")
+(magit-define-popup-switch 'docker-image-run-popup ?H "volume" "-v /highland/hosting_platform:/highland/hosting_platform")
+(magit-define-popup-switch 'docker-image-run-popup ?A "volume" "-v /highland/agent_services:/highland/agent_services")
+(magit-define-popup-switch 'docker-image-run-popup ?N "volume" "-v /highland/nexus:/highland/hosting_platform")
+
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells) ;; if you want interactive shell support
+(venv-initialize-eshell) ;; if you want eshell support
+;; note that setting `venv-location` is not necessary if you
+;; use the default location (`~/.virtualenvs`), or if the
+;; the environment variable `WORKON_HOME` points to the right place
+(setq venv-location "/home/bxiao/")
+
+(defun skygrep-selection (expression)
+  (interactive "sExpression: ") 
+  (venv-workon "skygrep")
+  (let ((buffer-name "*skygrep*")
+        (skygrep-cmd (format "skygrep %s %s" (s-join " " (skygrep-arguments)) expression)))
+    (with-current-buffer (get-buffer-create buffer-name)
+      (setf (buffer-string) "")
+      (goto-char (point-max))
+      (insert skygrep-cmd)
+      (newline)
+      (insert "==========================================================================")
+      (newline)
+      (insert (shell-command-to-string skygrep-cmd))
+      ;; (shell-command skygrep-cmd "*skygrep*")
+      (goto-char (point-max))
+      (newline)
+      (insert "==========================================================================")
+      (newline)
+      ))
+  (venv-deactivate)
+)
+
+(magit-define-popup skygrep-popup
+  'skygrep
+  :switches '((?f "follow" "--follow")
+              (?V "verbatim JSON output" "--verbatim-output")
+              (?O "use OR as default operator instead of AND when advanced querying is specified" "--default-or")
+              (?A "advanced querying" "--advanced")
+              )
+  :options '((?E "environment" "--environment ")
+             (?Y "service" "--service ")
+             (?s "start time" "--start-time ")
+             (?e "end time" "--end-time ")
+             (?H "host" "--host ")
+             (?C "context string" "--context-string ")
+             (?S "severity" "--severity ")
+             (?R "region" "--region ")
+             (?d "day" "--day ")
+             )
+  :actions '((?R "Run" skygrep-selection)))
+
+;; (defun skygrep (buffer-name arguments)
+;;   (interactive "sBuffer Name:\nsArguments: ")
+;;     (eshell-command (format "async-shell-command \"skygrep %s \" \"%s\"" arguments buffer-name)))
+(global-set-key [f8] 'skygrep-popup)
+
+(defun skygrep-shell (name)
+  "skygrep shell"
+  (interactive "MName of shell buffer to create: ")
+  (pop-to-buffer (get-buffer-create (generate-new-buffer-name (format "*skygrep: %s*" name))))
+  (shell (current-buffer))
+  (process-send-string nil "source ~/skygrep/bin/activate\n"))
+
+
+(defun skygrep-linjump-shell ()
+  "Mysql replicate in prod"
+  (interactive)
+  (eshell-command "pushd . & cd (format \"%s|ssh:bxiao@tuk1linjump4.prod.skytap.com:\" (call-interactively 'ssh-source)) & async-shell-command \"/bin/bash\" \"skygrep-linjump\" & popd")
+  (switch-to-buffer "skygrep-linjump")
+  (process-send-string nil "source ~/skygrep-nlog/bin/activate\n")
+  (insert "skygrep -E prod --url 'tuk1m1esnlogvip1.mgt.prod.skytap.com:9200' -s \"8 hours ago\" \"Accounting Arbiter Report\"")
+)
+
+;; (defun linjump ()
+;;   (interactive)
+;;   (eshell-command "pushd . & cd (format \"%s|ssh:bxiao@tuk1linjump4.prod.skytap.com:\" (call-interactively 'ssh-source)) & async-shell-command \"/bin/bash\" \"linjump\" & popd")
+;; )
+
+(defun build-service (service)
+  (interactive
+   (list
+    (completing-read "service: " '("cm" "greenbox" "nexus" "identity_service" "accounting" "charon"))))
+
+  (let ((docker-build-cmd (cond
+         ((equal service "cm") "docker build -t cm -f /highland/hosting_platform/dockers/configuration_manager/Dockerfile /highland/hosting_platform/")
+         ((equal service "greenbox") "docker build -t greenbox -f /highland/hosting_platform/dockers/greenbox/Dockerfile /highland/hosting_platform/")
+         ((equal service "accounting") "docker build -t accounting -f /highland/hosting_platform/dockers/accounting/Dockerfile /highland/hosting_platform/")
+         ((equal service "charon") "docker build -t charon -f /highland/hosting_platform/dockers/charon/Dockerfile /highland/hosting_platform/")
+         ((equal service "nexus") "docker build -t nexus -f /highland/nexus/dockers/nexus/Dockerfile /highland/nexus/")
+         ((equal service "identity_service") "docker build -t identity_service -f /highland/agent_services/dockers/identity_service/Dockerfile /highland/agent_services/")
+         (t "unknown service")))
+        (buffer-name (format "*docker build - %s*" service)))
+    (with-current-buffer (get-buffer-create buffer-name)
+      (setf (buffer-string) "")
+      (async-shell-command docker-build-cmd buffer-name)
+      ;; (insert (shell-command-to-string docker-build-cmd))
+      ))
+)
+
+(elpy-enable)
+(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
+
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode +1)

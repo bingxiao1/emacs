@@ -1,0 +1,1 @@
+("~/skytap/hosting_platform/" "~/skytap/configs/" "~/r2101/configs/" "~/r2101/service_control/" "~/notes/" "~/skytap/agent_services/" "~/skytap/jenkins-jobs/" "~/skytap/nexus/" "~/r2045/service_control/" "~/r2045/configs/" "~/emacs/" "~/r2049/service_control/" "~/r2049/configs/" "~/projects/" "~/skytap/service_control/" "~/emacs/.emacs.d/el-get/docker-tramp/")

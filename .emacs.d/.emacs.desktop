@@ -1,0 +1,2023 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Dec  8 17:00:45 2020
+;; Desktop file format version 208
+;; Emacs version 26.2
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (24528 8637 778131 100000) (desktop . "208") "bxiao@dev" nil nil ((((minibuffer . t) (tty-type . "screen.xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . dark) (foreground-color . "unspecified-fg") (cursor-color . "white") (menu-bar-lines . 0) (background-color . "unspecified-bg") (font . "tty") (height . 55) (width . 204) (modeline . t) (unsplittable) (frameset--id . "CAD2-7DC9-4CCC-6E1D") (frameset--mini t)) ((min-height . 4) (min-width . 20) (min-height-ignore . 2) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 4) (min-pixel-height . 4) (min-pixel-width . 20) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 4) (min-pixel-height-safe . 1) (min-pixel-width-safe . 4)) hc (pixel-width . 204) (pixel-height . 54) (total-width . 204) (total-height . 54) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 102) (pixel-height . 54) (total-width . 102) (total-height . 54) (normal-height . 1.0) (normal-width . 0.5) (buffer "*eshell*" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 67168) (start . 65376))) (leaf (last . t) (pixel-width . 102) (pixel-height . 54) (total-width . 102) (total-height . 54) (normal-height . 1.0) (normal-width . 0.5) (buffer "*eshell*" (selected) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 58462) (start . 55376)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("skygrep-sh" "skygrep" "792281" "charon" "bf9fe7" "vam1r1:charon-9b5c6d6b8-zpzxn" "2020-12-07t17:24:52.618z" "rsync " "rsync pull " "rsync pull" "rsync p" "rsync" "rsync pull cmd rsync -av\nvvzr --rsync-path=\"sudo" "rsync pull cmd rsync -av" "rsync" "rsync "))
+(setq regexp-search-ring '("py"))
+(setq register-alist (list (desktop-list* 51 (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,10443 (get-buffer ,"network_provisioning.py")))) mk)) (desktop-list* 50 (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,13676 (get-buffer ,"network_provisioning.py")))) mk)) (desktop-list* 49 (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,9265 (get-buffer ,"network_provisioning.py")))) mk)) (desktop-list* 48 (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk))))
+(setq file-name-history '("/ssh:highland@puppetmaster:/highland/configs/.hg" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/worker.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/GreenboxContextTestCase.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_tunnel.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/network.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Tunnel.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/network.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vm_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/public_ip_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_resource.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vpn_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/network_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vpn_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_transport.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Vpn.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/public_ip_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Public_ip.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Nic.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_nic.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vm_fixtures.py" "/usr/local/lib/python2.7/dist-packages/" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vm_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/limits.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vm_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/network_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/base.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/ephemera.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Depot.py" "/highland/hosting_platform/hosting_platform/services/greenbox/workflow/workflow.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_datacenter.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/datacenter.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/base.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/operation_base.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/message.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_configuration.py" "/highland/hosting_platform/hosting_platform/common/mq_framework/unit_tests/stubs/mq.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/GreenboxContextTestCase.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/base.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_configuration.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/configuration_fixtures.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/base.py" "/highland/hosting_platform/hosting_platform/common/model_elements/key_mixin.py" "/highland/hosting_platform/hosting_platform/common/mq_framework/unit_tests/stubs/mq.py" "/highland/hosting_platform/hosting_platform/services/greenbox/model/message.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/GreenboxContextTestCase.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/worker.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/operation_base.py" "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Asset.py" "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/datacenter_fixtures.py" "/highland/agent_services/testing/db.py" "~/skytap/configs/" "~/skytap/agent_services/identity_service/" "/highland/hosting_platform/hosting_platform/services/network_server/controllers/resourcecontroller.py" "/home/bxiao/skytap/service_control/services/kube_greenbox/service.yaml" "/highland/hosting_platform/hosting_platform/services/charon/rsync_puller.py" "/ssh:bxiao@localhost#23022|ssh:bxiao@tuk1linjump4.prod.skytap.com|ssh:bxiao@tuk1m1control:/home/bxiao/get_tokens.py" "~/notes/nexus_mysql5.6_prod_verification.org" "~/notes/identity_service_mysql5.6_prod_verification.org" "~/notes/identity_service_mysql5.6_prod_verification" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_manage_resources.py" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_get_account_ephemera.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/fixtures.py" "/highland/hosting_platform/hosting_platform/services/charon/vm_depots_map.py" "/highland/hosting_platform/hosting_platform/services/charon/copy_depot_contents_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/test_deferred_unpack_import_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/fixtures.py" "/highland/hosting_platform/hosting_platform/services/charon/depot_model.py" "/highland/hosting_platform/hosting_platform/services/charon/import_single_vm_operation.py" "/usr/local/lib/python2.7/dist-packages/" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/fixtures.py" "/highland/hosting_platform/hosting_platform/services/charon/depot_model.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/fixtures.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/fixtures.py" "/highland/hosting_platform/hosting_platform/common/model_elements/key_mixin.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/vms.py" "/highland/hosting_platform/hosting_platform/common/vmware/vmware_vm.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/test_deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/depot_model.py" "/highland/hosting_platform/hosting_platform/services/charon/import_session.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/test_deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_unpack_import_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_import_single_vm_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/unit_tests/test_deferred_copy_depot_contents_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/deferred_copy_depot_contents_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/write_vmx_operation.py" "/highland/hosting_platform/hosting_platform/services/charon/storage_helpers.py" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_manage_resources.py" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_get_events.py" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_get_account_ephemera.py" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_manage_resources.py" "/highland/hosting_platform/hosting_platform/services/accounting/operations/unit_tests/test_reassign_matched_resources.py" "/highland/hosting_platform/hosting_platform/services/accounting/unit_tests/AccountingContextTestCase.py" "~/skytap/configs" "~/skytap/hosting_platform/dockers/configuration_manager/" "~/skytap/nexus/dockers/nexus/" "~/notes"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/charon/rsync_puller.py"
+  "rsync_puller.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  8214
+  '(9243 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24527 62174 148439 583000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (6827 8537 2879 1350))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/emacs/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(eldoc-mode projectile-mode)
+  64462
+  '(65053 nil)
+  nil
+  nil
+  '((buffer-display-time 24527 62134 125737 521000) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (15637 35130 35035 9028 61626 35663 34935 15102 65047 65000 66952 55378 64950 64923 64856 65054))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/notes/kubernetes.org"
+  "kubernetes.org"
+  'org-mode
+  '(projectile-mode)
+  125
+  '(2 nil)
+  nil
+  nil
+  '((buffer-display-time 24526 24318 835549 136000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring (126 2 126 2 126 2))))
+
+(desktop-create-buffer 208
+  nil
+  "notes"
+  'dired-mode
+  '(projectile-mode)
+  1229
+  '(1268 nil)
+  t
+  '("/home/bxiao/notes/")
+  '((buffer-display-time 24526 23563 319304 443000))
+  '((mark-ring (1670 1404 1 1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/charon/deferred_copy_depot_contents_operation.py"
+  "deferred_copy_depot_contents_operation.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1192
+  '(20104 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24525 59103 287712 639000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (16430 1637))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/charon/copy_depot_contents_operation.py"
+  "copy_depot_contents_operation.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24525 59103 287712 388000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/network_provisioning.py"
+  "network_provisioning.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5196
+  '(10206 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24525 52876 918746 243000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (5811 12093 4764 4561 4831 62 1 3229 1 26325 24119 1 4279 4802 4649 10671))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/unprovision.py"
+  "unprovision.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  17250
+  '(20662 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 55471 217135 173000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (60066 61401 20662 20662 20662 1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/networks.py"
+  "networks.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  14796
+  '(6124 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 53609 311106 128000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (34262 16011 55307 54000 55312 16099))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/test_provision.py"
+  "test_provision.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  160155
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 50658 648670 295000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/stubs/network.py"
+  "network.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  11446
+  '(7407 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 50494 550093 644000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (5804))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/provision.py"
+  "provision.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  39590
+  '(39617 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 48904 999024 343000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (39617 56993 55258 55304 21146 15330 30023 30149 69416 60262 63126 60262 12293 1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/network_server/api/serviceapi.py"
+  "serviceapi.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  8211
+  '(8222 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 47392 850227 237000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (8222 23004))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/test_provision_run_operation_error.py"
+  "test_provision_run_operation_error.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  26738
+  '(26749 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 47385 498058 148000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/apis/networking_api.py"
+  "networking_api.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  16078
+  '(16089 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24522 47369 254109 516000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/message_queue_conf.yaml"
+  "message_queue_conf.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24522 30728 795826 70000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/base.py"
+  "base.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  10813
+  '(10066 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24521 31672 272008 573000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (10038 7451 7451 7495 34771 34771 8690 7032 15486 8664 11213 10066 23268 14751 14764 13982))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/tools/rotate_queues.sh"
+  "rotate_queues.sh"
+  'sh-mode
+  '(projectile-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24521 31366 79816 878000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/ConfigurationManagerService.yaml"
+  "ConfigurationManagerService.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  1
+  '(608 nil)
+  nil
+  nil
+  '((buffer-display-time 24521 30364 918668 743000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/depots.py"
+  "depots.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7066
+  '(5881 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24521 28225 318899 105000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (10674 2357 4607 15564 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/apis/configuration_manager_api.py"
+  "configuration_manager_api.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  72003
+  '(70828 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24521 28163 894006 294000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (103322 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/apis/greenbox_api.py"
+  "greenbox_api.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  40590
+  '(29657 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24521 28124 285026 862000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (472 10048 27629 16447 70924 27629 9505 477 42406 3355 1 40669 5358 59934 49864 43938))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/r2101/configs/prod/screenrc_all_regions"
+  "screenrc_all_regions"
+  'fundamental-mode
+  '(projectile-mode)
+  429
+  '(394 nil)
+  nil
+  nil
+  '((buffer-display-time 24521 28094 680310 412000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (604 779 779 779 744))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/charon/storage_helpers.py"
+  "storage_helpers.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  18141
+  '(16427 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24520 9299 288376 764000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1 16659 16664))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/common/fuser.py"
+  "fuser.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  426
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24520 7182 28012 179000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/limits.py"
+  "limits.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7159
+  '(6975 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24520 434 875471 78000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/dal1r1/hosting_platform_conf.yaml"
+  "hosting_platform_conf.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  2139
+  '(915 nil)
+  nil
+  nil
+  '((buffer-display-time 24519 60483 784457 219000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (438))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/lon1r1/hosting_platform_conf.yaml"
+  "hosting_platform_conf.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  667
+  '(438 nil)
+  nil
+  nil
+  '((buffer-display-time 24519 56537 958447 355000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/apis/skytap_object_specification_schema.py"
+  "skytap_object_specification_schema.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  25741
+  '(12052 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24519 51740 272658 811000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (10836 40324 10834 32147 20791))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/test_networks.py"
+  "test_networks.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  76950
+  '(76967 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24518 55035 255381 65000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/model/network.py"
+  "network.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(5949 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24518 49507 988969 880000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4849 4104 5013 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/configuration_manager/db/db.py"
+  "db.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  38277
+  '(31323 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24518 48353 181323 92000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (33247 16191 31758 47664 47406 78258 59048 30850 55785 30835 7105 1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/vms.py"
+  "vms.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  89322
+  '(89612 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24517 14689 522923 2000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (130581))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/vms.py"
+  "vms.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5137
+  '(5160 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24517 14650 149300 427000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (47840))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/accounts.py"
+  "accounts.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7780
+  '(8518 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24509 41396 332985 684000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3767 1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/r2101/service_control/.hgtags"
+  ".hgtags"
+  'fundamental-mode
+  '(projectile-mode)
+  129281
+  '(1 nil)
+  nil
+  nil
+  '((buffer-display-time 24509 41394 720812 827000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (129281))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/r2049/service_control/service_groups/r2049_release/upgrade_management_platform_core.rb"
+  "upgrade_management_platform_core.rb"
+  'ruby-mode
+  '(projectile-mode)
+  680
+  '(642 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24508 21321 831047 358000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (509 361))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/network_server/operations/resource/fileserver/fileserver_create_operation.py"
+  "fileserver_create_operation.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  693
+  '(710 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24501 45470 287318 982000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (455))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/network_server/controllers/file_server_controller.py"
+  "file_server_controller.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  497
+  '(514 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24501 45383 477000 629000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/test_vms.py"
+  "test_vms.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  126834
+  '(126849 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24501 45296 808108 706000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/configurations.py"
+  "configurations.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3058
+  '(2699 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24501 44630 607402 661000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/__init__.py"
+  "__init__.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2458
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24501 37339 52045 517000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/configurations.py"
+  "configurations.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1626
+  '(5423 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24501 37242 358787 249000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4786 4799 19044 7702 7702 7714))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/depots.py"
+  "depots.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  15705
+  '(15717 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24499 11056 627582 390000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Depot.py"
+  "Depot.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  437
+  '(449 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24499 9453 334864 840000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (613 578 644 578 1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/common/mq_framework/MQMessage.py"
+  "MQMessage.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  14468
+  '(14497 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24489 57638 144598 700000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (14448 9136 6674 4739 3966 2410))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/common/mq_framework/MQFramework.py"
+  "MQFramework.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  43946
+  '(45839 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24489 57250 339380 555000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (25242 24037))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/r2045/configs/.hgtags"
+  ".hgtags"
+  'fundamental-mode
+  '(projectile-mode)
+  123875
+  '(124099 nil)
+  nil
+  nil
+  '((buffer-display-time 24481 62025 749382 858000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/r2045/service_control/service_groups/r2045_release/upgrade_resource_middle_tier.rb"
+  "upgrade_resource_middle_tier.rb"
+  'ruby-mode
+  '(projectile-mode)
+  650
+  '(612 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24480 42176 289769 44000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (516 392))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/r2045/service_control/service_groups/r2045_release/upgrade_management_platform_core.rb"
+  "upgrade_management_platform_core.rb"
+  'ruby-mode
+  '(projectile-mode)
+  680
+  '(642 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24480 25768 312297 92000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (509 361))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/configuration_manager/pkgs/install.sh"
+  "install.sh"
+  'sh-mode
+  '(projectile-mode)
+  452
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64936 361345 333000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/greenbox/pkgs/install.sh"
+  "install.sh"
+  'sh-mode
+  '(projectile-mode)
+  1331
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64897 802549 503000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/configuration_manager/unit_tests.sh"
+  "unit_tests.sh"
+  'sh-mode
+  '(projectile-mode)
+  469
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64829 582900 269000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/greenbox/unit_tests.sh"
+  "unit_tests.sh"
+  'sh-mode
+  '(projectile-mode)
+  65
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64700 286518 537000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/accounting/pkgs/install.sh"
+  "install.sh"
+  'sh-mode
+  '(projectile-mode)
+  1159
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64696 329429 434000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/charon/pkgs/install.sh"
+  "install.sh"
+  'sh-mode
+  '(projectile-mode)
+  1241
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64290 890671 968000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/accounting/unit_tests.sh"
+  "unit_tests.sh"
+  'sh-mode
+  '(projectile-mode)
+  47
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 64319 435631 213000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/nexus/dockers/nexus/pkgs/install.sh"
+  "install.sh"
+  'sh-mode
+  '(projectile-mode)
+  637
+  '(637 nil)
+  nil
+  nil
+  '((buffer-display-time 24473 63517 377657 32000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/charon/unit_tests.sh"
+  "unit_tests.sh"
+  'sh-mode
+  '(projectile-mode)
+  52
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 63361 843028 115000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/agent_services/dockers/identity_service/pkgs/install.sh"
+  "install.sh"
+  'sh-mode
+  '(projectile-mode)
+  411
+  '(411 nil)
+  nil
+  nil
+  '((buffer-display-time 24473 63386 578728 539000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/agent_services/dockers/identity_service/unit_tests.sh"
+  "unit_tests.sh"
+  'sh-mode
+  '(projectile-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 62932 659023 464000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/agent_services/common/db/AbstractDB.py"
+  "AbstractDB.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 62882 674416 318000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/agent_services/testing/db.py"
+  "db.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  898
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 62788 230775 5000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/nexus/dockers/nexus/unit_tests.sh"
+  "unit_tests.sh"
+  'sh-mode
+  '(projectile-mode)
+  47
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 62562 163029 973000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/jenkins-jobs/docker/image_tests/versioned/run_tests_greenbox.yaml"
+  "run_tests_greenbox.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  1
+  '(974 nil)
+  nil
+  nil
+  '((buffer-display-time 24473 62575 829723 135000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/jenkins-jobs/docker/image_tests/versioned/run_tests_nexus.yaml"
+  "run_tests_nexus.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  235
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 61407 746485 373000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/jenkins-jobs/docker/image_tests/versioned/run_tests_identity_service.yaml"
+  "run_tests_identity_service.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  257
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24473 60858 838207 71000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/jenkins-jobs/docker/image_tests/versioned/run_tests_configuration_manager.yaml"
+  "run_tests_configuration_manager.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  2874
+  '(2841 nil)
+  nil
+  nil
+  '((buffer-display-time 24473 60838 886143 891000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (988 190 203 116 230 193))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/jenkins-jobs/docker/image_tests/versioned/run_tests_charon.yaml"
+  "run_tests_charon.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  237
+  '(237 nil)
+  nil
+  nil
+  '((buffer-display-time 24473 56082 289807 761000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/jenkins-jobs/docker/image_tests/versioned/run_tests_accounting.yaml"
+  "run_tests_accounting.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  251
+  '(1 nil)
+  nil
+  nil
+  '((buffer-display-time 24473 56041 957561 120000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/unit_tests/test_tunnels.py"
+  "test_tunnels.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  113739
+  '(113751 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 55958 203129 416000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/unit_tests/test_vpns.py"
+  "test_vpns.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  20251
+  '(20268 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 55248 470878 17000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/base.py"
+  "base.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  4620
+  '(31881 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 55143 923500 723000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4175 2851 2868))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/nexus.py"
+  "nexus.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  42678
+  '(42690 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 54638 985610 98000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/vm_import_session.py"
+  "vm_import_session.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1649
+  '(1661 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 54616 15265 422000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1659))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/operations/transport_multivm.py"
+  "transport_multivm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2600
+  '(2610 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 54583 669141 440000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/vpns.py"
+  "vpns.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  20897
+  '(20907 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 54526 76566 451000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/transport_multivm.py"
+  "transport_multivm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7670
+  '(7680 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24473 54481 442991 33000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/agent_services/identity_service/service.py"
+  "service.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  8704
+  '(8998 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24472 28504 73760 921000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/accounting/tools/accounting_arbiter/metrics/resource_leak_metrics.py"
+  "resource_leak_metrics.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  232
+  '(246 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24468 24240 674712 840000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/lon1r1/identity_service.yaml"
+  "identity_service.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  294
+  '(52 nil)
+  nil
+  nil
+  '((buffer-display-time 24465 62960 36193 16000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (24))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/common/threadutils.py"
+  "threadutils.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  4076
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24465 26024 373818 814000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/configuration_manager/model/unit_tests/test_base.py"
+  "test_base.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3951
+  '(3911 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24464 55438 441771 443000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3060 3055 3091))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/accounting/model/unit_tests/test_quota_management.py"
+  "test_quota_management.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  122
+  '(6597 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24464 55119 99495 183000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/accounting/tools/quota_inspector/quota_inspector.py"
+  "quota_inspector.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  6029
+  '(6029 t)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24461 58945 576235 104000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2278 1 7909))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/db/AbstractDB.py"
+  "AbstractDB.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7083
+  '(7198 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24453 62565 624541 58000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/hosting_platform_conf.yaml"
+  "hosting_platform_conf.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  1215
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24463 30875 906316 455000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/accounting/tools/accounting_arbiter/accounting_arbiter.py"
+  "accounting_arbiter.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  6722
+  '(6529 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24448 44551 817149 721000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/notes/mysql.org"
+  "mysql.org"
+  'org-mode
+  '(projectile-mode)
+  188
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 15163 769102 303000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/notes/mysql_failover.org"
+  "mysql_failover.org"
+  'org-mode
+  '(projectile-mode)
+  5288
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 24446 7424 812135 908000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/provisioning.py"
+  "provisioning.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  12624
+  '(12655 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 50115 389328 728000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (12589 12655 12589 11416 11350 11416 11350 10632 10566 10632 10566 811 745 811 811 6457))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/operations/unprovisioning.py"
+  "unprovisioning.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1532
+  '(1466 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 58550 637052 944000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2257 2191 2257 2191 1532 1466 1532 1466 546 480 546 480 97 546))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Vm.py"
+  "Vm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5368
+  '(5368 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 48479 495412 211000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (5368 5302 5368 5302 4735 4669 405 4735 4735 9782 9033 9152))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/operations/workflow.py"
+  "workflow.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  727
+  '(727 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 48299 263980 687000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (653 186 727 727 727))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/message_fixtures.py"
+  "message_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  496
+  '(523 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 48364 512306 479000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (465 523 465 97 523))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_resource.py"
+  "test_resource.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3514
+  '(3514 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 48039 291004 704000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3448 3231 3297 3231 2534 2468 2534 2468 1874 1808 1874 1808 1292 1226 1292 1226))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_datacenter.py"
+  "test_datacenter.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  285
+  '(3071 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 47846 126624 524000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3005 3071 3005 2533 2467 2533 2467 2164 2098 2164 2098 1788 1714 1387 1321 1387))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_network.py"
+  "test_network.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  135
+  '(4148 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 47682 90326 845000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4082 4148 4082 3752 3686 3752 3686 3362 3296 3362 3296 2978 2912 2978 2912 2469))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_vm.py"
+  "test_vm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  135
+  '(9351 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 47518 671942 42000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (9285 9351 9285 7967 7901 7967 7901 7480 7414 7480 7414 7213 7279 7213 6637 6571))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_db.py"
+  "test_db.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  669
+  '(290 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 45573 818964 62000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (700 634 700))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_vpn_network_attachment.py"
+  "test_vpn_network_attachment.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5979
+  '(5871 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 45324 172028 205000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (5860 5871 5902 5836 5902 5836 3799 3733 3799 3733 3355 3289 3355 3289 1460 1394))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_configuration.py"
+  "test_configuration.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  6635
+  '(2881 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 44481 448993 539000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (6666 6600 6666 6600 6270 6204 6270 6204 5880 5814 5880 5814 5495 5429 5495 5429))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_vpn_remote_subnet.py"
+  "test_vpn_remote_subnet.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  135
+  '(124 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 44942 975547 947000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1055 989 1055 989 1055))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_resource.py"
+  "test_resource.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1937
+  '(1871 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 44939 7399 352000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1399 1566 1716 1716 1697 1716 978 978 5988 5988 5988 5988 5988 5988 3705 5988))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_public_ip.py"
+  "test_public_ip.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2417
+  '(2417 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 44467 510893 542000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2351 2074 2008 2074 2008 1581 1515 1581 1515 1100 1034 1100 1034 124))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_message.py"
+  "test_message.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  4053
+  '(7301 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 44116 598153 512000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (7235 7301 7235 7136 7202 7136 6347 6281 6347 6281 4084 4018 4084 4018 2628 2562))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_vpn.py"
+  "test_vpn.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  406
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 43908 543629 26000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2494 1922 863 199 1981 1958 1958 199 199))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/__init__.py"
+  "__init__.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  458
+  '(458 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 43794 319015 774000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_public_ip.py"
+  "test_public_ip.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  882
+  '(766 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 43608 253146 141000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (881 958 958 766 766))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_nic.py"
+  "test_nic.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1102
+  '(1068 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 42226 641460 726000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (238 1390 238 238 238 12964 11622 12929 15530 12355 14988 12189 14822 12552 237 14278))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_network.py"
+  "test_network.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  733
+  '(699 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 42204 291315 212000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2421 2421 2444 2421 244 244))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_datacenter.py"
+  "test_datacenter.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  300
+  '(266 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 42179 258879 743000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (266 1271 1271 1180 1271 1271 872 872 184 2980 20471 20405 20471 20405 16242 16242))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_configuration.py"
+  "test_configuration.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  392
+  '(358 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 42170 238210 480000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (392 6742 6668 12880 12814 12880 12814 1 6742 1 6742 5291 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_ephemera.py"
+  "test_ephemera.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  189
+  '(4646 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24444 41985 226705 560000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4580 4646 4580 178 172 1 4646 1310 1094 1 2626 4646))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/workflow/__init__.py"
+  "__init__.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 48051 771519 604000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/workflow/compiled_krb/create_bc.py"
+  "create_bc.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  32837
+  '(18681 nil)
+  t
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 47847 3417 98000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/operations/__init__.py"
+  "__init__.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3199
+  '(3211 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 47788 950383 765000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3002))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/worker.py"
+  "worker.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7675
+  '(6825 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 47703 169812 15000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (7675 7566 6667 6632 7487 7021 7487 6840 7460 6671))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/operation_base.py"
+  "operation_base.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  12106
+  '(9736 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 46760 693886 210000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (9228 16110 14807 12765 12167 11678 7274 6722 16210 15621 16184 16231 16229 16211 10171 135))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/model/message.py"
+  "message.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  6350
+  '(2577 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 39223 406142 758000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (5738 5282 3387 566 1 566 566 566 566 566 566 566 1 566 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Infrastructure.py"
+  "Infrastructure.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  165
+  '(9426 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 37476 187078 176000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (9452))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/GreenboxContextTestCase.py"
+  "GreenboxContextTestCase.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  11345
+  '(14953 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 37037 504238 739000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (9859 12666 12703 12637 12703 12637 12133 12637 12356 12133 2057 1 12703 15290 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_nat_pool.py"
+  "test_nat_pool.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2013
+  '(18437 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 31965 451964 332000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (18371 18437 18371 11206 11140 11206 11140 10328 10262 10328 10262 9428 9362 9428 9362 8328))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/workflow/workflow.py"
+  "workflow.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  16995
+  '(17015 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 31332 744578 762000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (15748 11512 11065 15749 11276 4865 16976 15779 15779 15713 11548 11477 11548 11477 11096 11030))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vpn_fixtures.py"
+  "vpn_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1741
+  '(1761 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 31333 307173 641000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1491 6754 5877 4003 2107 1761 1491 6758 5881 5846 6754 6853 6853 6723 6138 5846))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/operations/Configuration.py"
+  "Configuration.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  7373
+  '(7393 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 31036 509425 440000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3148 1743 756 7424 7424 7358 3179 3113 3179 3113 1774 1708 1774 1708 787 721))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Nic.py"
+  "Nic.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5781
+  '(5801 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 31002 175370 872000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4838 4301 5832 5766 5832 5766 4869 4803 4869 4803 4332 4266 4332 4266 303 171))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Public_ip.py"
+  "Public_ip.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3726
+  '(3746 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30991 447586 18000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2749 1998 1220 706 3777 3711 3777 3711 2780 2714 2780 2714 2029 1963 2029 1963))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/ephemera.py"
+  "ephemera.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2283
+  '(2303 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30959 372736 292000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2334 2268 2334 2268 108 97 2334 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Vpn.py"
+  "Vpn.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2903
+  '(2923 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30908 364862 989000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1435 2954 2888 2954 2888 1466 1400 329 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/transport.py"
+  "transport.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  792
+  '(812 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30895 435609 102000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (847 773 209 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Asset.py"
+  "Asset.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  588
+  '(608 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30892 390056 52000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (639 573))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/transport_multivm.py"
+  "transport_multivm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  810
+  '(830 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30888 739276 481000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (791 830 865 791 865 791 209 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/limits.py"
+  "limits.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  2304
+  '(2324 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30882 794336 858000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1176 607 2355 2289 2355 2289 1207 1141 1207 1141 638 572 209))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/datacenter.py"
+  "datacenter.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5399
+  '(5419 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30868 432157 598000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4952 3714 1551 5450 5384 4917 4983 4917 3745 3679 3745 3679 1582 1516 1582 1516))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/unit_tests/test_vpn.py"
+  "test_vpn.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  948
+  '(968 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30854 310693 891000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (6699 6633 6699 6633 6063 5997 6063 5997 2440 2374 2440 2374 2077 2011 2077 2011))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/vpn.py"
+  "vpn.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  5733
+  '(6107 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30808 734152 459000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2731 2731 6143 6072 6143 6072 6072 2775 2688 2775 2688 309 1 2775 2775))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/model/base.py"
+  "base.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  14459
+  '(14479 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30799 83353 909000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (14117 14117 4015 14522 14432 14078 540 12758 3118 11390 5862 2198 1833 5862 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/datacenter_fixtures.py"
+  "datacenter_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  872
+  '(892 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30746 109195 245000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1271 896 861 861 1112 861 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/vm_fixtures.py"
+  "vm_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  6263
+  '(6283 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30730 387814 519000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (5772 4847 4056 3383 2864 1387 3056 2891 3651 6819 6023 3056 2891 3056 2868 2891))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/public_ip_fixtures.py"
+  "public_ip_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1866
+  '(1886 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30662 478725 629000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1107 578 1111 1076 136 1913 1855 1913 1855 1295 1076 1295 1076 605 547 605))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/configuration_fixtures.py"
+  "configuration_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1620
+  '(1640 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30649 490318 145000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1515 3580 4753 1644 1609 126 1789 1609 1789 1609 115 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/network_fixtures.py"
+  "network_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1170
+  '(1190 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 30698 990008 986000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1248 1069 1248 1069 1086 1069 1069 1069 1194 1248 1159))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/accounting/tools/quota_inspector/unit_tests/test_quota_inspector.py"
+  "test_quota_inspector.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  12583
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24443 24739 152436 496000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_tunnel.py"
+  "test_tunnel.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(4557 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 46231 59625 319000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4293 4219 1089 1 4404 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Tunnel.py"
+  "Tunnel.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1303
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 43427 441118 396000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_merge.py"
+  "test_merge.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  10470
+  '(2894 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 34550 799293 371000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2828 9715 7237 5595 6641 9654 6450 6226 9239 6046 5561 8574 2273 9654 2082 1858))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/vm.py"
+  "vm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1875
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 33752 578997 210000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/__init__.py"
+  "__init__.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  370
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 33663 557509 885000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/db/db.py"
+  "db.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1476
+  '(9072 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 33459 3772 592000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/Resource.py"
+  "Resource.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1015
+  '(193 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24439 29439 416001 118000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/configs/prod/vam1r1/charon_service.yaml"
+  "charon_service.yaml"
+  'fundamental-mode
+  '(projectile-mode)
+  525
+  '(617 nil)
+  nil
+  nil
+  '((buffer-display-time 24439 27150 842361 945000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (606 315 305 99))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_transport_multivm.py"
+  "test_transport_multivm.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1555
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24438 26905 568732 473000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_transport.py"
+  "test_transport.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1711
+  '(11999 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24438 26278 153580 876000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (11933 3361 3303 3361 3303 3098 3040 3098 3040 1939 1881 2054 1939 1881 1819 1761))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/unit_tests/fixtures/charge_tag_fixtures.py"
+  "charge_tag_fixtures.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  230
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24438 18975 979072 224000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/model/configuration.py"
+  "configuration.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  311
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24438 11231 410779 2000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/db/db.py"
+  "db.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3533
+  '(14863 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24438 6516 548977 143000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (464 6498 6498 6515 464 6515 464 464 464 464 464 464 7207 14120 14085 14184))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/db/__init__.py"
+  "__init__.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  188
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24438 5907 764746 950000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_limits.py"
+  "test_limits.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24436 56823 699380 271000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_depot.py"
+  "test_depot.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24436 50966 277154 332000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/common/mq_framework/unit_tests/stubs/mq.py"
+  "mq.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  18501
+  '(17484 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24435 47639 310067 559000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/common/model_elements/key_mixin.py"
+  "key_mixin.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  11229
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24435 46621 551210 254000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2165 11223 1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_asset.py"
+  "test_asset.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  3804
+  '(1885 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24435 41490 613723 557000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/highland/hosting_platform/hosting_platform/services/accounting/tools/migrate_cumulative_usage.py"
+  "migrate_cumulative_usage.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  968
+  '(831 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24435 38770 622399 194000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (866))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/greenbox/pkgs/pip-requirements.txt"
+  "pip-requirements.txt"
+  'text-mode
+  '(projectile-mode)
+  514
+  '(490 nil)
+  nil
+  nil
+  '((buffer-display-time 24435 33735 253426 675000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/dockers/charon/pkgs/pip-requirements.txt"
+  "pip-requirements.txt"
+  'text-mode
+  '(projectile-mode)
+  457
+  '(433 nil)
+  nil
+  nil
+  '((buffer-display-time 24435 33709 729740 910000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (444 505))))
+
+(desktop-create-buffer 208
+  "/home/bxiao/skytap/hosting_platform/hosting_platform/services/greenbox/operations/unit_tests/test_mysql_failover.py"
+  "test_mysql_failover.py"
+  'python-mode
+  '(eldoc-mode elpy-mode company-mode flymake-mode yas-minor-mode projectile-mode hi-lock-mode auto-complete-mode)
+  10975
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 24435 30587 118259 29000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+

@@ -1,13 +1,17 @@
-alias nil quit $*
-alias init_jenga python /highland/projects/skytap/init_jenga.py
-alias jenga_host python /highland/projects/skytap/get_jenga_connect_info.py $*
-alias cd_dev /ssh:highland@dev2:/highland
-alias rwhatis pushd . & cd /ssh:bxiao@source.corp.skytap.com:/ & ls -ld hg/env/$1 & popd
-alias ev echo $*
-alias ff find-file $1
-alias ffo find-file-other-window $1
-alias ll ls -l $*
-alias asc async-shell-command ""$*""
-alias sc shell-command ""$*""
+alias cd_tuk1m1control cd "(call-interactively (quote ssh-source))|ssh:bxiao@tuk1linjump4.prod.skytap.com|ssh:bxiao@tuk1m1control:/"
+alias cd_tuk1m1control=cd /ssh:bxiao@localhost#23022|ssh:bxiao@tuk1linjump4.prod.skytap.com|ssh:bxiao@tuk1m1control:/
+alias cd_nexus cd /highland/nexus
+alias cd_is cd /highland/agent_services/identity_service
+alias cd_cm cd /highland/hosting_platform/hosting_platform/services/configuration_manager
 alias sffo find-file-other-window /sudo::nil
-alias self._image_depot_allocation_old yes $*
+alias sc shell-command ""$*""
+alias asc async-shell-command ""$*""
+alias ll ls -l $*
+alias ffo find-file-other-window $1
+alias ff find-file $1
+alias ev echo $*
+alias rwhatis pushd . & cd /ssh:bxiao@source.corp.skytap.com:/ & ls -ld hg/env/$1 & popd
+alias jenga_urls python /highland/projects/skytap/get_jenga_urls.py $*
+alias jenga_host python /highland/projects/skytap/get_jenga_connect_info.py $*
+alias init_jenga python /highland/projects/skytap/init_jenga.py
+alias nil quit $*

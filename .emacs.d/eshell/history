@@ -1,128 +1,128 @@
-ls ~
-ls ~/my_emacs_git
-ls -a ~/my_emacs_git
-ls -l ~/.emacs
-ls -l ~/my_emacs_git/
-ls -la ~/my_emacs_git/
-diff
-diff ~/.emacs ~/my_emacs_git/.emacs
-cp ~/.emacs ~/my_emacs_git/.emacs
-ls -la ~/my_emacs_git/
-cd ~
-rm .emacs
-ln ~/my_emacs_git/.emacs
-ln ~/my_emacs_git/.emacs .emacs
-ls -la ~/.emacs
-ls -ln ~/.emacs
-pwd
-ls .emacs
-ls .emacs
-rm .emacs
-ls .emacs
-ln ~/my_emacs_git/.emacs .
-ls ~/.emacs
-ls -l ~/.emacs
-ls -la
+xeyes&
+xeyes&
+xeyes&
 ls
-rm .emacs
-ln -s ~/my_emacs_git/.emacs
-ln -s ~/my_emacs_git/.emacs .
-ls -l
-ls -la
-ls .emacs.d
-cd .emacs.d
+xeyes&
+cd /
+cd ~/skytap
+cd hosting_platform
 ls
-mkdir sql-completion
-cd sql-completion
-curl https://www.emacswiki.org/emacs/sql-completion.el
+cd hosting_platform
+rwhatis next
+cd ~/skytap/nexus
 ls
-curl https://www.emacswiki.org/emacs/download/sql-completion.el
-curl https://www.emacswiki.org/emacs/download/sql-completion.el -o sql-completion.el
+cd hosting_platform/
 ls
-ffo sql-completion.el 
-ffo sql-completion.el 
+cd common/
+ls
+cd ../db/db.py
+ffo ../db/db.py
+cd ~/skytap
+cd agent_services/
+ls
+cd identity_service
 cd ..
-mkdir mysql
-cd mysql
-curl https://www.emacswiki.org/emacs/download/mysql.el -o mysql.el
-ffo mysql.el 
-cd ~/hosting_platform/hosting_platform/services/configuration_manager/db/migrate/
-ls
+cd ..
+cd hosting_platform/
 hg pull -u
 hg status
-hg revert --all
+cd dockers/configuration_manager/
 ls
-cd R1706
-ls
-ffo vsphere_hosting_20.py 
-cd ..
-ls
-ls ..
-ls unit_tests/
-ls
-cd unit_tests/
-asc python test_migrate.py
-asc python test_migrate.py
-asc python test_migrate.py
-asc python test_migrate.py generate
-asc python test_migrate.py
-cd ..
-cd ..
-cd ..
-cd model
-cd unit_tests/
-asc python test_vms.py
-asc python test_vms.py
-asc python test_vms.py
-cd ..
-..
-cd db
-cd migrate/
-ls
-cd unit_tests/known_goods/
-ls
-cd R1706
-ls
-ffo vms_hypervisor_type.populated.sql
-cd ..
+ffo pkgs/apt-requirements.txt 
 hg status
+hg add
 cd ..
-hg add known_goods/
-hg status
 cd ..
-hg add R1706/
-ffo ../../tools/check_for_long_running_operations.py 
-hg status
-hg qnew CM_model_change_power_vm
-hg status
-hg qpop
-hg qseries
-hg qpush CM_model_change_power_vm
-asc ~/hosting_platform/hosting_platform/db/migrate/RunAllMigrations.py configuration
-xeyes&
-hg qfinish qtiphg strip -k tip
-hg status
-hg add R1706/
-cd unit_tests/
-hg add known_goods/
-hg status
-hg ci -m "ENG-22827: Update CM model to associate vm with hypervisor type"
-hg push
-cd /ssh:bxiao@tuk1linjump3.prod.skytap.com:
 ls
+cd hosting_platform
+ls
+ls ~/projects/skytap
+python ~/projects/skytap/get_jenga_urls.py
+cd ~/skytap/jenkins-jobs/
+ls
+cd docker
+ls
+cd image_tests
+ls
+cd versioned
+ls
+ffo run_tests_configuration_manager.yaml 
+hg ci -m "ENG-65139: Create CM Jenkins test job for MySQL 5.6"
+hg path
+cd ~/skytap/hosting_platform/
+hg status
+hg ci -m "ENG-65138: Add MySQL 5.6 to cm docker image and make sure all unit tests pass with MySQL 5.6"
+hg path
 pwd
-mysqldump -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin configuration > configuration.sql
+cd ../jenkins-jobs
+hg status
+hg ci -m "ENG-65139: Create CM Jenkins test job for MySQL 5.6"
+hg status
+hg ci -m "ENG-65139: Create CM Jenkins test job for MySQL 5.6"
+cd ../configs
+hg pull -u
+xeyes&
+cd ../hosting_platform/dockers/configuration_manager/
 ls
-ls -l
-cat configuration.sql
-mysqldump -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin configuration 
-async-shell-command "mysqldump -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin configuration > configuration.sql"
+ffo unit_tests_mysql_new.sh 
+ffo install_mysql_new.sh 
+cd /
+mysql -u root -p
+mysql --version
+mysql -u root -p
+mysql -u root -p
+cd /highland
+cd hosting_platform
+cd hosting_platform
+cd services/accounting/
+cd operations/unit_tests
 ls
-ls -l
-async-shell-command "mysqldump -u root -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin configuration > configuration.sql"
-ls
-ls -l
-async-shell-command "mysql -h tuk1bi2.prod.skytap.com -p --ssl-ca /etc/ldap/cacert/skytap-ca.pem --enable-cleartext-plugin"
-ssh bxiao@tuk1bi2.prod.skytap.com
-ssh bxiao@tuk1bi2.prod.skytap.com
+python test_mysql_failover.py
 exit
+xeyes&
+rwhatis integ
+hg pull -u
+hg out
+hg push
+cd ..
+cd ..
+cd ..
+cd nexus
+hg pull -u
+hg heads
+hg merge
+hg ci -m merge
+ffo hosting_platform/db/unit_tests/test_db.py
+cd hosting_platform/db/unit_tests/
+cd ..
+cd ..
+cd ..
+cd ..
+cd hosting_platform
+hg pull -u
+hg merge
+hg ci -m merge
+hg push
+cd ../nexus
+hg status
+hg resolve -m
+hg ci -m merge
+hg out
+hg push
+xeyes&
+xeyes&
+xeyes&
+cd ~/skytap/hosting_platform
+hg pull -u
+hg pull -u
+cd dockers
+ls
+cd greenbox
+ls
+xeyes&
+xeyes&
+xeyes&
+xeyes&
+xeyes&
+ping lon6r1control
+ping lon6r1control.mgt.test.skytap.com
